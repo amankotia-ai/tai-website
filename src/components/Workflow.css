@@ -1,0 +1,109 @@
+/* Workflow Section */
+.workflow-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 100px 24px;
+    /* Adjust padding as needed */
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.workflow-section .section-header {
+    padding-top: 60px;
+}
+
+/* Reusing section header styles from Hero.css, ensuring they cascade or are imported */
+
+.workflow-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    /* Large gap between steps */
+    width: 100%;
+}
+
+.workflow-step {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    width: 100%;
+}
+
+.workflow-step.reverse {
+    flex-direction: row-reverse;
+}
+
+/* The Visual Card */
+.workflow-card {
+    width: 468px;
+    height: 468px;
+    background: #FAFAFA;
+    border-radius: 24px;
+    flex: none;
+    /* Prevent resizing */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.workflow-card-image {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    border-radius: 24px;
+    display: block;
+}
+
+/* The Text Content */
+.workflow-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 400px;
+    gap: 20px;
+}
+
+.workflow-step-title {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    letter-spacing: -0.42px;
+    color: #181925;
+    margin: 0;
+}
+
+.workflow-step-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #6b7280;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .workflow-step,
+    .workflow-step.reverse {
+        flex-direction: column;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .workflow-card {
+        height: 300px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .workflow-content {
+        align-items: center;
+    }
+}

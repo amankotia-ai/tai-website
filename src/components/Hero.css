@@ -1,0 +1,238 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 100px 20px 80px;
+    /* background-color: white; Removed to show animated background */
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 72px;
+    font-weight: 400;
+    /* Assuming bold/semibold based on image, user didn't specify weight but font stack usually needs it */
+    color: #111827;
+    /* Changed to white */
+    letter-spacing: -2px;
+    line-height: 72px;
+    margin-bottom: 24px;
+}
+
+.hero p {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #4b5563;
+    /* Changed to slate-400 equivalent */
+    letter-spacing: -0.32px;
+    line-height: 24px;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.btn-primary {
+    background: #D61D1F;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: #D61D1F;
+}
+
+.btn-secondary {
+    background: #F7F7F7;
+    /* Assuming light grey from image */
+    color: #555555;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 32px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: #e5e5e5;
+    color: #333333;
+}
+
+/* Pixel Border Showcase Section */
+.pixel-showcase-section {
+    width: 100%;
+    padding: 60px 20px 40px;
+    background-color: transparent;
+    margin-top: 60px;
+}
+
+/* Pixel grid is now visible with animations */
+
+.pixel-grid-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 700px;
+}
+
+.pixel-grid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+    gap: 4px;
+    padding: 20px;
+}
+
+.pixel {
+    background-color: #D61D1F;
+    border-radius: 3px;
+    animation: pixel-fade 6s ease-in-out infinite;
+}
+
+@keyframes pixel-fade {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(0.95);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+}
+
+/* Noise overlay - sits above tiles, below card */
+.noise-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.35;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+}
+
+.showcase-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 120px);
+    height: calc(100% - 120px);
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 4px 40px rgba(0, 0, 0, 0.06);
+    z-index: 2;
+}
+
+/* Description text below showcase */
+.showcase-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #4b5563;
+    letter-spacing: -0.32px;
+    line-height: 24px;
+    text-align: center;
+    width: 420px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Why Theatre.AI Section Header */
+.section-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 200px 20px 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13.9px;
+    line-height: 20px;
+    letter-spacing: -0.32px;
+    color: #159FFA;
+    background: rgba(21, 159, 250, 0.1);
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-bottom: 32px;
+}
+
+.section-heading {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 44px;
+    letter-spacing: -0.8px;
+    color: #999999;
+    text-align: center;
+    margin: 0 0 28px;
+}
+
+.section-heading-bold {
+    font-weight: 600;
+    color: #111827;
+}
+
+.section-subtext {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: #6b7280;
+    line-height: 1.7;
+    text-align: center;
+    width: 480px;
+    margin: 0;
+}
+
+@keyframes platform-tab-panel-enter {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 8px, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .platform-tab-panel-enter {
+        animation: platform-tab-panel-enter 180ms ease-out both;
+    }
+}

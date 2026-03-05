@@ -1,0 +1,84 @@
+/* Scanner Features Container */
+.scanner-features-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    padding: 0px;
+    gap: 60px;
+    width: 100%;
+    /* Max width from design */
+    max-width: 1000px;
+    margin: 60px auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* Feature Item */
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 13px;
+    width: 360px;
+    /* Height varies in design, let content dictate or use min-height */
+    /* flex: none; order: 0; flex-grow: 0; */
+}
+
+/* Icon Container */
+.feature-icon-container {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 36px;
+    border: 1px solid rgba(21, 159, 250, 0.1);
+    border-radius: 33px;
+    /* 3.35544e+07px is effectively a pill/circle */
+    position: relative;
+}
+
+/* Icon SVG styling */
+.feature-icon {
+    width: 20px;
+    height: 20px;
+    color: #159FFA;
+}
+
+/* Feature Text */
+/* Feature Text Container */
+/* Feature Text Container */
+.feature-text-container {
+    width: 360px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.feature-text-paragraph {
+    margin: 0;
+    padding: 0;
+    line-height: 24px;
+}
+
+.feature-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    /* Regular weight */
+    font-size: 16px;
+    letter-spacing: -0.32px;
+    color: #159FFA;
+}
+
+.feature-description {
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    /* Regular weight */
+    font-size: 16px;
+    letter-spacing: -0.32px;
+    color: #4b5563;
+}

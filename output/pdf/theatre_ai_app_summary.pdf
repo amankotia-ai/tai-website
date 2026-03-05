@@ -1,0 +1,72 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Length 3117 >>
+stream
+BT /F2 18 Tf 48 752 Td (Theatre AI App Summary \(Repo Evidence\)) Tj ET
+BT /F2 12 Tf 48 735 Td (What It Is) Tj ET
+BT /F1 10 Tf 48 721 Td (Theatre AI is a Vite + React single-page web app for protecting voice and likeness rights in the) Tj ET
+BT /F1 10 Tf 48 708 Td (entertainment industry. It combines a marketing landing page, animated feature demos, and a) Tj ET
+BT /F1 10 Tf 48 695 Td (research/blog reading experience.) Tj ET
+BT /F2 12 Tf 48 678 Td (Who It Is For) Tj ET
+BT /F1 10 Tf 48 664 Td (Primary persona: actors/talent and studio teams handling AI usage rights and licensing) Tj ET
+BT /F1 10 Tf 48 651 Td (workflows. The hero copy explicitly references the Indian entertainment industry.) Tj ET
+BT /F2 12 Tf 48 634 Td (What It Does) Tj ET
+BT /F1 10 Tf 48 620 Td (- Presents rights/consent positioning with registration and demo calls-to-action) Tj ET
+BT /F1 10 Tf 48 607 Td (  \(src/components/Hero.tsx\).) Tj ET
+BT /F1 10 Tf 48 594 Td (- Shows a 3-step flow: Verify -> License -> Generate, including CastID and usage token) Tj ET
+BT /F1 10 Tf 48 581 Td (  concepts \(src/components/Workflow.tsx\).) Tj ET
+BT /F1 10 Tf 48 568 Td (- Runs an animated card scanner demo with moving cards, canvas light bar, and ASCII scan) Tj ET
+BT /F1 10 Tf 48 555 Td (  overlay \(src/components/CardScanner.tsx\).) Tj ET
+BT /F1 10 Tf 48 542 Td (- Displays four scanner capability callouts \(identity, audit/compliance, licensing, usage) Tj ET
+BT /F1 10 Tf 48 529 Td (  tokens\) \(src/components/ScannerFeatures.tsx\).) Tj ET
+BT /F1 10 Tf 48 516 Td (- Provides a research page with article cards and route links \(src/pages/ResearchPage.tsx\).) Tj ET
+BT /F1 10 Tf 48 503 Td (- Renders article detail pages via route param and hardcoded mock HTML content) Tj ET
+BT /F1 10 Tf 48 490 Td (  \(src/pages/ArticlePage.tsx\).) Tj ET
+BT /F2 12 Tf 48 473 Td (How It Works \(Architecture\)) Tj ET
+BT /F1 10 Tf 48 459 Td (- Client shell: React 18 app bootstrapped in src/main.tsx with BrowserRouter; App composes) Tj ET
+BT /F1 10 Tf 48 446 Td (  Navbar + routed pages + Footer.) Tj ET
+BT /F1 10 Tf 48 433 Td (- Routing: /, /new-hero, /portfolio-shader, /research, /research/:id, and wildcard redirect to) Tj ET
+BT /F1 10 Tf 48 420 Td (  /.) Tj ET
+BT /F1 10 Tf 48 407 Td (- Data flow: UI content is mostly local static arrays/objects in components/pages; no state) Tj ET
+BT /F1 10 Tf 48 394 Td (  store found in repo.) Tj ET
+BT /F1 10 Tf 48 381 Td (- External service: Hero dynamically injects UnicornStudio script from jsDelivr CDN at) Tj ET
+BT /F1 10 Tf 48 368 Td (  runtime.) Tj ET
+BT /F1 10 Tf 48 355 Td (- Backend/API/database/auth wiring: Not found in repo \(package.json includes Supabase) Tj ET
+BT /F1 10 Tf 48 342 Td (  dependency, but no src usage found\).) Tj ET
+BT /F2 12 Tf 48 325 Td (How To Run \(Minimal\)) Tj ET
+BT /F1 10 Tf 48 311 Td (- Prerequisite Node.js version: Not found in repo.) Tj ET
+BT /F1 10 Tf 48 298 Td (- Install dependencies: npm install) Tj ET
+BT /F1 10 Tf 48 285 Td (- Start local dev server: npm run dev) Tj ET
+BT /F1 10 Tf 48 272 Td (- Optional production check: npm run build && npm run preview) Tj ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000000327 00000 n 
+0000000402 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+3571
+%%EOF
