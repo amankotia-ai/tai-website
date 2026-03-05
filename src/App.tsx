@@ -23,8 +23,8 @@ function App() {
       <Navbar />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<PageTransition><Home /></PageTransition>} />
-          <Route path="/homepage-v2" element={<PageTransition><HomePageV2 /></PageTransition>} />
+          <Route path="/" element={<PageTransition><HomePageV2 /></PageTransition>} />
+          <Route path="/homepage-old" element={<PageTransition><Home /></PageTransition>} />
           <Route path="/platform" element={<PageTransition><PlatformPage /></PageTransition>} />
           <Route path="/who-we-are" element={<PageTransition><WhoWeArePage /></PageTransition>} />
           <Route path="/press-news" element={<PageTransition><PressNewsPage /></PageTransition>} />

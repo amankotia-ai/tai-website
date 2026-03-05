@@ -12,7 +12,7 @@ export default function Navbar() {
                 <div className="flex items-center gap-10">
                     {/* Logo */}
                     <Link
-                        to="/homepage-v2"
+                        to="/"
                         className="flex items-center gap-[6px] text-[18px] font-bold tracking-tight transition-colors duration-200 ease-out hover:opacity-80 font-['Inter'] text-[#111111]"
                     >
                         <div className="flex gap-[2px]">
