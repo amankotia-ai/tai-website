@@ -20,8 +20,8 @@ const IconUserGroup = () => <svg viewBox="0 0 24 24" fill="currentColor" classNa
 
 const actorFeaturesData: Array<{ title: string; description: string; icon?: React.ReactNode; demo?: React.ReactNode }> = [
   {
-    title: 'Verified Talent Profile',
-    description: 'Establish a trusted CastID profile to prove your identity before any AI project matching occurs.',
+    title: 'Verified Profile',
+    description: 'Create a verified CastID profile so studios know they are working with the real you.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         {/* Profile header */}
@@ -69,8 +69,8 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Review Project Intents',
-    description: 'See detailed project intent, license scope, and counterparty identity before approving requests.',
+    title: 'Review Project Details',
+    description: 'See who is requesting your voice or likeness and how it will be used before you approve anything.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -106,8 +106,8 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Consent Boundaries',
-    description: 'Set strict limits on territory, duration, and training permissions in your secure vault.',
+    title: 'Define Your Terms',
+    description: 'Choose where your performance can be used, for how long, and for what type of projects.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -138,8 +138,8 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Policy Guardrails',
-    description: 'Automatic pre-activation checks ensure projects adhere to your personal consent matrix.',
+    title: 'Built In Safeguards',
+    description: 'Instantly see whether a project falls within the boundaries you set.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -177,7 +177,7 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
   },
   {
     title: 'Multilingual Licensing',
-    description: 'Configure localized voice usage across specific regions securely from a single agreement.',
+    description: 'Allow your voice to be used in different languages and regions from one agreement.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -216,8 +216,8 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Secure File Vault',
-    description: 'Store high-fidelity voice and likeness reference files securely with encrypted access controls.',
+    title: 'Secure Media Storage',
+    description: 'Store your voice recordings and reference files safely with encrypted access.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -250,8 +250,8 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Direct Auditing',
-    description: 'Review compliance trails for each generation to ensure it matched your approved terms.',
+    title: 'Full Transparency',
+    description: 'See a record of every AI use linked to your licensed performances.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -284,7 +284,7 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
   },
   {
     title: 'Usage History',
-    description: 'Track every single synthetic generation event linked directly to your active performance licenses.',
+    description: 'Track every time your voice or likeness is used through the platform.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -317,8 +317,8 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Invoice Tracking',
-    description: 'Follow invoice states from requested to paid in one clear ledger without accounting delays.',
+    title: 'Payment Tracking',
+    description: 'Follow the status of every payment from request to payout.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -352,8 +352,8 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Automated Payouts',
-    description: 'Receive splits directly to your linked wallet once the studio clears the project payment.',
+    title: 'Automatic Payouts',
+    description: 'Receive your earnings automatically once the project is completed and paid.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -396,8 +396,8 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
 
 const studioFeaturesData: Array<{ title: string; description: string; icon?: React.ReactNode; demo?: React.ReactNode }> = [
   {
-    title: 'Clearance Search',
-    description: 'Search ready-to-license actors by clearance status and production constraints before outreach.',
+    title: 'Search Verified Actors',
+    description: 'Find performers who are ready to license their voice or likeness for AI projects.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -430,8 +430,8 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Role Matching',
-    description: 'Find verified talent profiles that match your project brief natively through our matching engine.',
+    title: 'Smart Talent Matching',
+    description: 'Discover actors who fit your role based on voice, performance style, and project needs.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -469,8 +469,8 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Define Licensing Scopes',
-    description: 'Set duration, territory, and usage contexts immediately when initiating a new synthetic contract.',
+    title: 'Set Licensing Terms',
+    description: 'Define where, how, and for how long the performance can be used.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -497,8 +497,8 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Consent Safe Workflows',
-    description: 'Ensure every synthetic request is run against verified permissions safely before rendering.',
+    title: 'Permission First',
+    description: "Every request is checked against the actor's approved permissions before anything is created.",
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -534,8 +534,8 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Automated Compliance',
-    description: 'Run territory and expiration policy checks computationally to block unauthorized project rendering.',
+    title: 'Built In Compliance',
+    description: 'The platform blocks any use that falls outside the agreed licensing terms.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -567,8 +567,8 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Centralized Shortlists',
-    description: 'Save and manage candidates through conditional approval loops until the license is locked.',
+    title: 'Manage Shortlists',
+    description: 'Save and organize actors while your team reviews and approves talent choices.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -597,8 +597,8 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Agency Collaboration',
-    description: 'Coordinate introductions and approvals across talent, agents, and production seamlessly.',
+    title: 'Work With Agents',
+    description: 'Coordinate approvals with actors, agents, and production teams in one place.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -626,8 +626,8 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Payment Rails',
-    description: 'Handle gross payments, platform fees, and actor distribution easily from the central platform.',
+    title: 'Simple Payments',
+    description: 'Handle project payments, platform fees, and actor payouts from one dashboard.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -667,8 +667,8 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Audit-Ready Records',
-    description: 'Maintain a time-stamped ledger of every session, contract linkage, and verification event.',
+    title: 'Complete Audit Records',
+    description: 'Maintain clear records of every contract, approval, and AI generation.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -699,8 +699,8 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Localized Distribution',
-    description: 'Manage usage rights cleanly across borders for all of your localized project deliverables.',
+    title: 'Local Licensing',
+    description: 'Manage rights across borders and languages for regional productions.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
@@ -739,18 +739,18 @@ const heroSubPoints: Array<{
 }> = [
     {
       key: 'identity',
-      title: 'Identity',
-      description: 'Confirm real talent profiles before any AI workflow starts.',
+      title: 'Verify Real Actors',
+      description: 'We ensure that every profile belongs to a real performer.',
     },
     {
       key: 'contract',
-      title: 'Licensing',
-      description: 'Approve usage scope quickly with standardized legal terms.',
+      title: 'License Permissions',
+      description: 'Actors control how their voice and likeness can be used.',
     },
     {
       key: 'audit',
-      title: 'Audit',
-      description: 'Track every generation event with clear compliance history.',
+      title: 'Track Everything',
+      description: 'Every AI creation is recorded so usage stays transparent.',
     },
   ];
 
@@ -1176,32 +1176,32 @@ const howTabData: Record<WhatTabKey, HowTabData> = {
     steps: [
       {
         id: 'actor-how-1',
-        title: 'Review each request before usage',
-        detail: 'See project intent, license scope, and counterpart identity before approval.',
+        title: 'Receive project requests',
+        detail: 'Studios send requests describing how they want to use your voice or likeness.',
         icon: 'shield',
         imageSrc: '/1.png',
         imageAlt: 'Verification progress',
       },
       {
         id: 'actor-how-2',
-        title: 'Define clear consent boundaries',
-        detail: 'Set territory, duration, training limits, and renewal rules in one place.',
+        title: 'Review and negotiate the terms',
+        detail: 'Check the project details and adjust the licensing terms before moving forward.',
         icon: 'check',
         imageSrc: '/2.png',
         imageAlt: 'License details',
       },
       {
         id: 'actor-how-3',
-        title: 'Run policy checks before activation',
-        detail: 'Validate project type, training permissions, and territory limits before release.',
+        title: 'Approve the contract',
+        detail: 'Once you approve the agreement, your licensed assets can be used for the project.',
         icon: 'spark',
         imageSrc: '/3.png',
         imageAlt: 'Consent matrix',
       },
       {
         id: 'actor-how-4',
-        title: 'Track usage and payment history',
-        detail: 'Review every generation event, invoice, and payout status in one ledger.',
+        title: 'Track usage and payments',
+        detail: 'See every AI use of your performance and follow the status of your payments.',
         icon: 'ledger',
         imageSrc: '/3.png',
         imageAlt: 'Usage history',
@@ -1216,32 +1216,32 @@ const howTabData: Record<WhatTabKey, HowTabData> = {
     steps: [
       {
         id: 'studio-how-1',
-        title: 'Find verified talent profiles',
-        detail: 'Match performers by identity trust and rights readiness for each project brief.',
+        title: 'Find verified actors',
+        detail: 'Search performers who are ready to license their voice or likeness.',
         icon: 'shield',
         imageSrc: '/1.png',
         imageAlt: 'Verified profiles',
       },
       {
         id: 'studio-how-2',
-        title: 'Set project licensing terms',
-        detail: 'Define scope, territories, duration, and fee structure before activation.',
+        title: 'Define the licensing terms',
+        detail: 'Set where the performance can be used, how long it lasts, and the project fee.',
         icon: 'check',
         imageSrc: '/2.png',
         imageAlt: 'License terms',
       },
       {
         id: 'studio-how-3',
-        title: 'Run compliance checks',
-        detail: 'Validate consent, region policy, and contract status before launch.',
+        title: 'Send the request for approval',
+        detail: 'Actors review the request and approve the licensing terms before creation begins.',
         icon: 'spark',
         imageSrc: '/3.png',
         imageAlt: 'Compliance checks',
       },
       {
         id: 'studio-how-4',
-        title: 'Track invoices and payouts',
-        detail: 'Follow invoice, deductions, and settlement status in one linked workflow.',
+        title: 'Manage payments and records',
+        detail: 'Track invoices, payouts, and project activity from one dashboard.',
         icon: 'ledger',
         imageSrc: '/3.png',
         imageAlt: 'Payout tracking',
@@ -1748,9 +1748,7 @@ export default function HomePageV2() {
             transition={{ duration: 0.9, delay: 0.1, ease: 'easeOut' }}
             className="mx-auto max-w-[900px] text-balance text-[34px] leading-[1.08] font-medium text-[#D61D1F] md:text-[46px]"
           >
-            You Stay You
-            <br />
-            Everywhere
+            tai your performance
           </motion.h2>
         </div>
       </section>
@@ -1892,7 +1890,7 @@ export default function HomePageV2() {
             How It Works
           </span>
           <h2 className="max-w-[640px] text-balance text-[34px] leading-[1.08] font-medium text-[#111111] md:text-[46px]">
-            Every request, approval, and payout tracked in one place.
+            A clear path from request to approval to payment.
           </h2>
 
           <div className="mt-8 rounded-[28px] bg-[#FAFAFA] p-5 md:p-8 lg:p-10">
@@ -2015,10 +2013,10 @@ export default function HomePageV2() {
                 Trust Layer
               </span>
               <h2 className="text-balance text-[34px] leading-[1.08] font-medium text-[#111111] md:text-[46px]">
-                Your identity stays yours &mdash; even when AI enters the frame.
+                Built on Trust
               </h2>
-              <p className="mt-5 max-w-[475px] text-pretty text-[17px] leading-7 text-[#4B5563]">
-                Every use of your likeness is verified, consented, and traceable &mdash; so you stay in control, no matter how your performance is used.
+              <p className="mt-5 max-w-[420px] text-pretty text-[17px] leading-7 text-[#4B5563]">
+                When your performance travels through AI, your identity travels with it.
               </p>
             </div>
             <div className="relative flex h-[420px] w-full max-w-[620px] items-center justify-end md:h-[520px]">
@@ -2059,7 +2057,7 @@ export default function HomePageV2() {
             Get paid fairly.
           </h2>
           <p className="mx-auto mt-5 max-w-[340px] text-pretty text-[17px] leading-7 text-[#4B5563]">
-            Consent-first licensing built for the age of AI performance.
+            The future of AI performance starts with permission.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-5 sm:flex-row">
             <button className="btn-primary">

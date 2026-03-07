@@ -25,7 +25,7 @@ const PreFooterCta = () => {
             Get paid fairly.
           </h2>
           <p className="mx-auto mt-5 max-w-[340px] text-pretty text-[17px] leading-7 text-[#4B5563]">
-            Consent-first licensing built for the age of AI performance.
+            The future of AI performance starts with permission.
           </p>
           <div className="mt-8 flex flex-col items-center justify-center gap-5 sm:flex-row">
             <button className="btn-primary">

@@ -6,9 +6,9 @@ import '../components/Hero.css';
 type WhatTabKey = 'actors' | 'studios';
 
 const heroSubPoints = [
-  { key: 'identity', label: 'Performer-owned identity record' },
-  { key: 'consent', label: 'Real-time consent and usage gates' },
-  { key: 'audit', label: 'Clear auditability for legal and production teams' },
+  { key: 'identity', label: 'Your verified identity and likeness' },
+  { key: 'consent', label: 'Real time consent for every use' },
+  { key: 'audit', label: 'Clear records for legal and production teams' },
 ] as const;
 
 type HeroPointKey = (typeof heroSubPoints)[number]['key'];
@@ -55,29 +55,29 @@ type WhatTabContent = {
 const whatSectionData: Record<WhatTabKey, WhatTabContent> = {
   actors: {
     tabLabel: 'For Actors',
-    title: 'Store voice and face assets with performer-first control.',
+    title: 'One secure vault for your voice and likeness.',
     description:
-      'Manage your vault, define consent boundaries, and track every approved use from one CastID workspace.',
+      'Define consent rules, manage your assets, and track every approved use from your CastID workspace.',
     cards: [
       {
         id: 'actors-voice-assets',
-        title: 'Voice Asset Vault',
-        description: 'Keep approved takes secure with scope rules attached to each file.',
+        title: 'Voice Vault',
+        description: 'Secure approved voice recordings with usage scope attached to every file.',
       },
       {
         id: 'actors-face-assets',
-        title: 'Face Asset Vault',
-        description: 'Store likeness scans with region, term, and derivative limits.',
+        title: 'Likeness Vault',
+        description: 'Store verified face scans with built in limits for territory, duration, and derivatives.',
       },
       {
         id: 'actors-consent-rules',
-        title: 'Consent Guardrails',
-        description: 'Define exactly where, how long, and how your likeness can be used.',
+        title: 'Consent Rules',
+        description: 'Set the boundaries for where and how your likeness can appear.',
       },
       {
         id: 'actors-usage-ledger',
-        title: 'Usage Ledger',
-        description: 'Review generated outputs, approvals, and renewal events in one timeline.',
+        title: 'Activity Ledger',
+        description: 'See every output, approval, and renewal in one clear timeline.',
       },
     ],
   },
@@ -89,23 +89,23 @@ const whatSectionData: Record<WhatTabKey, WhatTabContent> = {
     cards: [
       {
         id: 'studios-talent-queue',
-        title: 'Talent Match Queue',
-        description: 'Browse verified performers with rights-ready profiles by project type.',
+        title: 'Talent Discovery',
+        description: 'Browse verified performers with rights ready identity profiles.',
       },
       {
         id: 'studios-license-draft',
-        title: 'License Draft Builder',
-        description: 'Set territories, term limits, and project scope before activation.',
+        title: 'License Builder',
+        description: 'Configure territory, term, and project scope before activation.',
       },
       {
         id: 'studios-policy-check',
-        title: 'Policy Checkpoint',
-        description: 'Run consent and territory validations before synthetic output release.',
+        title: 'Compliance Check',
+        description: 'Validate performer permissions and regional rights before release.',
       },
       {
         id: 'studios-settlement-ledger',
         title: 'Settlement Ledger',
-        description: 'Track approved usage events and payout status without legal blind spots.',
+        description: 'Monitor licensed usage and payment status in one place.',
       },
     ],
   },
@@ -1256,7 +1256,7 @@ export default function CastIdPage() {
             <div className="grid h-full w-full gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
               <div>
                 <h1 className="max-w-[760px] text-balance text-[40px] leading-[1.06] font-medium text-[#111111] md:text-[54px]">
-                  Autonomy Over Your Digital Double
+                  Protect your digital double.
                 </h1>
                 <div className="mt-6 max-w-[760px] space-y-3">
                   {heroSubPoints.map((point) => (
