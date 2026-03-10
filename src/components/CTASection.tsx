@@ -1,5 +1,6 @@
 import React from 'react';
 import './Hero.css'; // Import Hero CSS for button and font styles
+import { openDemoBookingModal } from '../utils/demoBookingModal';
 
 const CTASection: React.FC = () => {
     return (
@@ -12,16 +13,12 @@ const CTASection: React.FC = () => {
                 </h2>
 
                 <p className="text-[17px] text-[#6b7280] mb-10 max-w-2xl mx-auto leading-relaxed" style={{ fontFamily: "'Inter', sans-serif" }}>
-                    Start your 14 day free trial today and get see your <br className="hidden md:block" />
-                    live visitors in minutes.
+                    Start your 14 day free trial today and get see your live visitors in minutes.
                 </p>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
-                    <button className="btn-primary">
-                        Start 14 day free trial
-                    </button>
-                    <button className="btn-secondary">
-                        See demo
+                <div className="flex items-center justify-center mb-6">
+                    <button type="button" onClick={openDemoBookingModal} className="btn-primary">
+                        Get a demo
                     </button>
                 </div>
 

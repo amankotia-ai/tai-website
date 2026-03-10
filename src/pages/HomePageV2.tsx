@@ -1,22 +1,43 @@
 import { useEffect, useRef, useState } from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useReducedMotion } from 'framer-motion';
 
 import '../components/Hero.css';
 import CardScanner from '../components/CardScanner';
 import HomepageV2HeroAmbient from '../components/HomepageV2HeroAmbient';
 import MorphingCanvas from '../components/MorphingCanvas';
+import { openDemoBookingModal } from '../utils/demoBookingModal';
+import ImageScrollRow from '../components/ImageScrollRow';
 
-const IconUser = () => <svg viewBox="0 0 24 24" fill="currentColor" className="size-10"><path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" /></svg>;
-const IconCheckBadge = () => <svg viewBox="0 0 24 24" fill="currentColor" className="size-10"><path fillRule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 11.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" /></svg>;
-const IconShieldCheck = () => <svg viewBox="0 0 24 24" fill="currentColor" className="size-10"><path fillRule="evenodd" d="M12.516 2.17a.75.75 0 00-1.032 0 11.209 11.209 0 01-7.877 3.08.75.75 0 00-.722.515A12.74 12.74 0 002.25 9.75c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 00.374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.985a.75.75 0 00-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08zm3.094 8.016a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clipRule="evenodd" /></svg>;
-const IconClock = () => <svg viewBox="0 0 24 24" fill="currentColor" className="size-10"><path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z" clipRule="evenodd" /></svg>;
-const IconDocumentText = () => <svg viewBox="0 0 24 24" fill="currentColor" className="size-10"><path fillRule="evenodd" d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625zM7.5 15a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 017.5 15zm.75 2.25a.75.75 0 000 1.5H12a.75.75 0 000-1.5H8.25z" clipRule="evenodd" /><path d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-6.963-6.963z" /></svg>;
-const IconSparkles = () => <svg viewBox="0 0 24 24" fill="currentColor" className="size-10"><path fillRule="evenodd" d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5zM18 1.5a.75.75 0 01.728.568l.258 1.036c.236.94.97 1.674 1.91 1.91l1.036.258a.75.75 0 010 1.456l-1.036.258c-.94.236-1.674.97-1.91 1.91l-.258 1.036a.75.75 0 01-1.456 0l-.258-1.036a2.625 2.625 0 00-1.91-1.91l-1.036-.258a.75.75 0 010-1.456l1.036-.258a2.625 2.625 0 001.91-1.91l.258-1.036A.75.75 0 0118 1.5zM16.5 15a.75.75 0 01.712.513l.394 1.183c.15.447.5.799.948.948l1.183.395a.75.75 0 010 1.422l-1.183.395c-.447.15-.799.5-0.948.948l-.395 1.183a.75.75 0 01-1.424 0l-.395-1.183a1.5 1.5 0 00-.948-.948l-1.183-.395a.75.75 0 010-1.422l1.183-.395c.447-.15.799-.5.948-.948l.395-1.183A.75.75 0 0116.5 15z" clipRule="evenodd" /></svg>;
-const IconGlobe = () => <svg viewBox="0 0 24 24" fill="currentColor" className="size-10"><path fillRule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-2.433 3.664A3.743 3.743 0 0112 5.25c1.604 0 3.064.654 4.122 1.764a.75.75 0 01-.06.059l-1.425 1.14a1.5 1.5 0 00-.45.922l-.1.897a.75.75 0 01-.476.604l-1.847.693a.75.75 0 01-.392.015l-1.096-.274a1.5 1.5 0 00-1.684.773l-1.932 3.864a1.5 1.5 0 00.222 1.796l.823.823A4.5 4.5 0 0111.25 21c-.487 0-.954-.078-1.396-.222l-1.921-1.921a1.5 1.5 0 00-.73-.4l-.862-.172a.75.75 0 01-.568-.52l-.634-1.902a1.5 1.5 0 00-.238-.415L3.6 14.122a1.5 1.5 0 01-.397-1.18v-.522a.75.75 0 01.378-.65l3.52-2.112A1.5 1.5 0 008.25 8.4V7.5a1.5 1.5 0 00-1.282-1.485l-.337-.048a.75.75 0 01-.58-.517C6.736 4.908 8.019 4.321 9.567 5.914z" clipRule="evenodd" /></svg>;
-const IconLock = () => <svg viewBox="0 0 24 24" fill="currentColor" className="size-10"><path fillRule="evenodd" d="M12 1.5a5.25 5.25 0 00-5.25 5.25v3a3 3 0 00-3 3v6.75a3 3 0 003 3h10.5a3 3 0 003-3v-6.75a3 3 0 00-3-3v-3c0-2.9-2.35-5.25-5.25-5.25zm3.75 8.25v-3a3.75 3.75 0 10-7.5 0v3h7.5z" clipRule="evenodd" /></svg>;
-const IconCurrency = () => <svg viewBox="0 0 24 24" fill="currentColor" className="size-10"><path d="M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" /><path fillRule="evenodd" d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v14.25c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 19.125V4.875zm11.25 1.125a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5zm0 9a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z" clipRule="evenodd" /></svg>;
-const IconClipboard = () => <svg viewBox="0 0 24 24" fill="currentColor" className="size-10"><path fillRule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z" clipRule="evenodd" /></svg>;
-const IconUserGroup = () => <svg viewBox="0 0 24 24" fill="currentColor" className="size-10"><path fillRule="evenodd" d="M8.25 6a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM3.751 20.105a8.25 8.25 0 0116.498 0 .75.75 0 01-.437.695A18.683 18.683 0 0112 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 01-.437-.695z" clipRule="evenodd" /></svg>;
+function TypewriterText({ text }: { text: string }) {
+  const [displayedText, setDisplayedText] = useState('');
+
+  useEffect(() => {
+    let index = 0;
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const type = () => {
+      if (index <= text.length) {
+        setDisplayedText(text.slice(0, index));
+        index++;
+        // Human typing variance
+        timeoutId = setTimeout(type, 50 + Math.random() * 50);
+      } else {
+        // Wait before restarting
+        timeoutId = setTimeout(() => {
+          index = 0;
+          setDisplayedText('');
+          type();
+        }, 4000);
+      }
+    };
+
+    timeoutId = setTimeout(type, 1000); // Initial delay
+    return () => clearTimeout(timeoutId);
+  }, [text]);
+
+  return <span>{displayedText}<span className="inline-block w-[1.5px] h-3 ml-[2px] bg-current align-middle animate-pulse" /></span>;
+}
+
 
 const actorFeaturesData: Array<{ title: string; description: string; icon?: React.ReactNode; demo?: React.ReactNode }> = [
   {
@@ -442,7 +463,7 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
         </div>
         <div className="rounded-[8px] bg-[#F0F8FF] border border-[#BFDBFE] p-2 flex items-center gap-2">
           <svg viewBox="0 0 16 16" fill="currentColor" className="size-3.5 text-[#159FFA] shrink-0"><path fillRule="evenodd" d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5z" clipRule="evenodd" /></svg>
-          <p className="text-[11px] font-medium text-[#1D4ED8]">Brief: Sci-fi narrator · Neutral accent · EN-US</p>
+          <p className="text-[11px] font-medium text-[#1D4ED8]"><TypewriterText text="Looking for a sci-fi narrator with a neutral American accent" /></p>
         </div>
         <div className="space-y-2">
           {[
@@ -1252,6 +1273,29 @@ const howTabData: Record<WhatTabKey, HowTabData> = {
 
 
 
+function getWhatGridStyles(tab: WhatTabKey, index: number) {
+  const isGrey = index % 2 === 0;
+  if (isGrey) {
+    return {
+      backgroundColor: '#F9F9FA',
+      backgroundImage: `radial-gradient(#E5E7EB 1px, transparent 1px)`,
+      backgroundSize: '12px 12px',
+    };
+  }
+  if (tab === 'actors') {
+    return {
+      backgroundColor: '#FFF1F1',
+      backgroundImage: `radial-gradient(rgba(214, 29, 31, 0.2) 1px, transparent 1px)`,
+      backgroundSize: '12px 12px',
+    };
+  }
+  return {
+    backgroundColor: '#EEF8FF',
+    backgroundImage: `radial-gradient(rgba(21, 159, 250, 0.2) 1px, transparent 1px)`,
+    backgroundSize: '12px 12px',
+  };
+}
+
 function howToneClass(tone: 'granted' | 'blocked' | 'neutral') {
   if (tone === 'granted') return 'border-[#BBF7D0] bg-[#F0FDF4] text-[#166534]';
   if (tone === 'blocked') return 'border-[#F2C8CB] bg-[#FFF1F1] text-[#D61D1F]';
@@ -1633,10 +1677,27 @@ export default function HomePageV2() {
   const [activeHowTab, setActiveHowTab] = useState<WhatTabKey>('actors');
   const [activeHowStepIndex, setActiveHowStepIndex] = useState(0);
 
+  const resetWhatCarouselPosition = () => {
+    const carouselNode = carouselRef.current;
+    if (!carouselNode) return;
+    carouselNode.scrollTo({ left: 0, behavior: 'auto' });
+  };
+
   const isStudiosTab = activeWhatTab === 'studios';
   const activeTabTextColor = isStudiosTab ? 'text-[#159FFA]' : 'text-[#D61D1F]';
   const activeTabBgColor = isStudiosTab ? 'bg-[#EEF8FF]' : 'bg-[#F0EAEA]';
   const activeDotColor = isStudiosTab ? 'bg-[#159FFA]' : 'bg-[#D61D1F]';
+
+  // Compute carousel left padding to match section indent at any viewport
+  const computeCarouselPl = () => {
+    if (typeof window === 'undefined') return 24;
+    const vw = window.innerWidth;
+    if (vw >= 1300) return vw * 0.5 - 610;
+    if (vw >= 768) return 40;
+    return 24;
+  };
+  const [carouselPl, setCarouselPl] = useState(computeCarouselPl);
+  const carouselLeadIn = Math.max(carouselPl - 24, 0);
 
 
   useEffect(() => {
@@ -1690,6 +1751,21 @@ export default function HomePageV2() {
     return () => clearInterval(timer);
   }, [activeHowTab]);
 
+  // Keep carousel left padding in sync with section indent
+  useEffect(() => {
+    const update = () => setCarouselPl(computeCarouselPl());
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, []);
+
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      resetWhatCarouselPosition();
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [activeWhatTab]);
+
   return (
     <main className="bg-white [&_h1]:font-['Inter'] [&_h1]:tracking-[-0.02em] [&_h2]:font-['Inter'] [&_h2]:tracking-[-0.02em] [&_h3]:font-['Inter'] [&_h3]:tracking-[-0.02em]">
       <section
@@ -1704,7 +1780,7 @@ export default function HomePageV2() {
         </div>
         <div className="relative z-10 mx-auto w-full max-w-[1300px] px-6 md:px-10">
           <div className="flex flex-col gap-8">
-            <h1 className="max-w-[800px] text-balance text-[40px] leading-[1.06] font-medium text-[#111111] md:text-[54px]">
+            <h1 id="hero-headline" className="max-w-[800px] text-balance text-[40px] leading-[1.06] font-medium text-[#111111] md:text-[54px]">
               Protecting Performance in the Age of AI
             </h1>
             <div className="max-w-[980px] space-y-3">
@@ -1723,33 +1799,17 @@ export default function HomePageV2() {
                 </div>
               ))}
             </div>
-            <button className="w-fit rounded-full bg-[#D61D1F] px-6 py-3 text-[14px] font-medium text-white hover:bg-[#D61D1F]">
-              Book a demo
+            <button
+              type="button"
+              onClick={openDemoBookingModal}
+              className="w-fit rounded-full bg-[#D61D1F] px-6 py-3 text-[14px] font-medium text-white hover:bg-[#D61D1F]"
+            >
+              Get a demo
             </button>
             <div className="w-full">
               <CardScanner includeFeatures={false} fullBleed size="hero" startFromMiddle scannerPosition={0.25} enableWebGLShine />
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="relative h-dvh w-screen overflow-hidden">
-        <img
-          src="/homepage_divider_1.png"
-          alt=""
-          className="h-full w-full object-cover"
-          loading="lazy"
-        />
-        <div className="pointer-events-none absolute inset-x-0 top-[70%] px-6 text-center md:px-10">
-          <motion.h2
-            initial={shouldReduceMotion ? false : { opacity: 0 }}
-            whileInView={shouldReduceMotion ? undefined : { opacity: 1 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: 0.9, delay: 0.1, ease: 'easeOut' }}
-            className="mx-auto max-w-[900px] text-balance text-[34px] leading-[1.08] font-medium text-[#D61D1F] md:text-[46px]"
-          >
-            tai your performance
-          </motion.h2>
         </div>
       </section>
 
@@ -1767,78 +1827,50 @@ export default function HomePageV2() {
             Platform Features
           </span>
           <h2 className="max-w-[740px] text-balance text-[34px] leading-[1.08] font-medium text-[#111111] md:text-[46px]">
-            Approve. License. Track.
+            {activeWhatTab === 'actors'
+              ? 'Your Performance. Your Choice.'
+              : 'Real Actors. Clear Permission.'}
           </h2>
-          <p className="mt-5 max-w-[560px] text-pretty text-[17px] leading-7 text-[#4B5563]">
-            Whether you're a performer protecting your likeness or a studio building with AI — every workflow starts and ends with verified consent.
-          </p>
-
-          <div className="mt-8 inline-flex w-fit gap-1" role="tablist" aria-label="What section views">
-            {(Object.keys(whatTabData) as WhatTabKey[]).map((tabKey) => {
-              const isActive = activeWhatTab === tabKey;
-              return (
-                <button
-                  key={tabKey}
-                  type="button"
-                  onClick={() => {
-                    setActiveWhatTab(tabKey);
-                    if (carouselRef.current) carouselRef.current.scrollTo({ left: 0, behavior: 'instant' });
-                  }}
-                  className={`rounded-full px-5 py-2 text-[14px] leading-5 font-medium md:text-[16px] ${isActive ? `${activeTabBgColor} ${activeTabTextColor}` : 'text-[#6B7280] hover:text-[#111111]'}`}
-                  aria-selected={isActive}
-                >
-                  <span className="inline-flex items-center gap-2">
-                    <span className={`size-2 rounded-full ${tabKey === 'studios' ? 'bg-[#159FFA]' : 'bg-[#D61D1F]'}`} />
-                    {whatTabData[tabKey].tabLabel}
-                  </span>
-                </button>
-              );
-            })}
+          <div className="mt-5 max-w-[560px] text-pretty text-[17px] leading-7 text-[#4B5563]">
+            {activeWhatTab === 'actors' ? (
+              <p>
+                You stay in control of your voice and face. You decide how AI can use it. You get paid.
+              </p>
+            ) : (
+              <p>Find verified performers and create AI performances legally.</p>
+            )}
           </div>
-        </div>
 
-        {/* Carousel Container bleeding to the right */}
-        <div className="mt-12 w-full pl-6 md:pl-10 min-[1300px]:pl-[calc(50vw-610px)]">
-          <div className="relative">
-            <div
-              ref={carouselRef}
-              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar pb-10 pr-6 md:pr-10"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-              {(activeWhatTab === 'actors' ? actorFeaturesData : studioFeaturesData).map((feature, idx) => {
-                const iconTextClass = activeWhatTab === 'actors' ? 'text-[#D61D1F]' : 'text-[#159FFA]';
-                const iconBgClass = activeWhatTab === 'actors' ? 'bg-[rgba(214,29,31,0.1)]' : 'bg-[rgba(21,159,250,0.1)]';
-                const hasDemo = 'demo' in feature && feature.demo != null;
-
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+            <div className="inline-flex w-fit gap-1" role="tablist" aria-label="What section views">
+              {(Object.keys(whatTabData) as WhatTabKey[]).map((tabKey) => {
+                const isActive = activeWhatTab === tabKey;
                 return (
-                  <div
-                    key={idx}
-                    className={`snap-start shrink-0 w-[280px] md:w-[320px] rounded-[24px] bg-[#F7F7F7] p-5 lg:p-6 flex flex-col ${hasDemo ? 'min-h-[420px]' : 'min-h-[300px]'}`}
+                  <button
+                    key={tabKey}
+                    type="button"
+                    onClick={() => {
+                      setActiveWhatTab(tabKey);
+                    }}
+                    className={`rounded-full px-5 py-2 text-[14px] leading-5 font-medium md:text-[16px] ${isActive ? `${activeTabBgColor} ${activeTabTextColor}` : 'text-[#6B7280] hover:text-[#111111]'}`}
+                    aria-selected={isActive}
                   >
-                    {hasDemo ? (
-                      <div className="flex-1">{feature.demo}</div>
-                    ) : (
-                      <div className={`inline-flex size-20 items-center justify-center rounded-[16px] ${iconBgClass} ${iconTextClass}`}>
-                        {feature.icon}
-                      </div>
-                    )}
-                    <div className="mt-auto pt-6">
-                      <h3 className="text-[18px] font-semibold text-[#111111] leading-snug">{feature.title}</h3>
-                      <p className="mt-2 text-[13px] leading-relaxed text-[#4B5563] text-pretty">{feature.description}</p>
-                    </div>
-                  </div>
+                    <span className="inline-flex items-center gap-2">
+                      <span className={`size-2 rounded-full ${tabKey === 'studios' ? 'bg-[#159FFA]' : 'bg-[#D61D1F]'}`} />
+                      {whatTabData[tabKey].tabLabel}
+                    </span>
+                  </button>
                 );
               })}
             </div>
-
-            <div className="absolute -bottom-4 right-0 flex items-center justify-end gap-3 pr-6 md:pr-10 bg-gradient-to-l from-white via-white to-transparent pl-12">
+            <div className="flex items-center gap-3">
               <button
                 onClick={() => {
                   if (carouselRef.current) {
                     carouselRef.current.scrollBy({ left: -(carouselRef.current.clientWidth * 0.8), behavior: 'smooth' });
                   }
                 }}
-                className="flex size-10 items-center justify-center rounded-full bg-[#E5E7EB] hover:bg-[#D1D5DB] text-[#111111] transition-colors"
+                className="flex size-10 items-center justify-center rounded-full bg-[#E5E7EB] text-[#111111] transition-colors hover:bg-[#D1D5DB]"
                 aria-label="Previous"
               >
                 <svg className="size-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clipRule="evenodd" /></svg>
@@ -1849,12 +1881,66 @@ export default function HomePageV2() {
                     carouselRef.current.scrollBy({ left: carouselRef.current.clientWidth * 0.8, behavior: 'smooth' });
                   }
                 }}
-                className="flex size-10 items-center justify-center rounded-full bg-[#E5E7EB] hover:bg-[#D1D5DB] text-[#111111] transition-colors"
+                className="flex size-10 items-center justify-center rounded-full bg-[#E5E7EB] text-[#111111] transition-colors hover:bg-[#D1D5DB]"
                 aria-label="Next"
               >
                 <svg className="size-5" viewBox="0 0 20 20" fill="currentColor"><path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" /></svg>
               </button>
             </div>
+          </div>
+        </div>
+
+        {/* Carousel Container bleeding to the right */}
+        <div className="mt-6 w-full">
+          <div className="relative">
+            <div
+              ref={carouselRef}
+              className="flex items-stretch gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth hide-scrollbar pb-10 pt-1"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              <div
+                aria-hidden="true"
+                className="shrink-0 snap-start"
+                style={{ width: carouselLeadIn }}
+              />
+              {(activeWhatTab === 'actors' ? actorFeaturesData : studioFeaturesData).map((feature, idx) => {
+                const iconTextClass = activeWhatTab === 'actors' ? 'text-[#D61D1F]' : 'text-[#159FFA]';
+                const iconBgClass = activeWhatTab === 'actors' ? 'bg-[rgba(214,29,31,0.1)]' : 'bg-[rgba(21,159,250,0.1)]';
+                const hasDemo = 'demo' in feature && feature.demo != null;
+
+                return (
+                  <div
+                    key={idx}
+                    className="flex flex-col min-w-0 overflow-hidden snap-start shrink-0 w-[280px] md:w-[320px] rounded-[24px] border border-[#ECECEC] bg-white"
+                  >
+                    <div
+                      className="flex h-[360px] shrink-0 items-start justify-center overflow-hidden p-4 border-b border-[#ECECEC]"
+                      style={getWhatGridStyles(activeWhatTab, idx)}
+                    >
+                      {hasDemo ? (
+                        <div className="w-full shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-[16px] overflow-hidden">
+                          {feature.demo}
+                        </div>
+                      ) : (
+                        <div className={`mt-auto mb-auto inline-flex size-16 items-center justify-center rounded-[16px] ${iconBgClass} ${iconTextClass}`}>
+                          {feature.icon}
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex flex-1 flex-col p-6">
+                      <h3 className="text-[18px] font-semibold text-[#111111] leading-snug">{feature.title}</h3>
+                      <p className="mt-2 text-[13px] leading-relaxed text-[#4B5563] text-pretty">{feature.description}</p>
+                    </div>
+                  </div>
+                );
+              })}
+              <div
+                aria-hidden="true"
+                className="shrink-0 snap-start"
+                style={{ width: carouselLeadIn }}
+              />
+            </div>
+
           </div>
         </div>
       </section>
@@ -1967,7 +2053,7 @@ export default function HomePageV2() {
 
               <div
                 key={`${activeHowTab}-${activeHowStepIndex}`}
-                className="h-full overflow-hidden rounded-[20px] bg-white p-5 md:p-6 animate-[fadeIn_0.5s_ease-in-out] flex flex-col"
+                className="h-full overflow-hidden rounded-[20px] p-1 animate-[fadeIn_0.5s_ease-in-out] flex flex-col"
               >
                 <HowStepDemo stepIndex={activeHowStepIndex} tab={activeHowTab} />
               </div>
@@ -2034,37 +2120,19 @@ export default function HomePageV2() {
         </div>
       </section>
 
-      <div className="w-full bg-white py-16 md:py-24" />
+      <ImageScrollRow />
 
-      <section className="relative h-dvh w-screen overflow-hidden bg-white">
-        <img
-          src="/homepage_divider_2.png"
-          alt=""
-          className="h-full w-full object-cover"
-          loading="lazy"
-          style={{
-            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 72%, transparent 100%)',
-            maskImage: 'linear-gradient(to bottom, black 0%, black 72%, transparent 100%)',
-          }}
-        />
-      </section>
-
-      <section className="relative z-10 w-full -mt-20 pb-12 pt-4 md:-mt-28 md:pb-16" style={{ background: 'linear-gradient(to bottom, transparent 0%, white 35%)' }}>
+      <section className="relative z-10 w-full pb-12 pt-8 md:pb-16 md:pt-16 bg-white">
         <div className="mx-auto w-full max-w-[980px] px-6 text-center md:px-10">
           <h2 className="text-balance text-[34px] leading-[1.08] font-medium text-[#0F172A] md:text-[52px]">
-            Perform freely.
-            <br />
-            Get paid fairly.
+            Perform freely. Get paid fairly.
           </h2>
-          <p className="mx-auto mt-5 max-w-[340px] text-pretty text-[17px] leading-7 text-[#4B5563]">
+          <p className="mx-auto mt-5 whitespace-nowrap text-[17px] leading-7 text-[#4B5563]">
             The future of AI performance starts with permission.
           </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-5 sm:flex-row">
-            <button className="btn-primary">
-              Claim your CastID
-            </button>
-            <button className="btn-secondary">
-              Book a demo
+          <div className="mt-8 flex items-center justify-center">
+            <button type="button" onClick={openDemoBookingModal} className="btn-primary">
+              Get a demo
             </button>
           </div>
         </div>

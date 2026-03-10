@@ -489,7 +489,7 @@ function ProductCapabilitiesSection() {
         </p>
       </div>
       <div className="mt-12 grid gap-4 xl:grid-cols-2">
-        <div className="flex h-full flex-col rounded-[24px] bg-[#F7F7F7] p-4 md:p-5">
+        <div className="border-shadow flex h-full flex-col rounded-[24px] bg-[#F7F7F7] p-4 md:p-5">
           <div>
             <div className="mb-2 inline-flex text-[#FF0402]">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -611,7 +611,7 @@ function ProductCapabilitiesSection() {
           </div>
         </div>
 
-        <div className="flex h-full flex-col rounded-[24px] bg-[#F7F7F7] p-4 md:p-5">
+        <div className="border-shadow flex h-full flex-col rounded-[24px] bg-[#F7F7F7] p-4 md:p-5">
           <div>
             <div className="mb-2 inline-flex text-[#FF0402]">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -713,7 +713,7 @@ function ProductCapabilitiesSection() {
 
       <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {platformFeatureCards.map((feature) => (
-          <div key={feature.title} className="rounded-2xl bg-[#F7F7F7] p-4">
+          <div key={feature.title} className="border-shadow rounded-2xl bg-[#F7F7F7] p-4">
             <div className="mb-3 inline-flex text-[#FF0402]">
               {feature.icon}
             </div>
@@ -769,7 +769,7 @@ function WhyPlatformSection() {
           </div>
         </article>
 
-        <div className="rounded-[24px] border border-[#E5E7EB] bg-[#F7F7F7] p-2 sm:p-3">
+        <div className="border-shadow rounded-[24px] border border-[#E5E7EB] bg-[#F7F7F7] p-2 sm:p-3">
           <img
             src="/trust_image.svg"
             alt="Trust and security workflow illustration"
@@ -807,8 +807,25 @@ export default function PlatformPage() {
 
           <div className="w-full relative z-10 mt-12 mb-0 max-w-[1300px] mx-auto px-6 md:px-10">
             <div className="relative w-full">
-              <div className="w-full flex flex-col gap-4 md:flex-row md:justify-between md:items-center mb-6">
-                <div className="relative inline-grid w-fit grid-cols-2 items-center rounded-full bg-[#F3F4F6] p-1">
+              <div className="w-full flex flex-col gap-6 md:flex-row md:justify-between md:items-end mb-6">
+                <div className="flex flex-col gap-2">
+                  <h2 className="text-[24px] md:text-[28px] leading-[1.2] font-medium text-[#111111] font-['Inter'] text-balance">
+                    {activeView === 'actor'
+                      ? 'Your Performance. Your Choice.'
+                      : 'Real Actors. Clear Permission.'}
+                  </h2>
+                  <div className="text-[15px] md:text-[16px] leading-[1.5] text-[#4B5563]">
+                    {activeView === 'actor' ? (
+                      <p>
+                        You stay in control of your voice and face. You decide how AI can use it. You get paid.
+                      </p>
+                    ) : (
+                      <p>Find verified performers and create AI performances legally.</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="relative inline-grid w-fit grid-cols-2 items-center rounded-full bg-[#F3F4F6] p-1 shrink-0">
                   <span
                     aria-hidden="true"
                     className={`pointer-events-none absolute bottom-1 left-1 top-1 w-[calc(50%-4px)] rounded-full bg-white transition-transform duration-200 ease-out ${activeView === 'actor' ? 'translate-x-0' : 'translate-x-full'

@@ -55,7 +55,7 @@ export default function ResearchPage() {
               <span className="inline-flex rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-sm font-medium text-[#159FFA]">
                 Research & Blog
               </span>
-              <h1 className="mt-6 max-w-[820px] text-balance text-[40px] leading-[1.06] font-medium text-[#111111] md:text-[58px]">
+              <h1 id="hero-headline" className="mt-6 max-w-[820px] text-balance text-[40px] leading-[1.06] font-medium text-[#111111] md:text-[58px]">
                 Research and field notes for consent-first AI production.
               </h1>
               <p className="mt-5 max-w-[720px] text-pretty text-[17px] leading-7 text-[var(--color-text-body)]">
@@ -81,19 +81,19 @@ export default function ResearchPage() {
             <aside className="rounded-[24px] border border-[#ECECEC] bg-white/95 p-6 shadow-sm backdrop-blur-sm">
               <p className="text-[12px] font-semibold uppercase text-[#6B7280]">Blog index</p>
               <div className="mt-5 grid grid-cols-3 gap-3">
-                <div className="rounded-[14px] bg-[#F7F7F7] px-3 py-4">
+                <div className="border-shadow rounded-[14px] bg-[#F7F7F7] px-3 py-4">
                   <p className="text-[25px] font-semibold leading-none text-[#111111]">
                     {researchArticles.length}
                   </p>
                   <p className="mt-1 text-[12px] text-[#6B7280]">Stories</p>
                 </div>
-                <div className="rounded-[14px] bg-[#F7F7F7] px-3 py-4">
+                <div className="border-shadow rounded-[14px] bg-[#F7F7F7] px-3 py-4">
                   <p className="text-[25px] font-semibold leading-none text-[#111111]">
                     {uniqueCategories.length}
                   </p>
                   <p className="mt-1 text-[12px] text-[#6B7280]">Topics</p>
                 </div>
-                <div className="rounded-[14px] bg-[#F7F7F7] px-3 py-4">
+                <div className="border-shadow rounded-[14px] bg-[#F7F7F7] px-3 py-4">
                   <p className="text-[25px] font-semibold leading-none text-[#111111]">2026</p>
                   <p className="mt-1 text-[12px] text-[#6B7280]">Season</p>
                 </div>

@@ -3,6 +3,7 @@ import './Hero.css';
 import CardScanner from './CardScanner';
 import Workflow from './Workflow';
 import showcaseImage from '../assets/showcase-screenshot.png';
+import { openDemoBookingModal } from '../utils/demoBookingModal';
 
 export default function Hero() {
     useEffect(() => {
@@ -71,8 +72,7 @@ export default function Hero() {
                 <h1>Protecting Performance<br />in the Age of AI</h1>
                 <p>The first rights and consent layer for the Indian entertainment industry.<br />Secure your likeness, automate licensing, and create with confidence.</p>
                 <div className="hero-actions">
-                    <button className="btn-primary">Register</button>
-                    <button className="btn-secondary">See demo</button>
+                    <button type="button" onClick={openDemoBookingModal} className="btn-primary">Get a demo</button>
                 </div>
             </div>
 

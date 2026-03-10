@@ -7,13 +7,14 @@ import PortfolioShaderPage from './pages/PortfolioShaderPage';
 import ResearchPage from './pages/ResearchPage';
 import ArticlePage from './pages/ArticlePage';
 import PlatformPage from './pages/PlatformPage';
-import WhoWeArePage from './pages/WhoWeArePage';
+import AboutUsPage from './pages/AboutUsPage';
 import PressNewsPage from './pages/PressNewsPage';
 import LicensingPage from './pages/LicensingPage';
 import CastIdPage from './pages/CastIdPage';
 import HomePageV2 from './pages/HomePageV2';
 import Footer from './components/Footer';
 import PageTransition from './components/PageTransition';
+import DemoBookingModal from './components/DemoBookingModal';
 
 function App() {
   const location = useLocation();
@@ -26,7 +27,8 @@ function App() {
           <Route path="/" element={<PageTransition><HomePageV2 /></PageTransition>} />
           <Route path="/homepage-old" element={<PageTransition><Home /></PageTransition>} />
           <Route path="/platform" element={<PageTransition><PlatformPage /></PageTransition>} />
-          <Route path="/who-we-are" element={<PageTransition><WhoWeArePage /></PageTransition>} />
+          <Route path="/about-us" element={<PageTransition><AboutUsPage /></PageTransition>} />
+          <Route path="/who-we-are" element={<PageTransition><AboutUsPage /></PageTransition>} />
           <Route path="/press-news" element={<PageTransition><PressNewsPage /></PageTransition>} />
           <Route path="/licensing" element={<PageTransition><LicensingPage /></PageTransition>} />
           <Route path="/cast-id" element={<PageTransition><CastIdPage /></PageTransition>} />
@@ -38,6 +40,7 @@ function App() {
         </Routes>
       </AnimatePresence>
       <Footer />
+      <DemoBookingModal />
     </>
   );
 }
