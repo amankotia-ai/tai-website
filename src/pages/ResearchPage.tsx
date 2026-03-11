@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import HomepageV2HeroAmbient from '../components/HomepageV2HeroAmbient';
 import PreFooterCta from '../components/PreFooterCta';
 import { researchArticles } from '../data/researchArticles';
@@ -39,6 +40,18 @@ export default function ResearchPage() {
 
   return (
     <main className="min-h-dvh bg-white [&_h1]:font-['Inter'] [&_h1]:tracking-[-0.02em] [&_h2]:font-['Inter'] [&_h2]:tracking-[-0.02em] [&_h3]:font-['Inter'] [&_h3]:tracking-[-0.02em]">
+      <Helmet>
+        <title>Research &amp; Blog &mdash; TheatreAI</title>
+        <meta name="description" content="Research and field notes for consent-first AI production. Practical updates from our product, legal, and engineering teams." />
+        <meta property="og:title" content="Research &amp; Blog &mdash; TheatreAI" />
+        <meta property="og:description" content="Research and field notes for consent-first AI production. Practical updates from our product, legal, and engineering teams." />
+        <meta property="og:image" content="/og_image.jpeg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Research &amp; Blog &mdash; TheatreAI" />
+        <meta name="twitter:description" content="Research and field notes for consent-first AI production. Practical updates from our product, legal, and engineering teams." />
+        <meta name="twitter:image" content="/og_image.jpeg" />
+      </Helmet>
 
       {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section

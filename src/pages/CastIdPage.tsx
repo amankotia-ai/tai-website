@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import HomepageV2HeroAmbient from '../components/HomepageV2HeroAmbient';
 import PreFooterCta from '../components/PreFooterCta';
 import { openDemoBookingModal } from '../utils/demoBookingModal';
@@ -1143,6 +1144,18 @@ export default function CastIdPage() {
 
   return (
     <main className="min-h-dvh bg-white [&_h1]:font-['Inter'] [&_h1]:tracking-[-0.02em] [&_h2]:font-['Inter'] [&_h2]:tracking-[-0.02em] [&_h3]:font-['Inter'] [&_h3]:tracking-[-0.02em]">
+      <Helmet>
+        <title>CastID — TheatreAI</title>
+        <meta name="description" content="Protect your digital double. CastID gives actors a verified identity, consent controls, and usage tracking for AI performances." />
+        <meta property="og:title" content="CastID — TheatreAI" />
+        <meta property="og:description" content="Protect your digital double. CastID gives actors a verified identity, consent controls, and usage tracking for AI performances." />
+        <meta property="og:image" content="/og_image.jpeg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="CastID — TheatreAI" />
+        <meta name="twitter:description" content="Protect your digital double. CastID gives actors a verified identity, consent controls, and usage tracking for AI performances." />
+        <meta name="twitter:image" content="/og_image.jpeg" />
+      </Helmet>
       <section
         ref={heroRef}
         data-bg-animated={isHeroInView ? 'true' : 'false'}
@@ -1436,7 +1449,7 @@ export default function CastIdPage() {
       </section>
 
       <section className="w-full py-16 px-6 md:px-10">
-        <div className="mx-auto grid grid-cols-2 gap-4 max-w-[1300px] md:grid-cols-4">
+        <div className="mx-auto grid grid-cols-1 gap-4 max-w-[1300px] sm:grid-cols-2 md:grid-cols-4">
           {[0, 1, 2, 3].map((i) => (
             <video
               key={i}

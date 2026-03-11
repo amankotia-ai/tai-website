@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import '../components/Hero.css';
 import CTASection from '../components/CTASection';
 import FloatingOrbsBackground from '../components/FloatingOrbsBackground';
@@ -787,6 +788,18 @@ export default function PlatformPage() {
 
   return (
     <div className="bg-white min-h-screen">
+      <Helmet>
+        <title>Platform — TheatreAI</title>
+        <meta name="description" content="The platform for safe, compliant, AI-ready performance. Manage consent, licensing, and payouts for actors, agencies, and studios." />
+        <meta property="og:title" content="Platform — TheatreAI" />
+        <meta property="og:description" content="The platform for safe, compliant, AI-ready performance. Manage consent, licensing, and payouts for actors, agencies, and studios." />
+        <meta property="og:image" content="/og_image.jpeg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Platform — TheatreAI" />
+        <meta name="twitter:description" content="The platform for safe, compliant, AI-ready performance. Manage consent, licensing, and payouts for actors, agencies, and studios." />
+        <meta name="twitter:image" content="/og_image.jpeg" />
+      </Helmet>
       <section className="w-full relative overflow-hidden bg-white pb-10" style={{ paddingLeft: 0, paddingRight: 0 }}>
 
         {/* ─── Hero area with scoped background ─── */}

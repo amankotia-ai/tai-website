@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import HomepageV2HeroAmbient from '../components/HomepageV2HeroAmbient';
 import PreFooterCta from '../components/PreFooterCta';
 import { openDemoBookingModal } from '../utils/demoBookingModal';
@@ -945,6 +946,18 @@ export default function LicensingPage() {
 
   return (
     <main className="min-h-dvh bg-white [&_h1]:font-['Inter'] [&_h1]:tracking-[-0.02em] [&_h2]:font-['Inter'] [&_h2]:tracking-[-0.02em] [&_h3]:font-['Inter'] [&_h3]:tracking-[-0.02em]">
+      <Helmet>
+        <title>Licensing — TheatreAI</title>
+        <meta name="description" content="Turn digital assets into authorized AI performances. TheatreAI's licensing platform lets studios use actor voices and likenesses within agreed terms." />
+        <meta property="og:title" content="Licensing — TheatreAI" />
+        <meta property="og:description" content="Turn digital assets into authorized AI performances. TheatreAI's licensing platform lets studios use actor voices and likenesses within agreed terms." />
+        <meta property="og:image" content="/og_image.jpeg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Licensing — TheatreAI" />
+        <meta name="twitter:description" content="Turn digital assets into authorized AI performances. TheatreAI's licensing platform lets studios use actor voices and likenesses within agreed terms." />
+        <meta name="twitter:image" content="/og_image.jpeg" />
+      </Helmet>
       <section
         ref={heroRef}
         data-bg-animated={isHeroInView ? 'true' : 'false'}

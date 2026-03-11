@@ -82,3 +82,21 @@
     letter-spacing: -0.32px;
     color: #4b5563;
 }
+
+/* ── Mobile overrides (max-width: 767px) ── */
+@media (max-width: 767px) {
+    .scanner-features-container {
+        gap: 40px;
+        padding: 0 20px;
+    }
+
+    .feature-item {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .feature-text-container {
+        width: 100%;
+        max-width: 100%;
+    }
+}

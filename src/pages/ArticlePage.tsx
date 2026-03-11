@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 import HomepageV2HeroAmbient from '../components/HomepageV2HeroAmbient';
 import PreFooterCta from '../components/PreFooterCta';
 import {
@@ -99,6 +100,18 @@ export default function ArticlePage() {
 
   return (
     <main className="min-h-dvh bg-white [&_h1]:font-['Inter'] [&_h1]:tracking-[-0.02em] [&_h2]:font-['Inter'] [&_h2]:tracking-[-0.02em] [&_h3]:font-['Inter'] [&_h3]:tracking-[-0.02em]">
+      <Helmet>
+        <title>{article.title} &mdash; TheatreAI</title>
+        <meta name="description" content={article.description} />
+        <meta property="og:title" content={`${article.title} — TheatreAI`} />
+        <meta property="og:description" content={article.description} />
+        <meta property="og:image" content={article.coverImage || '/og_image.jpeg'} />
+        <meta property="og:type" content="article" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={`${article.title} — TheatreAI`} />
+        <meta name="twitter:description" content={article.description} />
+        <meta name="twitter:image" content={article.coverImage || '/og_image.jpeg'} />
+      </Helmet>
 
       {/* ── Article Header ───────────────────────────────────────────────────── */}
       <section

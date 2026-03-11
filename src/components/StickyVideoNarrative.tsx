@@ -49,7 +49,7 @@ function NarrativePoint({
   }, []);
 
   return (
-    <div ref={ref} className="flex min-h-[70vh] items-center">
+    <div ref={ref} className="flex min-h-0 items-start py-8 lg:min-h-[70vh] lg:items-center lg:py-0">
       <div
         className={`w-full max-w-[560px] transition-all duration-700 ease-out ${
           visible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
@@ -104,10 +104,10 @@ export default function StickyVideoNarrative() {
           {/* Narrative points */}
           <div className="py-10 lg:py-0">
             {/* Mobile-only video */}
-            <div className="mb-12 lg:hidden">
+            <div className="mb-8 lg:hidden">
               <div
-                className="mx-auto max-w-[300px] overflow-hidden rounded-[22px] border border-[#ECECEC] bg-[#F5F5F5] shadow-sm"
-                style={{ aspectRatio: '5 / 8' }}
+                className="mx-auto w-full overflow-hidden rounded-[22px] border border-[#ECECEC] bg-[#F5F5F5] shadow-sm"
+                style={{ aspectRatio: '3 / 4', maxHeight: '55vh' }}
               >
                 <video
                   src="/licensing_page_demo.mp4"
@@ -122,8 +122,11 @@ export default function StickyVideoNarrative() {
               </div>
             </div>
 
-            {narrativePoints.map((point) => (
-              <NarrativePoint key={point.step} {...point} />
+            {narrativePoints.map((point, i) => (
+              <div key={point.step}>
+                {i > 0 && <hr className="border-t border-[#F1F1F1] lg:hidden" />}
+                <NarrativePoint {...point} />
+              </div>
             ))}
           </div>
 

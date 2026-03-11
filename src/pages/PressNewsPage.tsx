@@ -1,3 +1,5 @@
+import { Helmet } from 'react-helmet-async';
+
 const partnerRows = [
   ['Studio 1', 'Studio 2', 'Studio 3', 'Studio 4'],
   ['Agency 1', 'Agency 2', 'Agency 3', 'Agency 4'],
@@ -21,6 +23,18 @@ const newsItems = [
 export default function PressNewsPage() {
   return (
     <div className="min-h-dvh bg-[var(--color-page)] text-[var(--color-text-primary)]">
+      <Helmet>
+        <title>Press &amp; News &mdash; TheatreAI</title>
+        <meta name="description" content="Theatre.ai is shaping the conversation around synthetic performance, consent, and rights in entertainment." />
+        <meta property="og:title" content="Press &amp; News &mdash; TheatreAI" />
+        <meta property="og:description" content="Theatre.ai is shaping the conversation around synthetic performance, consent, and rights in entertainment." />
+        <meta property="og:image" content="/og_image.jpeg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Press &amp; News &mdash; TheatreAI" />
+        <meta name="twitter:description" content="Theatre.ai is shaping the conversation around synthetic performance, consent, and rights in entertainment." />
+        <meta name="twitter:image" content="/og_image.jpeg" />
+      </Helmet>
       <main className="mx-auto max-w-[1200px] px-6 pb-24 pt-36 md:pt-40" style={{ fontFamily: 'var(--font-body)' }}>
         <section className="mx-auto max-w-4xl text-center">
           <span className="mb-6 inline-flex rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-sm font-medium text-[#159FFA]">

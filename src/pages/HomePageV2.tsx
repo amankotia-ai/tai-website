@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useReducedMotion } from 'framer-motion';
 
 import '../components/Hero.css';
@@ -1847,6 +1848,18 @@ export default function HomePageV2() {
 
   return (
     <main className="bg-white [&_h1]:font-['Inter'] [&_h1]:tracking-[-0.02em] [&_h2]:font-['Inter'] [&_h2]:tracking-[-0.02em] [&_h3]:font-['Inter'] [&_h3]:tracking-[-0.02em]">
+      <Helmet>
+        <title>TheatreAI &mdash; Protecting Performance in the Age of AI</title>
+        <meta name="description" content="Protecting Performance in the Age of AI" />
+        <meta property="og:title" content="TheatreAI" />
+        <meta property="og:description" content="Protecting Performance in the Age of AI" />
+        <meta property="og:image" content="/og_image.jpeg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="TheatreAI" />
+        <meta name="twitter:description" content="Protecting Performance in the Age of AI" />
+        <meta name="twitter:image" content="/og_image.jpeg" />
+      </Helmet>
       <section
         ref={heroRef}
         data-homepage-v2-hero="true"
@@ -1871,7 +1884,7 @@ export default function HomePageV2() {
                   >
                     <HeroPointIcon kind={point.key} />
                   </span>
-                  <p className="text-[13px] leading-6 whitespace-nowrap md:text-[14px]">
+                  <p className="text-[13px] leading-6 md:whitespace-nowrap md:text-[14px]">
                     <span className="font-semibold text-[#111111]">{point.title}</span>
                     <span className="text-[#4B5563]"> — {point.description}</span>
                   </p>
@@ -2208,7 +2221,7 @@ export default function HomePageV2() {
                 Your digital self, always connected and always secure. Trusted by the people who create and the people who cast.
               </p>
             </div>
-            <div className="relative flex h-[420px] w-full max-w-[620px] items-center justify-end md:h-[520px]">
+            <div className="relative flex h-[260px] w-full max-w-[620px] items-center justify-end md:h-[520px]">
               <div className="w-full overflow-hidden rounded-[24px]">
                 <MorphingCanvas
                   width={720}
@@ -2230,7 +2243,7 @@ export default function HomePageV2() {
           <h2 className="text-balance text-[34px] leading-[1.08] font-medium text-[#0F172A] md:text-[52px]">
             Perform freely. Get paid fairly.
           </h2>
-          <p className="mx-auto mt-5 whitespace-nowrap text-[17px] leading-7 text-[#4B5563]">
+          <p className="mx-auto mt-5 md:whitespace-nowrap text-[17px] leading-7 text-[#4B5563]">
             The future of AI performance starts with permission.
           </p>
           <div className="mt-8 flex items-center justify-center">

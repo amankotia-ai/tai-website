@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import HomepageV2HeroAmbient from '../components/HomepageV2HeroAmbient';
 import { openDemoBookingModal } from '../utils/demoBookingModal';
 
@@ -212,6 +213,18 @@ export default function AboutUsPage() {
 
   return (
     <main className="min-h-dvh bg-white [&_h1]:font-['Inter'] [&_h1]:tracking-[-0.02em] [&_h2]:font-['Inter'] [&_h2]:tracking-[-0.02em] [&_h3]:font-['Inter'] [&_h3]:tracking-[-0.02em]">
+      <Helmet>
+        <title>About Us &mdash; TheatreAI</title>
+        <meta name="description" content="Meet the face behind TheatreAI. Learn why we are building the infrastructure to keep performers in control of their digital identity in the age of AI." />
+        <meta property="og:title" content="About Us &mdash; TheatreAI" />
+        <meta property="og:description" content="Meet the face behind TheatreAI. Learn why we are building the infrastructure to keep performers in control of their digital identity in the age of AI." />
+        <meta property="og:image" content="/og_image.jpeg" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About Us &mdash; TheatreAI" />
+        <meta name="twitter:description" content="Meet the face behind TheatreAI. Learn why we are building the infrastructure to keep performers in control of their digital identity in the age of AI." />
+        <meta name="twitter:image" content="/og_image.jpeg" />
+      </Helmet>
       {/* ── Hero ───────────────────────────────────────────────────────────── */}
       <section
         ref={heroRef}

@@ -236,3 +236,19 @@
         animation: platform-tab-panel-enter 180ms ease-out both;
     }
 }
+
+/* ── Mobile overrides (max-width: 767px) ── */
+@media (max-width: 767px) {
+    .section-header {
+        padding-top: 60px;
+    }
+
+    .section-subtext {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .pixel-grid-container {
+        min-height: 400px;
+    }
+}
