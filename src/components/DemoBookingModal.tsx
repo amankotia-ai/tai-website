@@ -117,6 +117,8 @@ export default function DemoBookingModal() {
   const [selectedTime, setSelectedTime] = useState<string>('');
   const [visibleMonth, setVisibleMonth] = useState<Date>(() => getStartOfMonth(new Date()));
   const [isConfirmed, setIsConfirmed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const closeModal = () => {
     setIsOpen(false);
@@ -204,9 +206,31 @@ export default function DemoBookingModal() {
     return Object.keys(nextErrors).length === 0;
   };
 
-  const goToStepTwo = () => {
+  const goToStepTwo = async () => {
     if (!validateStepOne()) return;
-    setStep(2);
+    setIsSubmitting(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch('/api/book-demo', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: form.firstName,
+          lastName: form.lastName,
+          workEmail: form.workEmail,
+          company: form.company,
+          phone: form.phone,
+          role: form.role,
+          primaryGoal: form.primaryGoal,
+        }),
+      });
+      if (!res.ok) throw new Error('Submit failed');
+      setStep(2);
+    } catch {
+      setSubmitError('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const confirmBooking = () => {
@@ -374,14 +398,17 @@ export default function DemoBookingModal() {
               </FieldLabel>
             </div>
 
+            {submitError && (
+              <p className="mt-3 text-[12px] text-[#D61D1F]">{submitError}</p>
+            )}
             <button
               type="button"
               onClick={goToStepTwo}
-              disabled={!stepOneReady}
-              className={`mt-5 w-full rounded-full py-2.5 text-[14px] font-medium text-white tracking-[-0.01em] transition-colors
-                ${stepOneReady ? 'bg-[#D61D1F] hover:bg-[#BF181A]' : 'bg-[#D61D1F]/40 cursor-not-allowed'}`}
+              disabled={!stepOneReady || isSubmitting}
+              className={`mt-3 w-full rounded-full py-2.5 text-[14px] font-medium text-white tracking-[-0.01em] transition-colors
+                ${stepOneReady && !isSubmitting ? 'bg-[#D61D1F] hover:bg-[#BF181A]' : 'bg-[#D61D1F]/40 cursor-not-allowed'}`}
             >
-              Continue →
+              {isSubmitting ? 'Saving…' : 'Continue →'}
             </button>
           </div>
 
