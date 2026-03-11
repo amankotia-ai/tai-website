@@ -10,7 +10,13 @@ export default function ImageScrollRow() {
         offset: ['start end', 'end start'], // From when it enters the viewport to when it leaves
     });
 
-    const images = Array.from({ length: 12 }, (_, i) => `/scroll-images/${i + 1}.jpg`);
+    const images = [
+        '/footer_1.avif',
+        '/footer_2.avif',
+        '/footer_3.avif',
+        '/footer_4.avif',
+        '/footer_5.avif',
+    ];
 
     // Duplicate images so we have plenty of tiles for the scroll translation
     const duplicatedImages = [...images, ...images];

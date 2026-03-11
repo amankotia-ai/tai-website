@@ -167,7 +167,7 @@ const howJourneyData: Record<WhatTabKey, HowJourneyContent> = {
         imageSrc: '/1.png',
         imageAlt: 'Actor consent controls',
         visualRows: [
-          { label: 'Territory scope', value: 'US + Canada', tone: 'granted' },
+          { label: 'Territory scope', value: 'India + APAC', tone: 'granted' },
           { label: 'Training rights', value: 'Blocked', tone: 'blocked' },
           { label: 'Renewal model', value: 'Manual approval', tone: 'neutral' },
         ],
@@ -232,7 +232,7 @@ const howJourneyData: Record<WhatTabKey, HowJourneyContent> = {
         imageSrc: '/2.png',
         imageAlt: 'Studio licensing draft workflow',
         visualRows: [
-          { label: 'Territory package', value: 'NA + EU', tone: 'granted' },
+          { label: 'Territory package', value: 'India + APAC', tone: 'granted' },
           { label: 'Training clause', value: 'Excluded', tone: 'blocked' },
           { label: 'Contract state', value: 'Draft v1', tone: 'neutral' },
         ],
@@ -325,9 +325,9 @@ function HowStepPreview({
       // Studio: Talent filter shortlist — search-style panel with CastID trust indicators
       const filters = ['Voice', 'Face', 'Screen', 'AI-ready'];
       const talent = [
-        { initials: 'EC', name: 'Emma Chen', type: 'Voice · LA', id: 'CAST-EC-2026-8821', score: 98, ready: true },
-        { initials: 'RO', name: 'Rafael Ortiz', type: 'Voice+Screen · NY', id: 'CAST-RO-2026-4412', score: 94, ready: true },
-        { initials: 'JP', name: 'Jin Park', type: 'Screen · Seoul', id: 'CAST-JP-2026-7705', score: 81, ready: false },
+        { initials: 'AS', name: 'Arjun Sharma', type: 'Voice · Mumbai', id: 'CAST-AS-2026-8821', score: 98, ready: true },
+        { initials: 'PN', name: 'Priya Nair', type: 'Voice+Screen · Chennai', id: 'CAST-PN-2026-4412', score: 94, ready: true },
+        { initials: 'RM', name: 'Rahul Mehta', type: 'Screen · Delhi', id: 'CAST-RM-2026-7705', score: 81, ready: false },
       ];
       return (
         <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] divide-y divide-[#ECECEC]">
@@ -378,10 +378,10 @@ function HowStepPreview({
         {/* Identity header */}
         <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
           <div className="flex items-center gap-2.5">
-            <span className={`inline-flex size-8 shrink-0 items-center justify-center rounded-full text-[12px] font-bold ${accentSoft}`}>EC</span>
+            <span className={`inline-flex size-8 shrink-0 items-center justify-center rounded-full text-[12px] font-bold ${accentSoft}`}>AS</span>
             <div>
-              <p className="text-[12px] font-semibold text-[#111111]">Emma Chen · Performer</p>
-              <p className="text-[10px] text-[#6B7280]">CAST-EC-2026-8821</p>
+              <p className="text-[12px] font-semibold text-[#111111]">Arjun Sharma · Performer</p>
+              <p className="text-[10px] text-[#6B7280]">CAST-AS-2026-8821</p>
             </div>
           </div>
           <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${accentSoft}`}>Verified</span>
@@ -431,7 +431,7 @@ function HowStepPreview({
           <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
             <div>
               <p className="text-[12px] font-semibold text-[#111111]">License Draft v1</p>
-              <p className="text-[10px] text-[#6B7280]">Project: Nebula · Emma Chen · Voice</p>
+              <p className="text-[10px] text-[#6B7280]">Project: Brahmastra 2 · Arjun Sharma · Voice</p>
             </div>
             <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${accentSoft}`}>Draft saved</span>
           </div>
@@ -439,7 +439,7 @@ function HowStepPreview({
           <div className="bg-white px-4 py-3">
             <p className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wide mb-2">Territory scope</p>
             <div className="flex flex-wrap gap-1.5">
-              {['North America', 'EU', 'UK'].map((t) => (
+              {['India', 'APAC', 'UAE'].map((t) => (
                 <span key={t} className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${accentSoft}`}>{t}</span>
               ))}
               <span className="rounded-full border border-dashed border-[#D1D5DB] px-2.5 py-0.5 text-[10px] text-[#9CA3AF]">+ Add region</span>
@@ -483,7 +483,7 @@ function HowStepPreview({
       { label: 'Voice synthesis', icon: '✓', allowed: true },
       { label: 'Training data', icon: '✗', allowed: false },
       { label: 'Face / likeness', icon: '✗', allowed: false },
-      { label: 'US + Canada', icon: '✓', allowed: true },
+      { label: 'India + APAC', icon: '✓', allowed: true },
       { label: 'Derivative works', icon: '✗', allowed: false },
     ];
     return (
@@ -543,7 +543,7 @@ function HowStepPreview({
       return (
         <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] divide-y divide-[#ECECEC]">
           <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
-            <p className="text-[12px] font-semibold text-[#111111]">Pre-activation Guardrail · Nebula Ep.1</p>
+            <p className="text-[12px] font-semibold text-[#111111]">Pre-activation Guardrail · Brahmastra 2 Ep.1</p>
             <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${accentSoft}`}>{passCount}/{sections.length} clear</span>
           </div>
           {sections.map((s) => (
@@ -577,7 +577,7 @@ function HowStepPreview({
 
     // Actor: Incoming request matched against your consent rules — two-column table + CTA
     const rules = [
-      { rule: 'Territory', yours: 'US + Canada', request: 'US + India', match: true },
+      { rule: 'Territory', yours: 'India + APAC', request: 'India + UAE', match: true },
       { rule: 'Training', yours: 'Blocked', request: 'Not requested', match: true },
       { rule: 'Duration', yours: '≤ 12 mo', request: '6 months', match: true },
       { rule: 'Use type', yours: 'Commercial', request: 'Dialogue rep.', match: true },
@@ -619,8 +619,8 @@ function HowStepPreview({
       <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] divide-y divide-[#ECECEC]">
         <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
           <div>
-            <p className="text-[12px] font-semibold text-[#111111]">Invoice · INV-NEBULA-2026-021</p>
-            <p className="text-[10px] text-[#6B7280]">Nebula S1 · Emma Chen · Voice</p>
+            <p className="text-[12px] font-semibold text-[#111111]">Invoice · INV-B2-2026-021</p>
+            <p className="text-[10px] text-[#6B7280]">Brahmastra 2 · Arjun Sharma · Voice</p>
           </div>
           <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${accentSoft}`}>Approved</span>
         </div>
@@ -628,13 +628,13 @@ function HowStepPreview({
         <div className="grid grid-cols-2 divide-x divide-[#ECECEC] bg-white">
           <div className="px-4 py-3">
             <p className="text-[9px] font-semibold text-[#9CA3AF] uppercase mb-1">Bill from</p>
-            <p className="text-[11px] font-medium text-[#111111]">Emma Chen</p>
+            <p className="text-[11px] font-medium text-[#111111]">Arjun Sharma</p>
             <p className="text-[9px] text-[#6B7280]">Performer · CastID verified</p>
           </div>
           <div className="px-4 py-3">
             <p className="text-[9px] font-semibold text-[#9CA3AF] uppercase mb-1">Bill to</p>
-            <p className="text-[11px] font-medium text-[#111111]">Apex Pictures</p>
-            <p className="text-[9px] text-[#6B7280]">Studio · Project Nebula</p>
+            <p className="text-[11px] font-medium text-[#111111]">Dharma Productions</p>
+            <p className="text-[9px] text-[#6B7280]">Studio · Brahmastra 2</p>
           </div>
         </div>
         {/* Line items */}
@@ -673,7 +673,7 @@ function HowStepPreview({
   const usageEvents = [
     { id: 'USE-884', desc: 'Trailer cutdown · 30 sec', payout: '+$420', date: 'Mar 2', tone: 'granted' as WhatCardTone },
     { id: 'USE-885', desc: 'Dialogue replace · Ep.4', payout: '+$1,100', date: 'Mar 3', tone: 'granted' as WhatCardTone },
-    { id: 'USE-886', desc: 'Regional dub · LATAM', payout: 'Pending', date: 'Mar 5', tone: 'neutral' as WhatCardTone },
+    { id: 'USE-886', desc: 'Regional dub · South India', payout: 'Pending', date: 'Mar 5', tone: 'neutral' as WhatCardTone },
   ];
   return (
     <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] divide-y divide-[#ECECEC]">
@@ -824,7 +824,7 @@ function WhatCardDemo({
       { label: 'Voice synthesis', allowed: true },
       { label: 'Training data', allowed: false },
       { label: 'Face / likeness', allowed: false },
-      { label: 'US + Canada', allowed: true },
+      { label: 'India + APAC', allowed: true },
       { label: 'Derivative works', allowed: false },
     ];
     return (
@@ -861,7 +861,7 @@ function WhatCardDemo({
     const usageEvents = [
       { id: 'USE-884', desc: 'Trailer cutdown · 30 sec', payout: '+$420', date: 'Mar 2', tone: 'granted' as WhatCardTone },
       { id: 'USE-885', desc: 'Dialogue replace · Ep.4', payout: '+$1,100', date: 'Mar 3', tone: 'granted' as WhatCardTone },
-      { id: 'USE-886', desc: 'Regional dub · LATAM', payout: 'Pending', date: 'Mar 5', tone: 'neutral' as WhatCardTone },
+      { id: 'USE-886', desc: 'Regional dub · South India', payout: 'Pending', date: 'Mar 5', tone: 'neutral' as WhatCardTone },
     ];
     return (
       <div className="w-full flex flex-col gap-3">
@@ -895,9 +895,9 @@ function WhatCardDemo({
 
   if (cardId === 'studios-talent-queue') {
     const talent = [
-      { initials: 'EC', name: 'Emma Chen', role: 'Voice · LA', id: 'CAST-EC-2026-8821', ready: true },
-      { initials: 'RO', name: 'Rafael Ortiz', role: 'Voice+Screen · NY', id: 'CAST-RO-2026-4412', ready: true },
-      { initials: 'JP', name: 'Jin Park', role: 'Screen · Seoul', id: 'CAST-JP-2026-7705', ready: false },
+      { initials: 'AS', name: 'Arjun Sharma', role: 'Voice · Mumbai', id: 'CAST-AS-2026-8821', ready: true },
+      { initials: 'PN', name: 'Priya Nair', role: 'Voice+Screen · Chennai', id: 'CAST-PN-2026-4412', ready: true },
+      { initials: 'RM', name: 'Rahul Mehta', role: 'Screen · Delhi', id: 'CAST-RM-2026-7705', ready: false },
     ];
     return (
       <div className="w-full flex flex-col gap-3">
@@ -907,7 +907,7 @@ function WhatCardDemo({
         </div>
         <div className="rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] px-2.5 py-2 flex items-center gap-2">
           <svg viewBox="0 0 16 16" fill="currentColor" className="size-3.5 text-[#9CA3AF] shrink-0"><path fillRule="evenodd" d="M6.5 1.5a5 5 0 100 10 5 5 0 000-10zM0 6.5a6.5 6.5 0 1111.573 4.072l3.928 3.928a.75.75 0 01-1.06 1.06l-3.928-3.927A6.5 6.5 0 010 6.5z" clipRule="evenodd" /></svg>
-          <span className="text-[11px] text-[#9CA3AF]">Voice · North America · Consent-ready</span>
+          <span className="text-[11px] text-[#9CA3AF]">Voice · India + APAC · Consent-ready</span>
         </div>
         <div className="space-y-2">
           {talent.map(t => (
@@ -936,9 +936,9 @@ function WhatCardDemo({
         </div>
         <div className="rounded-[10px] bg-[#F9F9FA] border border-[#F1F1F1] p-3 space-y-2">
           {[
-            { label: 'Project', value: 'Nebula Main Character' },
+            { label: 'Project', value: 'Brahmastra 2 Lead' },
             { label: 'Use type', value: 'Synthetic voiceover' },
-            { label: 'Territory', value: 'NA + EU' },
+            { label: 'Territory', value: 'India + APAC' },
             { label: 'Duration', value: '24 months' },
             { label: 'Training rights', value: 'Not included', warn: true },
             { label: 'License value', value: '$8,000', bold: true },
@@ -952,7 +952,7 @@ function WhatCardDemo({
         <div>
           <p className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wide mb-2">Territory scope</p>
           <div className="flex flex-wrap gap-1.5">
-            {['North America', 'EU'].map(t => (
+            {['India', 'APAC'].map(t => (
               <span key={t} className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${accentSoft}`}>{t}</span>
             ))}
             <span className="rounded-full border border-dashed border-[#D1D5DB] px-2.5 py-0.5 text-[10px] text-[#9CA3AF]">+ Add region</span>
@@ -1012,9 +1012,9 @@ function WhatCardDemo({
       </div>
       <div className="space-y-2">
         {[
-          { id: 'INV-NEBULA-2026-021', studio: 'Apex Pictures · Emma Chen', amount: '$8,000', status: 'paid' as const },
-          { id: 'INV-NEBULA-2026-019', studio: 'Orbit Media · Marcus Reid', amount: '$5,400', status: 'in review' as const },
-          { id: 'INV-NEBULA-2026-017', studio: 'Nova Brands · Yuki Tanaka', amount: '$3,200', status: 'pending' as const },
+          { id: 'INV-B2-2026-021', studio: 'Dharma Productions · Arjun Sharma', amount: '$8,000', status: 'paid' as const },
+          { id: 'INV-B2-2026-019', studio: 'YRF Studios · Priya Nair', amount: '$5,400', status: 'in review' as const },
+          { id: 'INV-B2-2026-017', studio: 'T-Series Films · Rahul Mehta', amount: '$3,200', status: 'pending' as const },
         ].map(inv => (
           <div key={inv.id} className="flex items-center gap-2.5 rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] p-2.5">
             <div className="flex-1 min-w-0">
@@ -1432,6 +1432,22 @@ export default function CastIdPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="w-full py-16 px-6 md:px-10">
+        <div className="mx-auto grid grid-cols-2 gap-4 max-w-[1300px] md:grid-cols-4">
+          {[0, 1, 2, 3].map((i) => (
+            <video
+              key={i}
+              src={`/${i}.mp4`}
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full aspect-square rounded-2xl object-cover"
+            />
+          ))}
         </div>
       </section>
 

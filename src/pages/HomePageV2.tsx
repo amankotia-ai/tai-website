@@ -7,6 +7,7 @@ import HomepageV2HeroAmbient from '../components/HomepageV2HeroAmbient';
 import MorphingCanvas from '../components/MorphingCanvas';
 import { openDemoBookingModal } from '../utils/demoBookingModal';
 import ImageScrollRow from '../components/ImageScrollRow';
+import StickyVideoNarrative from '../components/StickyVideoNarrative';
 
 function TypewriterText({ text }: { text: string }) {
   const [displayedText, setDisplayedText] = useState('');
@@ -48,14 +49,14 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
         {/* Profile header */}
         <div className="flex items-center gap-3">
           <div className="relative shrink-0">
-            <div className="size-11 rounded-full bg-[#F0EAEA] flex items-center justify-center text-[#D61D1F] text-[16px] font-bold">E</div>
+            <div className="size-11 rounded-full bg-[#F0EAEA] flex items-center justify-center text-[#D61D1F] text-[16px] font-bold">A</div>
             <span className="absolute -bottom-0.5 -right-0.5 flex size-4 items-center justify-center rounded-full bg-[#10B981] border-2 border-white">
               <svg viewBox="0 0 12 12" fill="white" className="size-2.5"><path fillRule="evenodd" d="M10.28 3.28a.75.75 0 010 1.06l-5.5 5.5a.75.75 0 01-1.06 0l-2.5-2.5a.75.75 0 011.06-1.06L4.25 8.19l4.97-4.97a.75.75 0 011.06.06z" clipRule="evenodd" /></svg>
             </span>
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-[13px] font-semibold text-[#111111] truncate">Emma Chen</p>
-            <p className="text-[11px] text-[#6B7280]">Voice Actor · Los Angeles</p>
+            <p className="text-[13px] font-semibold text-[#111111] truncate">Arjun Sharma</p>
+            <p className="text-[11px] text-[#6B7280]">Voice Actor · Mumbai</p>
           </div>
           <span className="shrink-0 inline-flex items-center gap-1 rounded-full bg-[#F0FDF4] border border-[#BBF7D0] px-2 py-0.5 text-[10px] font-semibold text-[#166534]">
             <span className="size-1.5 rounded-full bg-[#10B981] inline-block"></span> Verified
@@ -66,7 +67,7 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
           <div className="flex size-6 shrink-0 items-center justify-center rounded-md bg-[#111111] text-white text-[9px] font-bold tracking-tight">ID</div>
           <div className="min-w-0">
             <p className="text-[9px] text-[#6B7280] uppercase tracking-wider">CastID</p>
-            <p className="text-[11px] font-medium text-[#111111] font-mono truncate">CAST-EC-2026-8821</p>
+            <p className="text-[11px] font-medium text-[#111111] font-mono truncate">CAST-AS-2026-8821</p>
           </div>
         </div>
         {/* Consent permissions */}
@@ -90,7 +91,7 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Review Project Details',
+    title: 'Project Details',
     description: 'See who is requesting your voice or likeness and how it will be used before you approve anything.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -99,17 +100,17 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
           <span className="inline-flex items-center gap-1 rounded-full bg-[#FFF7ED] border border-[#FED7AA] px-2 py-0.5 text-[10px] font-semibold text-[#C2410C]">Pending</span>
         </div>
         <div className="flex items-center gap-2.5">
-          <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#111111] text-white text-[10px] font-bold">AS</div>
+          <div className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-[#111111] text-white text-[10px] font-bold">DP</div>
           <div>
-            <p className="text-[13px] font-semibold text-[#111111]">Atlas Game Studio</p>
-            <p className="text-[11px] text-[#6B7280]">Verified Studio · San Francisco</p>
+            <p className="text-[13px] font-semibold text-[#111111]">Dharma Productions</p>
+            <p className="text-[11px] text-[#6B7280]">Verified Studio · Mumbai</p>
           </div>
         </div>
         <div className="rounded-[10px] bg-[#F9F9FA] border border-[#F1F1F1] p-3 space-y-2">
           {[
-            { label: 'Project', value: "'Nebula' Main Character" },
-            { label: 'Use type', value: 'Game Voiceover' },
-            { label: 'Territory', value: 'North America' },
+            { label: 'Project', value: "'Brahmastra 2' Lead" },
+            { label: 'Use type', value: 'Film Voiceover' },
+            { label: 'Territory', value: 'India + APAC' },
             { label: 'Duration', value: '24 months' },
             { label: 'Fee', value: '$4,500', bold: true },
           ].map(item => (
@@ -127,7 +128,7 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Define Your Terms',
+    title: 'Consent Terms',
     description: 'Choose where your performance can be used, for how long, and for what type of projects.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -139,7 +140,7 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
         </div>
         <div className="space-y-0">
           {[
-            { label: 'Territory', value: 'United States only' },
+            { label: 'Territory', value: 'India + APAC only' },
             { label: 'Duration', value: '12 months max' },
             { label: 'Renewal', value: 'Re-approval required' },
             { label: 'Training rights', value: 'Not permitted', warn: true },
@@ -159,7 +160,7 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Built In Safeguards',
+    title: 'Safeguards',
     description: 'Instantly see whether a project falls within the boundaries you set.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -197,7 +198,7 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Multilingual Licensing',
+    title: 'Multi-Region',
     description: 'Allow your voice to be used in different languages and regions from one agreement.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -207,12 +208,12 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
         </div>
         <div className="grid grid-cols-2 gap-1.5">
           {[
-            { region: 'United States', lang: 'EN-US', active: true },
-            { region: 'United Kingdom', lang: 'EN-GB', active: true },
-            { region: 'Germany', lang: 'DE', active: true },
-            { region: 'Japan', lang: 'JA', active: true },
-            { region: 'France', lang: 'FR', active: false },
-            { region: 'Brazil', lang: 'PT-BR', active: false },
+            { region: 'India', lang: 'HI', active: true },
+            { region: 'India Tamil', lang: 'TA', active: true },
+            { region: 'India Telugu', lang: 'TE', active: true },
+            { region: 'India Marathi', lang: 'MR', active: true },
+            { region: 'Bangladesh', lang: 'BN', active: false },
+            { region: 'Sri Lanka', lang: 'SI', active: false },
           ].map(r => (
             <div key={r.region} className={`rounded-[8px] p-2 flex items-center gap-1.5 ${r.active ? 'bg-[#F0FDF4] border border-[#BBF7D0]' : 'bg-[#F9F9FA] border border-[#F1F1F1]'}`}>
               <span className={`size-1.5 rounded-full shrink-0 ${r.active ? 'bg-[#10B981]' : 'bg-[#D1D5DB]'}`}></span>
@@ -237,7 +238,7 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Secure Media Storage',
+    title: 'Asset Storage',
     description: 'Store your voice recordings and reference files safely with encrypted access.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -271,7 +272,7 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Full Transparency',
+    title: 'Audit Trail',
     description: 'See a record of every AI use linked to your licensed performances.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -314,9 +315,9 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
         </div>
         <div className="space-y-2">
           {[
-            { project: "'Nebula' Main Character", studio: 'Atlas Game Studio', type: 'Voice', date: 'Mar 2', uses: 3 },
-            { project: 'Winter Campaign VO', studio: 'Nova Brands', type: 'Voice', date: 'Feb 28', uses: 1 },
-            { project: 'Promo Narration Pack', studio: 'Orbit Media', type: 'Voice', date: 'Feb 26', uses: 7 },
+            { project: "'Brahmastra 2' Lead", studio: 'Dharma Productions', type: 'Voice', date: 'Mar 2', uses: 3 },
+            { project: 'Summer Campaign VO', studio: 'T-Series Films', type: 'Voice', date: 'Feb 28', uses: 1 },
+            { project: 'Regional Dub Pack', studio: 'YRF Studios', type: 'Voice', date: 'Feb 26', uses: 7 },
           ].map(e => (
             <div key={e.project} className="rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] p-2.5">
               <div className="flex items-center justify-between gap-2">
@@ -348,9 +349,9 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
         </div>
         <div className="space-y-2">
           {[
-            { id: 'INV-EC-2026-003', studio: 'Atlas Game Studio', amount: '$4,500', status: 'paid' },
-            { id: 'INV-EC-2026-002', studio: 'Nova Brands', amount: '$2,800', status: 'in review' },
-            { id: 'INV-EC-2026-001', studio: 'Orbit Media', amount: '$1,200', status: 'requested' },
+            { id: 'INV-AS-2026-003', studio: 'Dharma Productions', amount: '$4,500', status: 'paid' },
+            { id: 'INV-AS-2026-002', studio: 'T-Series Films', amount: '$2,800', status: 'in review' },
+            { id: 'INV-AS-2026-001', studio: 'YRF Studios', amount: '$1,200', status: 'requested' },
           ].map(inv => (
             <div key={inv.id} className="flex items-center gap-2.5 rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] p-2.5">
               <div className="flex-1 min-w-0">
@@ -373,7 +374,7 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
     ),
   },
   {
-    title: 'Automatic Payouts',
+    title: 'Auto Payouts',
     description: 'Receive your earnings automatically once the project is completed and paid.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -417,7 +418,7 @@ const actorFeaturesData: Array<{ title: string; description: string; icon?: Reac
 
 const studioFeaturesData: Array<{ title: string; description: string; icon?: React.ReactNode; demo?: React.ReactNode }> = [
   {
-    title: 'Search Verified Actors',
+    title: 'Find Actors',
     description: 'Find performers who are ready to license their voice or likeness for AI projects.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -427,13 +428,13 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
         </div>
         <div className="rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] px-2.5 py-2 flex items-center gap-2">
           <svg viewBox="0 0 16 16" fill="currentColor" className="size-3.5 text-[#9CA3AF] shrink-0"><path fillRule="evenodd" d="M6.5 1.5a5 5 0 100 10 5 5 0 000-10zM0 6.5a6.5 6.5 0 1111.573 4.072l3.928 3.928a.75.75 0 01-1.06 1.06l-3.928-3.927A6.5 6.5 0 010 6.5z" clipRule="evenodd" /></svg>
-          <span className="text-[11px] text-[#9CA3AF]">Voice · North America · License-ready</span>
+          <span className="text-[11px] text-[#9CA3AF]">Voice · India + APAC · License-ready</span>
         </div>
         <div className="space-y-2">
           {[
-            { name: 'Emma Chen', role: 'Voice Actor', loc: 'Los Angeles', status: 'license-ready' },
-            { name: 'James Adeyemi', role: 'Voice Actor', loc: 'New York', status: 'license-ready' },
-            { name: 'Priya Nair', role: 'Voice Actor', loc: 'Toronto', status: 'in negotiation' },
+            { name: 'Arjun Sharma', role: 'Voice Actor', loc: 'Mumbai', status: 'license-ready' },
+            { name: 'Priya Nair', role: 'Voice Actor', loc: 'Chennai', status: 'license-ready' },
+            { name: 'Rahul Mehta', role: 'Voice Actor', loc: 'Delhi', status: 'in negotiation' },
           ].map(t => (
             <div key={t.name} className="flex items-center gap-2.5 rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] p-2">
               <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#EEF8FF] text-[#159FFA] text-[11px] font-bold">{t.name[0]}</div>
@@ -451,7 +452,7 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Smart Talent Matching',
+    title: 'Talent Match',
     description: 'Discover actors who fit your role based on voice, performance style, and project needs.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -463,13 +464,13 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
         </div>
         <div className="rounded-[8px] bg-[#F0F8FF] border border-[#BFDBFE] p-2 flex items-center gap-2">
           <svg viewBox="0 0 16 16" fill="currentColor" className="size-3.5 text-[#159FFA] shrink-0"><path fillRule="evenodd" d="M9 4.5a.75.75 0 01.721.544l.813 2.846a3.75 3.75 0 002.576 2.576l2.846.813a.75.75 0 010 1.442l-2.846.813a3.75 3.75 0 00-2.576 2.576l-.813 2.846a.75.75 0 01-1.442 0l-.813-2.846a3.75 3.75 0 00-2.576-2.576l-2.846-.813a.75.75 0 010-1.442l2.846-.813A3.75 3.75 0 007.466 7.89l.813-2.846A.75.75 0 019 4.5z" clipRule="evenodd" /></svg>
-          <p className="text-[11px] font-medium text-[#1D4ED8]"><TypewriterText text="Looking for a sci-fi narrator with a neutral American accent" /></p>
+          <p className="text-[11px] font-medium text-[#1D4ED8]"><TypewriterText text="Looking for a Hindi narrator with a warm Bollywood tone" /></p>
         </div>
         <div className="space-y-2">
           {[
-            { name: 'Emma Chen', score: 97, tags: ['neutral', 'commercial'] },
-            { name: 'Marcus Reid', score: 91, tags: ['neutral', 'editorial'] },
-            { name: 'Yuki Tanaka', score: 86, tags: ['warm', 'narrative'] },
+            { name: 'Arjun Sharma', score: 97, tags: ['warm', 'commercial'] },
+            { name: 'Priya Nair', score: 91, tags: ['neutral', 'narrative'] },
+            { name: 'Rahul Mehta', score: 86, tags: ['deep', 'dramatic'] },
           ].map(m => (
             <div key={m.name} className="flex items-center gap-2.5 rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] p-2.5">
               <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#EEF8FF] text-[#159FFA] text-[11px] font-bold">{m.name[0]}</div>
@@ -490,7 +491,7 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Set Licensing Terms',
+    title: 'License Terms',
     description: 'Define where, how, and for how long the performance can be used.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -500,9 +501,9 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
         </div>
         <div className="space-y-2">
           {[
-            { label: 'Project', value: "'Nebula' DLC Campaign" },
+            { label: 'Project', value: "'Brahmastra 2' OTT" },
             { label: 'Use type', value: 'Synthetic voiceover' },
-            { label: 'Territory', value: 'Worldwide excl. CN' },
+            { label: 'Territory', value: 'India + APAC' },
             { label: 'Duration', value: '18 months' },
             { label: 'Training rights', value: 'Not included', warn: true },
             { label: 'License value', value: '$6,200', bold: true },
@@ -518,7 +519,7 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Permission First',
+    title: 'Permission Gate',
     description: "Every request is checked against the actor's approved permissions before anything is created.",
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -531,8 +532,8 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
         <div className="rounded-[8px] bg-[#F0F8FF] border border-[#BFDBFE] p-2.5 flex items-center gap-2">
           <div className="flex size-6 shrink-0 items-center justify-center rounded-md bg-[#159FFA] text-white text-[9px] font-bold">REQ</div>
           <div className="min-w-0">
-            <p className="text-[11px] font-semibold text-[#111111] truncate">'Nebula' DLC · Dialogue replacement</p>
-            <p className="text-[10px] text-[#6B7280]">Atlas Game Studio · Emma Chen</p>
+            <p className="text-[11px] font-semibold text-[#111111] truncate">'Brahmastra 2' · Dialogue replacement</p>
+            <p className="text-[10px] text-[#6B7280]">Dharma Productions · Arjun Sharma</p>
           </div>
         </div>
         <div className="space-y-2">
@@ -555,7 +556,7 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Built In Compliance',
+    title: 'Compliance',
     description: 'The platform blocks any use that falls outside the agreed licensing terms.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -565,7 +566,7 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
         </div>
         <div className="grid grid-cols-2 gap-2">
           {[
-            { label: 'Territory', result: 'North America', pass: true },
+            { label: 'Territory', result: 'India + APAC', pass: true },
             { label: 'Expiry', result: 'Valid · 214 days', pass: true },
             { label: 'Use class', result: 'Matched', pass: true },
             { label: 'Training block', result: 'Enforced', pass: true },
@@ -588,20 +589,20 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Manage Shortlists',
+    title: 'Shortlist',
     description: 'Save and organize actors while your team reviews and approves talent choices.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <p className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wider">Project Shortlist</p>
-          <span className="text-[10px] font-medium text-[#6B7280]">'Nebula' DLC</span>
+          <span className="text-[10px] font-medium text-[#6B7280]">'Brahmastra 2'</span>
         </div>
         <div className="space-y-2">
           {[
-            { name: 'Emma Chen', stage: 'License sent', color: 'text-[#159FFA] bg-[#EEF8FF] border-[#BFDBFE]' },
-            { name: 'Marcus Reid', stage: 'Shortlisted', color: 'text-[#6B7280] bg-[#F9F9FA] border-[#E5E7EB]' },
-            { name: 'James Adeyemi', stage: 'Approved', color: 'text-[#166534] bg-[#F0FDF4] border-[#BBF7D0]' },
-            { name: 'Yuki Tanaka', stage: 'Declined', color: 'text-[#D61D1F] bg-[#FEF2F2] border-[#FECACA]' },
+            { name: 'Arjun Sharma', stage: 'License sent', color: 'text-[#159FFA] bg-[#EEF8FF] border-[#BFDBFE]' },
+            { name: 'Priya Nair', stage: 'Shortlisted', color: 'text-[#6B7280] bg-[#F9F9FA] border-[#E5E7EB]' },
+            { name: 'Rahul Mehta', stage: 'Approved', color: 'text-[#166534] bg-[#F0FDF4] border-[#BBF7D0]' },
+            { name: 'Neha Kapoor', stage: 'Declined', color: 'text-[#D61D1F] bg-[#FEF2F2] border-[#FECACA]' },
           ].map(t => (
             <div key={t.name} className="flex items-center gap-2.5 rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] p-2">
               <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-[#EEF8FF] text-[#159FFA] text-[11px] font-bold">{t.name[0]}</div>
@@ -618,7 +619,7 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Work With Agents',
+    title: 'Team Chat',
     description: 'Coordinate approvals with actors, agents, and production teams in one place.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
@@ -630,9 +631,9 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
         </div>
         <div className="space-y-2.5">
           {[
-            { from: 'Atlas Studio', role: 'Studio', msg: 'License terms sent for review.', time: '10:22 am', fromStudio: true },
-            { from: 'TalentFirst Agency', role: 'Agency', msg: "Emma has reviewed — minor territory amendment requested.", time: '11:05 am', fromStudio: false },
-            { from: 'Atlas Studio', role: 'Studio', msg: 'Amendment accepted. Please countersign.', time: '11:40 am', fromStudio: true },
+            { from: 'Dharma Studio', role: 'Studio', msg: 'License terms sent for review.', time: '10:22 am', fromStudio: true },
+            { from: 'StarCast Agency', role: 'Agency', msg: "Arjun has reviewed — minor territory amendment requested.", time: '11:05 am', fromStudio: false },
+            { from: 'Dharma Studio', role: 'Studio', msg: 'Amendment accepted. Please countersign.', time: '11:40 am', fromStudio: true },
           ].map((m, i) => (
             <div key={i} className={`flex gap-2 ${m.fromStudio ? '' : 'flex-row-reverse'}`}>
               <div className={`flex size-6 shrink-0 items-center justify-center rounded-full text-[9px] font-bold text-white ${m.fromStudio ? 'bg-[#111111]' : 'bg-[#159FFA]'}`}>{m.from[0]}</div>
@@ -671,9 +672,9 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
         </div>
         <div className="space-y-1.5">
           {[
-            { talent: 'Emma Chen', amount: '$4,050', status: 'paid' },
-            { talent: 'Marcus Reid', amount: '$2,520', status: 'processing' },
-            { talent: 'James Adeyemi', amount: '$6,300', status: 'paid' },
+            { talent: 'Arjun Sharma', amount: '$4,050', status: 'paid' },
+            { talent: 'Priya Nair', amount: '$2,520', status: 'processing' },
+            { talent: 'Rahul Mehta', amount: '$6,300', status: 'paid' },
           ].map(p => (
             <div key={p.talent} className="flex items-center justify-between text-[11px]">
               <span className="text-[#4B5563]">{p.talent}</span>
@@ -688,19 +689,19 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
     ),
   },
   {
-    title: 'Complete Audit Records',
+    title: 'Audit Records',
     description: 'Maintain clear records of every contract, approval, and AI generation.',
     demo: (
       <div className="w-full rounded-[16px] bg-white p-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
-          <p className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wider">Session Ledger</p>
+          <p className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wider">Usage Ledger</p>
           <span className="inline-flex items-center gap-1 rounded-full bg-[#F9F9FA] border border-[#E5E7EB] px-2 py-0.5 text-[10px] font-medium text-[#6B7280]">Immutable</span>
         </div>
         <div className="space-y-2">
           {[
-            { id: 'SES-2026-0441', event: 'Generation · Dialogue replacement', contract: 'LIC-EC-20260112', time: 'Mar 2, 10:12 am' },
-            { id: 'SES-2026-0440', event: 'License activated · Emma Chen', contract: 'LIC-EC-20260112', time: 'Mar 2, 09:58 am' },
-            { id: 'SES-2026-0439', event: 'Consent verified · v4.2', contract: 'CNS-EC-v4.2', time: 'Mar 2, 09:55 am' },
+            { id: 'SES-2026-0441', event: 'Generation · Dialogue replacement', contract: 'LIC-AS-20260112', time: 'Mar 2, 10:12 am' },
+            { id: 'SES-2026-0440', event: 'License activated · Arjun Sharma', contract: 'LIC-AS-20260112', time: 'Mar 2, 09:58 am' },
+            { id: 'SES-2026-0439', event: 'Consent verified · v4.2', contract: 'CNS-AS-v4.2', time: 'Mar 2, 09:55 am' },
           ].map(e => (
             <div key={e.id} className="rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] p-2.5">
               <div className="flex items-center justify-between gap-2 mb-1">
@@ -730,11 +731,11 @@ const studioFeaturesData: Array<{ title: string; description: string; icon?: Rea
         </div>
         <div className="space-y-1.5">
           {[
-            { market: 'North America', langs: 'EN-US, EN-CA, FR-CA', status: 'cleared', deliverables: 3 },
-            { market: 'Western Europe', langs: 'EN-GB, DE, FR, ES', status: 'cleared', deliverables: 4 },
-            { market: 'Japan', langs: 'JA', status: 'cleared', deliverables: 1 },
-            { market: 'Latin America', langs: 'ES-LAT, PT-BR', status: 'pending', deliverables: 0 },
-            { market: 'Middle East', langs: 'AR', status: 'blocked', deliverables: 0 },
+            { market: 'India', langs: 'HI, TA, TE, MR', status: 'cleared', deliverables: 4 },
+            { market: 'South Asia', langs: 'BN, SI, UR', status: 'cleared', deliverables: 3 },
+            { market: 'Southeast Asia', langs: 'EN, ID, TH', status: 'cleared', deliverables: 2 },
+            { market: 'Middle East', langs: 'AR', status: 'pending', deliverables: 0 },
+            { market: 'East Asia', langs: 'ZH, JA', status: 'blocked', deliverables: 0 },
           ].map(m => (
             <div key={m.market} className="flex items-center gap-2 rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] p-2">
               <span className={`size-2 shrink-0 rounded-full ${m.status === 'cleared' ? 'bg-[#10B981]' : m.status === 'pending' ? 'bg-[#F59E0B]' : 'bg-[#D61D1F]'}`}></span>
@@ -1174,6 +1175,8 @@ function StudiosWhatDemo() {
   );
 }
 
+type HowStepVisualRow = { label: string; value: string; tone: 'granted' | 'blocked' | 'neutral' };
+
 type HowTabData = {
   tabLabel: string;
   headline: string;
@@ -1183,8 +1186,8 @@ type HowTabData = {
     title: string;
     detail: string;
     icon: WhatPointIconKey;
-    imageSrc: string;
-    imageAlt: string;
+    visualRows: HowStepVisualRow[];
+    visualNote: string;
   }>;
 };
 
@@ -1200,32 +1203,48 @@ const howTabData: Record<WhatTabKey, HowTabData> = {
         title: 'Receive project requests',
         detail: 'Studios send requests describing how they want to use your voice or likeness.',
         icon: 'shield',
-        imageSrc: '/1.png',
-        imageAlt: 'Verification progress',
+        visualRows: [
+          { label: 'Request from', value: 'Dharma Productions', tone: 'neutral' },
+          { label: 'Use type', value: 'Voice synthesis', tone: 'neutral' },
+          { label: 'Status', value: 'Awaiting review', tone: 'neutral' },
+        ],
+        visualNote: 'Studios send structured requests. You decide whether to engage before any terms are set.',
       },
       {
         id: 'actor-how-2',
         title: 'Review and negotiate the terms',
         detail: 'Check the project details and adjust the licensing terms before moving forward.',
         icon: 'check',
-        imageSrc: '/2.png',
-        imageAlt: 'License details',
+        visualRows: [
+          { label: 'Territory', value: 'India + APAC', tone: 'granted' },
+          { label: 'Training rights', value: 'Blocked', tone: 'blocked' },
+          { label: 'Duration', value: '12 months', tone: 'neutral' },
+        ],
+        visualNote: 'You see every clause before signing. Adjust terms directly before approving.',
       },
       {
         id: 'actor-how-3',
         title: 'Approve the contract',
         detail: 'Once you approve the agreement, your licensed assets can be used for the project.',
         icon: 'spark',
-        imageSrc: '/3.png',
-        imageAlt: 'Consent matrix',
+        visualRows: [
+          { label: 'Contract state', value: 'Signed', tone: 'granted' },
+          { label: 'Consent gate', value: 'Cleared', tone: 'granted' },
+          { label: 'Asset access', value: 'Activated', tone: 'granted' },
+        ],
+        visualNote: 'Your approval is the gate. No output is generated until you sign off.',
       },
       {
         id: 'actor-how-4',
         title: 'Track usage and payments',
         detail: 'See every AI use of your performance and follow the status of your payments.',
         icon: 'ledger',
-        imageSrc: '/3.png',
-        imageAlt: 'Usage history',
+        visualRows: [
+          { label: 'Usage log', value: 'Live', tone: 'granted' },
+          { label: 'Invoice status', value: '1 pending', tone: 'neutral' },
+          { label: 'Audit trail', value: 'Exportable', tone: 'granted' },
+        ],
+        visualNote: 'Every AI use of your performance is logged and tied to your account in real time.',
       },
     ],
   },
@@ -1240,32 +1259,48 @@ const howTabData: Record<WhatTabKey, HowTabData> = {
         title: 'Find verified actors',
         detail: 'Search performers who are ready to license their voice or likeness.',
         icon: 'shield',
-        imageSrc: '/1.png',
-        imageAlt: 'Verified profiles',
+        visualRows: [
+          { label: 'Verified profiles', value: '132 active', tone: 'granted' },
+          { label: 'Consent-ready', value: '87 available', tone: 'granted' },
+          { label: 'Pending checks', value: '6 profiles', tone: 'neutral' },
+        ],
+        visualNote: 'Search performers who are ready to license. Identity verified before you engage.',
       },
       {
         id: 'studio-how-2',
         title: 'Define the licensing terms',
         detail: 'Set where the performance can be used, how long it lasts, and the project fee.',
         icon: 'check',
-        imageSrc: '/2.png',
-        imageAlt: 'License terms',
+        visualRows: [
+          { label: 'Territory scope', value: 'India + APAC', tone: 'granted' },
+          { label: 'Training rights', value: 'Excluded', tone: 'blocked' },
+          { label: 'Contract state', value: 'Draft v1', tone: 'neutral' },
+        ],
+        visualNote: 'Set scope, duration, and fee structure before sending the request to the performer.',
       },
       {
         id: 'studio-how-3',
         title: 'Send the request for approval',
         detail: 'Actors review the request and approve the licensing terms before creation begins.',
         icon: 'spark',
-        imageSrc: '/3.png',
-        imageAlt: 'Compliance checks',
+        visualRows: [
+          { label: 'Consent scope', value: 'Pass', tone: 'granted' },
+          { label: 'Territory gate', value: 'Pass', tone: 'granted' },
+          { label: 'Signature state', value: 'Pending actor', tone: 'neutral' },
+        ],
+        visualNote: 'Actors review your terms and approve before any asset access or generation begins.',
       },
       {
         id: 'studio-how-4',
         title: 'Manage payments and records',
         detail: 'Track invoices, payouts, and project activity from one dashboard.',
         icon: 'ledger',
-        imageSrc: '/3.png',
-        imageAlt: 'Payout tracking',
+        visualRows: [
+          { label: 'License lifecycle', value: 'Active', tone: 'granted' },
+          { label: 'Settlement queue', value: '3 invoices', tone: 'neutral' },
+          { label: 'Audit package', value: 'Ready', tone: 'granted' },
+        ],
+        visualNote: 'Track invoices, payouts, and project activity from one dashboard.',
       },
     ],
   },
@@ -1300,6 +1335,50 @@ function howToneClass(tone: 'granted' | 'blocked' | 'neutral') {
   if (tone === 'granted') return 'border-[#BBF7D0] bg-[#F0FDF4] text-[#166534]';
   if (tone === 'blocked') return 'border-[#F2C8CB] bg-[#FFF1F1] text-[#D61D1F]';
   return 'border-[#E5E7EB] bg-white text-[#6B7280]';
+}
+
+function HowStepVisual({
+  step,
+  tab,
+  stepIndex,
+  totalSteps,
+}: {
+  step: HowTabData['steps'][number];
+  tab: WhatTabKey;
+  stepIndex: number;
+  totalSteps: number;
+}) {
+  const isStudio = tab === 'studios';
+  const accentSoft = isStudio ? 'bg-[#EAF3FF] text-[#159FFA]' : 'bg-[#FBEDEE] text-[#D61D1F]';
+  const accentText = isStudio ? 'text-[#159FFA]' : 'text-[#D61D1F]';
+
+  return (
+    <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] divide-y divide-[#ECECEC]">
+      {/* Header */}
+      <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
+        <p className="text-[12px] font-semibold text-[#111111]">{step.title}</p>
+        <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${accentSoft}`}>
+          Step {stepIndex + 1} of {totalSteps}
+        </span>
+      </div>
+
+      {/* Data rows */}
+      {step.visualRows.map((row) => (
+        <div key={row.label} className="flex items-center justify-between gap-3 bg-white px-4 py-3">
+          <p className="text-[12px] text-[#6B7280]">{row.label}</p>
+          <span className={`shrink-0 rounded-full border px-2 py-0.5 text-[10px] font-semibold ${howToneClass(row.tone)}`}>
+            {row.value}
+          </span>
+        </div>
+      ))}
+
+      {/* Note footer */}
+      <div className="flex items-start gap-2 bg-[#FAFAFA] px-4 py-3">
+        <span aria-hidden="true" className={`mt-[7px] size-1.5 shrink-0 rounded-full ${isStudio ? 'bg-[#159FFA]' : 'bg-[#D61D1F]'}`} />
+        <p className={`text-[11px] leading-5 ${accentText}`}>{step.visualNote}</p>
+      </div>
+    </div>
+  );
 }
 
 function HowStepDemo({ stepIndex, tab }: { stepIndex: number; tab: WhatTabKey }) {
@@ -1742,14 +1821,14 @@ export default function HomePageV2() {
     return () => observer.disconnect();
   }, []);
 
-  // Auto-cycle How steps
+  // Auto-cycle How steps — timer resets on both tab change and manual click
   useEffect(() => {
     const stepCount = howTabData[activeHowTab].steps.length;
     const timer = setInterval(() => {
       setActiveHowStepIndex((prev) => (prev + 1) % stepCount);
     }, 4000);
     return () => clearInterval(timer);
-  }, [activeHowTab]);
+  }, [activeHowTab, activeHowStepIndex]);
 
   // Keep carousel left padding in sync with section indent
   useEffect(() => {
@@ -1812,6 +1891,8 @@ export default function HomePageV2() {
           </div>
         </div>
       </section>
+
+      <StickyVideoNarrative />
 
       <section className="w-full py-16 md:py-20">
         <div className="mx-auto w-full max-w-[1300px] px-6 md:px-10">
@@ -2037,14 +2118,20 @@ export default function HomePageV2() {
                             className={`absolute left-[15px] top-[44px] h-[calc(100%-12px)] w-px ${lineColor}`}
                           />
                         )}
-                        <span
-                          aria-hidden="true"
-                          className={`absolute top-4 left-0 inline-flex size-8 items-center justify-center rounded-[12px] transition-transform duration-500 ${accentBg} ${isActive ? 'scale-110' : 'scale-100'}`}
+                        <button
+                          type="button"
+                          className="w-full text-left"
+                          onClick={() => setActiveHowStepIndex(index)}
                         >
-                          <WhatPointIcon kind={item.icon} />
-                        </span>
-                        <p className="text-[16px] leading-6 font-medium text-[#111111] md:text-[17px]">{item.title}</p>
-                        <p className="mt-0.5 text-pretty text-[12px] leading-5 text-[#4B5563] md:text-[13px]">{item.detail}</p>
+                          <span
+                            aria-hidden="true"
+                            className={`absolute top-4 left-0 inline-flex size-8 items-center justify-center rounded-[12px] transition-transform duration-500 ${accentBg} ${isActive ? 'scale-110' : 'scale-100'}`}
+                          >
+                            <WhatPointIcon kind={item.icon} />
+                          </span>
+                          <p className="text-[16px] leading-6 font-medium text-[#111111] md:text-[17px]">{item.title}</p>
+                          <p className="mt-0.5 text-pretty text-[12px] leading-5 text-[#4B5563] md:text-[13px]">{item.detail}</p>
+                        </button>
                       </li>
                     );
                   })}
@@ -2053,9 +2140,25 @@ export default function HomePageV2() {
 
               <div
                 key={`${activeHowTab}-${activeHowStepIndex}`}
-                className="h-full overflow-hidden rounded-[20px] p-1 animate-[fadeIn_0.5s_ease-in-out] flex flex-col"
+                className="rounded-[20px] border border-[#ECECEC] bg-white p-5 md:p-6 animate-[fadeIn_0.5s_ease-in-out]"
               >
-                <HowStepDemo stepIndex={activeHowStepIndex} tab={activeHowTab} />
+                <div className="flex items-center justify-between gap-2">
+                  <p className="text-[12px] font-semibold uppercase tracking-wide text-[#9CA3AF]">
+                    {howTabData[activeHowTab].tabLabel}
+                  </p>
+                </div>
+                <h3 className="mt-2 text-balance text-[22px] leading-[1.15] font-medium text-[#111111] md:text-[24px]">
+                  {howTabData[activeHowTab].steps[activeHowStepIndex].title}
+                </h3>
+                <p className="mt-2 text-pretty text-[13px] leading-6 text-[#4B5563]">
+                  {howTabData[activeHowTab].steps[activeHowStepIndex].detail}
+                </p>
+                <HowStepVisual
+                  step={howTabData[activeHowTab].steps[activeHowStepIndex]}
+                  tab={activeHowTab}
+                  stepIndex={activeHowStepIndex}
+                  totalSteps={howTabData[activeHowTab].steps.length}
+                />
               </div>
             </div>
           </div>
@@ -2102,7 +2205,7 @@ export default function HomePageV2() {
                 Built on Trust
               </h2>
               <p className="mt-5 max-w-[420px] text-pretty text-[17px] leading-7 text-[#4B5563]">
-                When your performance travels through AI, your identity travels with it.
+                Your digital self, always connected and always secure. Trusted by the people who create and the people who cast.
               </p>
             </div>
             <div className="relative flex h-[420px] w-full max-w-[620px] items-center justify-end md:h-[520px]">

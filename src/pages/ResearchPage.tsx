@@ -38,11 +38,13 @@ export default function ResearchPage() {
   const uniqueCategories = Array.from(new Set(researchArticles.map((article) => article.category)));
 
   return (
-    <main className="min-h-dvh bg-white [&_h1]:font-['Inter'] [&_h2]:font-['Inter'] [&_h3]:font-['Inter']">
+    <main className="min-h-dvh bg-white [&_h1]:font-['Inter'] [&_h1]:tracking-[-0.02em] [&_h2]:font-['Inter'] [&_h2]:tracking-[-0.02em] [&_h3]:font-['Inter'] [&_h3]:tracking-[-0.02em]">
+
+      {/* ── Hero ─────────────────────────────────────────────────────────────── */}
       <section
         ref={heroRef}
         data-bg-animated={isHeroInView ? 'true' : 'false'}
-        className="relative w-full min-h-[96dvh] overflow-hidden bg-white pb-20 pt-32 md:pb-24 md:pt-36"
+        className="relative w-full overflow-hidden bg-white pt-32 pb-24 md:pt-40 md:pb-32"
       >
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
           <HomepageV2HeroAmbient animate={isHeroInView} />
@@ -50,94 +52,98 @@ export default function ResearchPage() {
         </div>
 
         <div className="relative z-10 mx-auto w-full max-w-[1300px] px-6 md:px-10">
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <div>
-              <span className="inline-flex rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-sm font-medium text-[#159FFA]">
-                Research & Blog
-              </span>
-              <h1 id="hero-headline" className="mt-6 max-w-[820px] text-balance text-[40px] leading-[1.06] font-medium text-[#111111] md:text-[58px]">
-                Research and field notes for consent-first AI production.
-              </h1>
-              <p className="mt-5 max-w-[720px] text-pretty text-[17px] leading-7 text-[var(--color-text-body)]">
-                Practical updates from our product, legal, and engineering teams. Follow what we are
-                learning while building performer-safe AI workflows.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <Link
-                  to={`/research/${featuredArticle.id}`}
-                  className="rounded-full bg-[#D61D1F] px-7 py-3 text-[14px] font-medium text-white transition-colors duration-200 hover:bg-[#C9191B]"
-                >
-                  Read featured story
-                </Link>
-                <a
-                  href="#latest-blog"
-                  className="rounded-full bg-[#F3F4F6] px-7 py-3 text-[14px] font-medium text-[#111111] transition-colors duration-200 hover:bg-[#E5E7EB]"
-                >
-                  Browse latest posts
-                </a>
-              </div>
-            </div>
+          <span className="inline-flex rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-sm font-medium text-[#159FFA]">
+            Research & Blog
+          </span>
 
-            <aside className="rounded-[24px] border border-[#ECECEC] bg-white/95 p-6 shadow-sm backdrop-blur-sm">
-              <p className="text-[12px] font-semibold uppercase text-[#6B7280]">Blog index</p>
-              <div className="mt-5 grid grid-cols-3 gap-3">
-                <div className="border-shadow rounded-[14px] bg-[#F7F7F7] px-3 py-4">
-                  <p className="text-[25px] font-semibold leading-none text-[#111111]">
-                    {researchArticles.length}
-                  </p>
-                  <p className="mt-1 text-[12px] text-[#6B7280]">Stories</p>
-                </div>
-                <div className="border-shadow rounded-[14px] bg-[#F7F7F7] px-3 py-4">
-                  <p className="text-[25px] font-semibold leading-none text-[#111111]">
-                    {uniqueCategories.length}
-                  </p>
-                  <p className="mt-1 text-[12px] text-[#6B7280]">Topics</p>
-                </div>
-                <div className="border-shadow rounded-[14px] bg-[#F7F7F7] px-3 py-4">
-                  <p className="text-[25px] font-semibold leading-none text-[#111111]">2026</p>
-                  <p className="mt-1 text-[12px] text-[#6B7280]">Season</p>
-                </div>
-              </div>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {uniqueCategories.map((category) => (
-                  <span
-                    key={category}
-                    className="rounded-full border border-[#E5E7EB] bg-white px-3 py-1.5 text-[12px] font-medium text-[#374151]"
-                  >
-                    {category}
-                  </span>
-                ))}
-              </div>
-            </aside>
+          <h1 className="mt-6 max-w-[760px] text-balance text-[40px] leading-[1.06] font-medium text-[#111111] md:text-[58px]">
+            Research and field notes for consent-first AI production.
+          </h1>
+
+          <p className="mt-5 max-w-[600px] text-pretty text-[17px] leading-7 text-[#4B5563]">
+            Practical updates from our product, legal, and engineering teams. Follow what we are
+            learning while building performer-safe AI workflows.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              to={`/research/${featuredArticle.id}`}
+              className="rounded-full bg-[#D61D1F] px-7 py-3 text-[14px] font-medium text-white transition-colors duration-200 hover:bg-[#C9191B]"
+            >
+              Read featured story
+            </Link>
+            <a
+              href="#latest-posts"
+              className="rounded-full bg-[#F3F4F6] px-7 py-3 text-[14px] font-medium text-[#111111] transition-colors duration-200 hover:bg-[#E5E7EB]"
+            >
+              Browse all posts
+            </a>
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center gap-2">
+            <span className="text-[13px] font-medium text-[#6B7280]">Topics:</span>
+            {uniqueCategories.map((category) => (
+              <span
+                key={category}
+                className="rounded-full border border-[#E5E7EB] bg-white/80 px-3.5 py-1.5 text-[12px] font-medium text-[#374151] backdrop-blur-sm"
+              >
+                {category}
+              </span>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* ── Featured Article ─────────────────────────────────────────────────── */}
       <section className="w-full py-16 md:py-20">
         <div className="mx-auto w-full max-w-[1300px] px-6 md:px-10">
-          <span className="inline-flex rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-sm font-medium text-[#159FFA]">
-            Featured
-          </span>
+
+          <div className="mb-8 flex items-center gap-4">
+            <span className="inline-flex shrink-0 rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-sm font-medium text-[#159FFA]">
+              Featured
+            </span>
+            <div className="h-px w-full bg-[#E5E7EB]" />
+          </div>
 
           <Link
             to={`/research/${featuredArticle.id}`}
-            className="group mt-6 grid overflow-hidden rounded-[26px] border border-[#E5E7EB] bg-[#FCFCFD] md:grid-cols-[1.05fr_0.95fr]"
+            className="group grid overflow-hidden rounded-[26px] border border-[#E5E7EB] bg-[#FCFCFD] transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.07)] md:grid-cols-2"
           >
-            <div className="order-2 p-6 md:order-1 md:p-8 lg:p-10">
+            {/* Image */}
+            <div className="h-[300px] overflow-hidden bg-[#111111] md:h-full md:min-h-[480px]">
+              <img
+                src={featuredArticle.coverImage}
+                alt={featuredArticle.coverImageAlt}
+                className="size-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="flex flex-col justify-center p-8 lg:p-12">
               <div className="flex flex-wrap items-center gap-3 text-[13px] text-[#6B7280]">
-                <span className="rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 font-medium text-[#159FFA]">
+                <span className="rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-[12px] font-medium text-[#159FFA]">
                   {featuredArticle.category}
                 </span>
                 <span>{featuredArticle.date}</span>
                 <span>{featuredArticle.readTime}</span>
               </div>
-              <h2 className="mt-5 text-balance text-[34px] leading-[1.1] font-medium text-[#111111] md:text-[44px]">
+
+              <h2 className="mt-5 text-balance text-[30px] leading-[1.1] font-medium text-[#111111] md:text-[38px]">
                 {featuredArticle.title}
               </h2>
-              <p className="mt-4 max-w-[640px] text-pretty text-[16px] leading-7 text-[var(--color-text-body)]">
+
+              <p className="mt-4 text-pretty text-[16px] leading-7 text-[#4B5563]">
                 {featuredArticle.description}
               </p>
-              <div className="mt-7 flex items-center gap-2 text-[14px] font-semibold text-[#111111] transition-colors duration-200 group-hover:text-[#D61D1F]">
+
+              <div className="mt-5 text-[13px] text-[#6B7280]">
+                <span className="font-medium text-[#111111]">{featuredArticle.author}</span>
+                <span className="mx-1.5">·</span>
+                <span>{featuredArticle.role}</span>
+              </div>
+
+              <div className="mt-8 inline-flex items-center gap-2 text-[14px] font-semibold text-[#111111] transition-colors duration-200 group-hover:text-[#D61D1F]">
                 Read full article
                 <svg aria-hidden="true" viewBox="0 0 20 20" fill="currentColor" className="size-4">
                   <path
@@ -148,67 +154,58 @@ export default function ResearchPage() {
                 </svg>
               </div>
             </div>
-
-            <div className="order-1 h-[280px] overflow-hidden bg-[#111111] md:order-2 md:h-full">
-              <img
-                src={featuredArticle.coverImage}
-                alt={featuredArticle.coverImageAlt}
-                className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                loading="lazy"
-              />
-            </div>
           </Link>
         </div>
       </section>
 
-      <section id="latest-blog" className="w-full pb-24">
+      {/* ── Latest Posts ─────────────────────────────────────────────────────── */}
+      <section id="latest-posts" className="w-full pb-24 md:pb-32">
         <div className="mx-auto w-full max-w-[1300px] px-6 md:px-10">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <span className="inline-flex rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-sm font-medium text-[#159FFA]">
-                Latest
-              </span>
-              <h2 className="mt-4 text-balance text-[34px] leading-[1.1] font-medium text-[#111111] md:text-[46px]">
-                Blog showcase
-              </h2>
-            </div>
-            <p className="max-w-[420px] text-pretty text-[15px] leading-6 text-[var(--color-text-body)]">
-              A running archive of product learnings, policy frameworks, and deployment notes from real teams.
-            </p>
+
+          <div className="mb-10 flex items-center gap-4">
+            <span className="inline-flex shrink-0 rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-sm font-medium text-[#159FFA]">
+              Latest
+            </span>
+            <div className="h-px w-full bg-[#E5E7EB]" />
           </div>
 
-          <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
             {latestArticles.map((article) => (
               <Link
                 key={article.id}
                 to={`/research/${article.id}`}
-                className="group overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#FCFCFD]"
+                className="group flex flex-col overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#FCFCFD] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.06)]"
               >
-                <div className="h-[220px] overflow-hidden bg-[#111111]">
+                {/* Cover image */}
+                <div className="h-[220px] shrink-0 overflow-hidden bg-[#111111]">
                   <img
                     src={article.coverImage}
                     alt={article.coverImageAlt}
                     loading="lazy"
-                    className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
+                    className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
                   />
                 </div>
-                <div className="p-6">
-                  <div className="flex flex-wrap items-center gap-2 text-[12px] text-[#6B7280]">
-                    <span className="rounded-md bg-[#F3F4F6] px-2.5 py-1 font-medium text-[#374151]">
+
+                {/* Card body */}
+                <div className="flex flex-1 flex-col p-6">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="rounded-full bg-[rgba(21,159,250,0.08)] px-2.5 py-1 text-[11px] font-medium text-[#159FFA]">
                       {article.category}
                     </span>
-                    <span>{article.date}</span>
+                    <span className="text-[12px] text-[#6B7280]">{article.date}</span>
                   </div>
-                  <h3 className="mt-4 text-balance text-[29px] leading-[1.12] font-medium text-[#111111] transition-colors duration-200 group-hover:text-[#D61D1F]">
+
+                  <h3 className="mt-4 flex-1 text-balance text-[22px] leading-[1.25] font-medium text-[#111111] transition-colors duration-200 group-hover:text-[#D61D1F]">
                     {article.title}
                   </h3>
-                  <p className="mt-4 text-pretty text-[15px] leading-6 text-[var(--color-text-body)]">
+
+                  <p className="mt-3 text-pretty text-[15px] leading-6 text-[#4B5563]">
                     {article.description}
                   </p>
-                  <div className="mt-6 border-t border-[#E5E7EB] pt-4 text-[13px] text-[#6B7280]">
+
+                  <div className="mt-6 flex items-center justify-between border-t border-[#E5E7EB] pt-4 text-[13px]">
                     <span className="font-medium text-[#111111]">{article.author}</span>
-                    <span className="mx-1.5">·</span>
-                    <span>{article.readTime}</span>
+                    <span className="text-[#6B7280]">{article.readTime}</span>
                   </div>
                 </div>
               </Link>

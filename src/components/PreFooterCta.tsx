@@ -3,22 +3,8 @@ import { openDemoBookingModal } from '../utils/demoBookingModal';
 const PreFooterCta = () => {
   return (
     <>
-      <section className="relative h-dvh w-full overflow-hidden bg-white">
-        <img
-          src="/homepage_divider_2.png"
-          alt=""
-          className="h-full w-full object-cover"
-          loading="lazy"
-          style={{
-            WebkitMaskImage: 'linear-gradient(to bottom, black 0%, black 72%, transparent 100%)',
-            maskImage: 'linear-gradient(to bottom, black 0%, black 72%, transparent 100%)',
-          }}
-        />
-      </section>
-
       <section
-        className="relative z-10 w-full -mt-20 pb-12 pt-4 md:-mt-28 md:pb-16"
-        style={{ background: 'linear-gradient(to bottom, transparent 0%, white 35%)' }}
+        className="relative z-10 w-full pb-12 pt-4 md:pb-16"
       >
         <div className="mx-auto w-full max-w-[980px] px-6 text-center md:px-10">
           <h2 className="text-balance text-[34px] leading-[1.08] font-medium text-[#0F172A] md:text-[52px]">

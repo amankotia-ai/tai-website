@@ -9,41 +9,18 @@ import { openDemoBookingModal } from '../utils/demoBookingModal';
 const performerNeeds = [
   {
     label: 'Autonomy',
-    body: 'Performers own their digital identity. Where it appears, how it is used, and when it is available — those decisions belong to them.',
+    body: 'Performers decide where their digital identity appears, how it is used, and when it is available.',
     icon: 'control',
   },
   {
     label: 'Consent',
-    body: 'Every usage requires explicit approval. No ambiguous blanket permissions, no retroactive agreements, and no grey areas.',
+    body: 'Every use requires clear approval. No blanket permissions or retroactive agreements.',
     icon: 'consent',
   },
   {
     label: 'Fair payment',
-    body: 'When a performance generates value, the performer receives their share automatically — no chasing invoices.',
+    body: 'When a performance is generated, the performer is paid automatically. No chasing payments or approvals.',
     icon: 'payment',
-  },
-] as const;
-
-// ── Our Mission ───────────────────────────────────────────────────────────────
-
-const missionSignals = [
-  {
-    title: 'Ownership stays with the performer',
-    detail:
-      'The performer remains the source of authority over how their digital identity is licensed and used.',
-    icon: 'ownership',
-  },
-  {
-    title: 'Permissions are explicit and trackable',
-    detail:
-      'Every approval is documented clearly, with terms that can be reviewed, enforced, and audited.',
-    icon: 'permissions',
-  },
-  {
-    title: 'Studios can create with legal clarity',
-    detail:
-      'Production teams get a clean operational path to access talent without ambiguity around rights.',
-    icon: 'clarity',
   },
 ] as const;
 
@@ -51,19 +28,31 @@ const missionSignals = [
 
 const visionPoints = [
   {
-    title: 'Transparent collaboration',
-    body: 'Technology and talent working together — openly, fairly, and on equal footing.',
-    icon: 'network',
+    label: 'For performers',
+    body: 'A live monitoring layer that flags when their voice, likeness, or performance appears in AI-generated content.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="size-5 text-[#159FFA]">
+        <path fillRule="evenodd" d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z" clipRule="evenodd" />
+      </svg>
+    ),
   },
   {
-    title: 'Safe participation',
-    body: 'Performers can opt into new digital production methods without putting their future at risk.',
-    icon: 'shield',
+    label: 'For studios',
+    body: 'Policy-forward compliance built alongside industry bodies, so productions can work with AI talent responsibly.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="size-5 text-[#159FFA]">
+        <path fillRule="evenodd" d="M4.5 2.25a.75.75 0 0 0 0 1.5v16.5h-.75a.75.75 0 0 0 0 1.5h16.5a.75.75 0 0 0 0-1.5h-.75V3.75a.75.75 0 0 0 0-1.5h-15ZM9 6a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5H9Zm-.75 3.75A.75.75 0 0 1 9 9h1.5a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75ZM9 12a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5H9Zm3.75-5.25A.75.75 0 0 1 13.5 6H15a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75ZM13.5 9a.75.75 0 0 0 0 1.5H15A.75.75 0 0 0 15 9h-1.5Zm-.75 3.75a.75.75 0 0 1 .75-.75H15a.75.75 0 0 1 0 1.5h-1.5a.75.75 0 0 1-.75-.75ZM9 19.5v-2.25a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 .75.75v2.25a.75.75 0 0 1-.75.75h-4.5A.75.75 0 0 1 9 19.5Z" clipRule="evenodd" />
+      </svg>
+    ),
   },
   {
-    title: 'Rights-ready access',
-    body: 'Studios move forward with confidence, knowing compliance is built into the workflow from day one.',
-    icon: 'checklist',
+    label: 'For AI platforms',
+    body: 'A certification badge for AI-generated performances created from verified and licensed digital assets.',
+    icon: (
+      <svg viewBox="0 0 24 24" fill="currentColor" className="size-5 text-[#159FFA]">
+        <path fillRule="evenodd" d="M8.603 3.799A4.49 4.49 0 0 1 12 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 0 1 3.498 1.307 4.491 4.491 0 0 1 1.307 3.497A4.49 4.49 0 0 1 21.75 12a4.49 4.49 0 0 1-1.549 3.397 4.491 4.491 0 0 1-1.307 3.497 4.491 4.491 0 0 1-3.497 1.307A4.49 4.49 0 0 1 12 21.75a4.49 4.49 0 0 1-3.397-1.549 4.49 4.49 0 0 1-3.498-1.306 4.491 4.491 0 0 1-1.307-3.498A4.49 4.49 0 0 1 2.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 0 1 1.307-3.497 4.49 4.49 0 0 1 3.497-1.307Zm7.007 6.387a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
+      </svg>
+    ),
   },
 ] as const;
 
@@ -73,7 +62,7 @@ const futurePoints = [
   {
     number: '01',
     heading: 'AI will not replace performers',
-    body: 'It will change how performances are created, licensed, and experienced — but performers remain the source.',
+    body: 'It will change how performances are created, licensed, and experienced, but performers remain the source.',
   },
   {
     number: '02',
@@ -83,7 +72,7 @@ const futurePoints = [
   {
     number: '03',
     heading: 'We are building the framework',
-    body: 'A system where performers stay at the center of the AI-era creative economy — not as a footnote, but as the foundation.',
+    body: 'A system where performers stay at the center of the AI-era creative economy, not as a footnote, but as the foundation.',
   },
 ];
 
@@ -223,58 +212,66 @@ export default function AboutUsPage() {
 
   return (
     <main className="min-h-dvh bg-white [&_h1]:font-['Inter'] [&_h1]:tracking-[-0.02em] [&_h2]:font-['Inter'] [&_h2]:tracking-[-0.02em] [&_h3]:font-['Inter'] [&_h3]:tracking-[-0.02em]">
-      {/* ── Hero (unchanged) ───────────────────────────────────────────────── */}
+      {/* ── Hero ───────────────────────────────────────────────────────────── */}
       <section
         ref={heroRef}
         data-bg-animated={isHeroInView ? 'true' : 'false'}
-        className="relative w-full min-h-[96dvh] overflow-hidden bg-white pb-24 pt-24 md:pb-28 md:pt-28"
+        className="relative w-full overflow-hidden bg-white pb-24 pt-24 md:pb-28 md:pt-28"
       >
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
           <HomepageV2HeroAmbient animate={isHeroInView} />
           <div className="absolute inset-x-0 bottom-0 h-44 bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,rgba(255,255,255,0.7)_64%,#ffffff_100%)] md:h-64" />
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-[1300px] px-6 md:px-10">
-          <div className="grid gap-10 lg:gap-24 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-            <div className="max-w-[760px]">
-              <h1 id="hero-headline" className="mt-6 text-balance text-[40px] leading-[1.06] font-medium text-[#111111] md:text-[60px]">
-                The Face Behind TheatreAI
-              </h1>
-              <p className="mt-6 text-pretty text-[15px] leading-7 text-[#4B5563]">
-                My name is <strong className="font-semibold text-[#111111]">Nehal</strong>. I started exploring acting about four years ago while also working in tech. I’m still building my career, auditioning, and learning the craft, but being in this space let me see something clearly: performers like me often feel unsure about how their voice, face, and performances can be used in the digital world.
-              </p>
-              <p className="mt-4 text-pretty text-[15px] leading-7 text-[#4B5563]">
-                Agreements are confusing, rights are unclear, and there is no simple way to protect yourself when AI can recreate your performance. I felt that uncertainty personally and saw that many other creatives were experiencing it too.
-              </p>
-              <p className="mt-4 text-pretty text-[15px] leading-7 text-[#4B5563]">
-                Because I also work in tech, I knew I could build a solution. I could create a system that gives performers control over their digital identity while making it safe and simple for studios to work with those assets.
-              </p>
-              <p className="mt-4 text-pretty text-[15px] leading-7 text-[#4B5563]">
-                That idea became <strong className="font-semibold text-[#111111]">TheatreAI</strong>.
-              </p>
-              <p className="mt-4 text-pretty text-[15px] leading-7 text-[#4B5563]">
-                It is a platform built for performers to stay in control, for studios to work with confidence, and for the creative industry to adopt new technologies responsibly.
-              </p>
+        <div className="relative z-10 mx-auto w-full max-w-[800px] px-6 text-center md:px-10 flex flex-col items-center">
+          <h1 id="hero-headline" className="mt-6 text-balance text-[36px] leading-[1.06] font-medium text-[#111111] md:text-[56px]">
+            Face Behind Theatre.ai
+          </h1>
 
+          <figure className="mt-12 overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-white shadow-sm w-full max-w-[480px]">
+            <img
+              src={founderImageSrc}
+              alt="Nehal, founder of TheatreAI"
+              className="h-[50dvh] w-full object-cover md:h-[60dvh]"
+              onError={() => {
+                if (founderImageSrc !== '/mask2.png') {
+                  setFounderImageSrc('/mask2.png');
+                }
+              }}
+            />
+          </figure>
 
-            </div>
-
-            <figure className="overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-white shadow-sm">
-              <img
-                src={founderImageSrc}
-                alt="Nehal, founder of TheatreAI"
-                className="h-[60dvh] w-full object-cover md:h-[68dvh] lg:h-[72dvh]"
-                onError={() => {
-                  if (founderImageSrc !== '/mask2.png') {
-                    setFounderImageSrc('/mask2.png');
-                  }
-                }}
-              />
-              <figcaption className="border-t border-[#E5E7EB] bg-white px-4 py-3">
-                <p className="text-[14px] font-medium text-[#111111]">Nehal</p>
-                <p className="text-[12px] text-[#6B7280]">Founder, TheatreAI</p>
-              </figcaption>
-            </figure>
+          <div className="mt-12 max-w-[680px]">
+            <p className="text-pretty text-[16px] leading-8 text-[#4B5563]">
+              My name is <strong className="font-semibold text-[#111111]">Nehal</strong>.
+            </p>
+            <p className="mt-6 text-pretty text-[16px] leading-8 text-[#4B5563]">
+              Four years ago I started exploring acting while building my career in tech. In May 2023, I was working as a product manager in Los Angeles when the <strong className="font-semibold text-[#111111]">Writers Guild of America strike</strong> began. Writers spent months on strike over how AI could change storytelling, authorship, and ownership in Hollywood. It was the first time the industry had to confront generative AI head on.
+            </p>
+            <p className="mt-6 text-pretty text-[16px] leading-8 text-[#4B5563]">
+              Soon the concerns became real cases. In September 2023, <strong className="font-semibold text-[#111111]">Anil Kapoor</strong> went to court in India to stop the unauthorized use of his voice and likeness in AI generated content. The <strong className="font-semibold text-[#111111]">Delhi High Court</strong> ruled in his favor. Then in May 2024, <strong className="font-semibold text-[#111111]">Scarlett Johansson</strong> spoke out after a voice used by <strong className="font-semibold text-[#111111]">ChatGPT</strong> sounded strikingly similar to hers despite her refusing permission.
+            </p>
+            <p className="mt-6 text-pretty text-[16px] leading-8 text-[#4B5563]">
+              It became clear that AI could recreate performances, but there was no simple way for actors to stay in control of their voice, face, or digital identity.
+            </p>
+            <p className="mt-6 text-pretty text-[16px] leading-8 text-[#4B5563]">
+              At the same time I was auditioning, acting in short films, and learning the craft myself. Like many actors, I felt the uncertainty about where this technology was taking our industry.
+            </p>
+            <p className="mt-6 text-pretty text-[16px] leading-8 text-[#4B5563]">
+              But I also saw something else. This was a systems problem. The kind I had spent years solving in tech.
+            </p>
+            <p className="mt-6 text-pretty text-[16px] leading-8 text-[#4B5563]">
+              So I started researching how generative AI was reshaping the creative industries and how performances were being replicated without clear consent or ownership. After months of studying and iterating, one idea kept standing out.
+            </p>
+            <p className="mt-6 text-pretty text-[16px] leading-8 text-[#4B5563]">
+              That idea became <strong className="font-semibold text-[#111111]">Theatre.ai</strong>.
+            </p>
+            <p className="mt-6 text-pretty text-[16px] leading-8 text-[#4B5563]">
+              A platform designed to keep performers in control of their digital identity while giving studios a trusted way to work with AI performances.
+            </p>
+            <p className="mt-6 text-pretty text-[16px] leading-8 text-[#4B5563]">
+              In a world where AI can recreate anyone, <a href="http://theatre.ai/" target="_blank" rel="noopener noreferrer" className="text-[#159FFA] hover:underline hover:text-[#0B85DC] font-medium">Theatre.ai</a> makes sure the performer and the performance are never separated.
+            </p>
           </div>
         </div>
       </section>
@@ -288,11 +285,11 @@ export default function AboutUsPage() {
               Why This Matters
             </span>
             <h2 className="mt-5 text-balance text-[34px] leading-[1.08] font-medium text-[#111111] md:text-[46px]">
-              A performer’s voice, likeness, and performance are not just files
+              A performer’s voice, likeness, and performance are not just files.
             </h2>
             <p className="mt-5 text-pretty text-[17px] leading-7 text-[#4B5563]">
-              As AI becomes part of filmmaking, gaming, and media, performers need clear protections from day one.
-              TheatreAI is built around the three things that matter most.
+              As AI begins to generate performances, it becomes easy for the person behind them to disappear.
+              That should never happen.
             </p>
           </div>
 
@@ -321,10 +318,7 @@ export default function AboutUsPage() {
             </div>
             <div>
               <p className="text-[18px] font-semibold leading-snug text-[#111111] sm:text-[20px]">
-                TheatreAI exists to make that possible.
-              </p>
-              <p className="mt-1.5 text-[15px] leading-relaxed text-[#4B5563] sm:text-[16px]">
-                Built for every performer, scaling securely to every production.
+                Theatre.ai keeps the performer connected to the performance.
               </p>
             </div>
           </div>
@@ -333,59 +327,29 @@ export default function AboutUsPage() {
 
       {/* ── Our Mission ───────────────────────────────────────────────────────── */}
       <section className="w-full py-20 md:py-28">
-        <div className="mx-auto w-full max-w-[1300px] px-6 md:px-10">
-          <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-start">
-            {/* Left — statement */}
-            <div>
-              <span className="inline-flex rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-sm font-medium text-[#159FFA]">
-                Our Mission
-              </span>
-              <h2 className="mt-5 text-balance text-[34px] leading-[1.08] font-medium text-[#111111] md:text-[46px]">
-                To give performers clear ownership and control over their digital identity in the age of AI
-              </h2>
-            </div>
-
-            {/* Right — timeline cards */}
-            <div className="flex flex-col gap-8 rounded-[24px] border border-[#E5E7EB] bg-[#FCFCFD] p-6 lg:p-8">
-              {missionSignals.map((signal, index) => (
-                <div key={signal.title} className="relative flex items-start gap-5">
-                  <div className="relative flex flex-col items-center self-stretch pt-0.5">
-                    <span className="relative z-10 inline-flex size-9 shrink-0 items-center justify-center rounded-full bg-[#F0EAEA] text-[#D61D1F] text-[13px] font-bold ring-8 ring-[#FCFCFD]">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    {index !== missionSignals.length - 1 && (
-                      <div className="absolute top-[36px] bottom-[-34px] left-1/2 w-[2px] -translate-x-1/2 bg-[#F0EAEA]" aria-hidden="true" />
-                    )}
-                  </div>
-                  <div>
-                    <h3 className="text-[17px] font-semibold leading-snug text-[#111111]">
-                      {signal.title}
-                    </h3>
-                    <p className="mt-2 text-pretty text-[14px] leading-6 text-[#4B5563]">
-                      {signal.detail}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+        <div className="mx-auto w-full max-w-[860px] px-6 md:px-10 text-center">
+          <span className="inline-flex rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-sm font-medium text-[#159FFA]">
+            Our Mission
+          </span>
+          <h2 className="mt-6 text-balance text-[34px] leading-[1.1] font-medium text-[#111111] md:text-[52px]">
+            To ensure that AI-generated performances remain human at their core.
+          </h2>
         </div>
       </section>
 
       {/* ── Our Vision ────────────────────────────────────────────────────────── */}
       <section className="w-full py-20 md:py-28 bg-[#F4F8FF]">
         <div className="mx-auto w-full max-w-[1300px] px-6 md:px-10">
-          {/* Centered header */}
-          <div className="mx-auto max-w-[860px] text-center">
+          {/* Header */}
+          <div className="max-w-[860px]">
             <span className="inline-flex rounded-md bg-[rgba(21,159,250,0.12)] px-3 py-1 text-sm font-medium text-[#159FFA]">
               Our Vision
             </span>
             <h2 className="mt-5 text-balance text-[34px] leading-[1.08] font-medium text-[#111111] md:text-[46px]">
-              A creative industry where technology and talent work together transparently, fairly, and with trust.
+              The Standard for AI Talent
             </h2>
             <p className="mt-5 text-pretty text-[17px] leading-7 text-[#4B5563]">
-              The goal is not abstract policy. It is a working environment where talent can participate confidently and
-              studios can move forward knowing the rights structure is already in place.
+              We will become the global standard for trusted AI performances.
             </p>
           </div>
 
@@ -393,44 +357,22 @@ export default function AboutUsPage() {
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {visionPoints.map((point) => (
               <article
-                key={point.title}
-                className="group relative flex flex-col overflow-hidden rounded-[24px] border border-[#CDDFF7] bg-white shadow-sm"
+                key={point.label}
+                className="flex flex-col gap-4 rounded-[24px] border border-[#CDDFF7] bg-white p-6 md:p-8 shadow-sm"
               >
-                {/* Abstract Visual Section */}
-                <div className="relative flex h-[280px] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#F4F9FF] to-[#E5F0FF] p-6">
-                  {/* Common subtle background grid */}
-                  <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#159FFA_1px,transparent_1px),linear-gradient(to_bottom,#159FFA_1px,transparent_1px)] [background-size:16px_16px]" />
-
-                  {point.icon === 'network' && (
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="relative z-10 size-28 md:size-32 text-[#159FFA] drop-shadow-lg transition-transform duration-300 group-hover:scale-105">
-                      <path fillRule="evenodd" d="M15.75 4.5a3 3 0 1 1 .825 2.066l-8.421 4.679a3.002 3.002 0 0 1 0 1.51l8.421 4.679a3 3 0 1 1-.729 1.31l-8.421-4.678a3 3 0 1 1 0-4.132l8.421-4.679a3 3 0 0 1-.096-.755Z" clipRule="evenodd" />
-                    </svg>
-                  )}
-
-                  {point.icon === 'shield' && (
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="relative z-10 size-28 md:size-32 text-[#159FFA] drop-shadow-lg transition-transform duration-300 group-hover:scale-105">
-                      <path fillRule="evenodd" d="M12.516 2.17a.75.75 0 0 0-1.032 0 11.209 11.209 0 0 1-7.877 3.08.75.75 0 0 0-.722.515A12.74 12.74 0 0 0 2.25 9.735c0 5.942 4.064 10.933 9.563 12.348a.749.749 0 0 0 .374 0c5.499-1.415 9.563-6.406 9.563-12.348 0-1.39-.223-2.73-.635-3.97a.75.75 0 0 0-.722-.516l-.143.001c-2.996 0-5.717-1.17-7.734-3.08Zm3.094 8.016a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
-                    </svg>
-                  )}
-
-                  {point.icon === 'checklist' && (
-                    <svg viewBox="0 0 24 24" fill="currentColor" className="relative z-10 size-28 md:size-32 text-[#159FFA] drop-shadow-lg transition-transform duration-300 group-hover:scale-105">
-                      <path fillRule="evenodd" d="M7.502 6h7.128A3.375 3.375 0 0 1 18 9.375v9.375a3 3 0 0 0 3-3V6.108c0-1.505-1.125-2.811-2.664-2.94a48.972 48.972 0 0 0-.673-.05A3 3 0 0 0 15 1.5h-1.5a3 3 0 0 0-2.663 1.618c-.225.015-.45.032-.673.05C8.662 3.295 7.554 4.542 7.502 6ZM13.5 3A1.5 1.5 0 0 0 12 4.5h4.5A1.5 1.5 0 0 0 15 3h-1.5Z" clipRule="evenodd" />
-                      <path fillRule="evenodd" d="M3 9.375C3 8.339 3.84 7.5 4.875 7.5h9.75c1.036 0 1.875.84 1.875 1.875v11.25c0 1.035-.84 1.875-1.875 1.875h-9.75A1.875 1.875 0 0 1 3 20.625V9.375Zm9.586 4.594a.75.75 0 0 0-1.172-.938l-2.476 3.096-.908-.907a.75.75 0 0 0-1.06 1.06l1.5 1.5a.75.75 0 0 0 1.116-.062l3-3.75Z" clipRule="evenodd" />
-                    </svg>
-                  )}
+                <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-[#EFF6FF] border border-[#CDDFF7]">
+                  {point.icon}
                 </div>
-
-                {/* Content Section */}
-                <div className="flex flex-1 flex-col p-6 pt-5 md:p-8 md:pt-6">
-                  <h3 className="text-[19px] font-semibold leading-snug text-[#111111]">
-                    {point.title}
+                <div>
+                  <h3 className="text-[17px] font-semibold leading-snug text-[#111111]">
+                    {point.label}
                   </h3>
-                  <p className="mt-3 text-pretty text-[15px] leading-7 text-[#4B5563] flex-1">{point.body}</p>
+                  <p className="mt-2 text-pretty text-[15px] leading-7 text-[#4B5563]">{point.body}</p>
                 </div>
               </article>
             ))}
           </div>
+
         </div>
       </section>
 

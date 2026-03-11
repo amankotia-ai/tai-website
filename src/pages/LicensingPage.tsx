@@ -1,4 +1,4 @@
-import { type SyntheticEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import HomepageV2HeroAmbient from '../components/HomepageV2HeroAmbient';
 import PreFooterCta from '../components/PreFooterCta';
 import { openDemoBookingModal } from '../utils/demoBookingModal';
@@ -259,41 +259,291 @@ function HowJourneyIcon({ kind }: { kind: HowJourneyIconKey }) {
   );
 }
 
-function HowStepPreview({
-  step,
-  tab,
-}: {
-  step: HowJourneyStep;
-  tab: WhatTabKey;
-}) {
+function HowStepDemo({ step, tab }: { step: HowJourneyStep; tab: WhatTabKey }) {
   const isStudio = tab === 'studios';
   const accentSoft = isStudio ? 'bg-[#EEF8FF] text-[#159FFA]' : 'bg-[#F0EAEA] text-[#D61D1F]';
+  const accentBg = isStudio ? 'bg-[#159FFA]' : 'bg-[#D61D1F]';
+  const accentColor = isStudio ? '#159FFA' : '#D61D1F';
+  const accentLine = isStudio ? 'bg-[#BFDBFE]' : 'bg-[#F2C8CB]';
 
-  return (
-    <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] bg-white divide-y divide-[#ECECEC]">
-      <div className="flex items-center justify-between gap-3 px-4 py-3">
-        <div className="flex items-center gap-2.5">
-          <span className={`inline-flex size-7 shrink-0 items-center justify-center rounded-full text-[12px] font-bold ${accentSoft}`}>
-            {isStudio ? 'S' : 'A'}
-          </span>
-          <div>
-            <p className="text-[12px] font-semibold text-[#111111]">{step.title}</p>
-            <p className="text-[10px] text-[var(--color-text-muted)]">Live Data View</p>
+  // ── ACTORS ────────────────────────────────────────────────────
+
+  if (step.id === 'how-actors-dashboard') {
+    const requests = [
+      { studio: 'Dharma Productions', type: 'Dialogue · Brahmastra 2', fee: '$4,500', status: 'pending' as const },
+      { studio: 'T-Series Films', type: 'Ad campaign · TVC', fee: '$2,200', status: 'reviewing' as const },
+      { studio: 'YRF Studios', type: 'Regional dub · Hindi', fee: '$1,800', status: 'approved' as const },
+    ];
+    const statusClass = (s: 'pending' | 'reviewing' | 'approved') =>
+      s === 'approved' ? 'bg-[#F0FDF4] text-[#166534]' : s === 'reviewing' ? 'bg-[#EFF6FF] text-[#1D4ED8]' : 'bg-[#FFF7ED] text-[#C2410C]';
+    return (
+      <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] divide-y divide-[#ECECEC]">
+        <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
+          <p className="text-[12px] font-semibold text-[#111111]">Licensing Inbox</p>
+          <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${accentSoft}`}>3 requests</span>
+        </div>
+        {requests.map((r) => (
+          <div key={r.studio} className="flex items-center justify-between gap-3 bg-white px-4 py-3">
+            <div className="min-w-0">
+              <p className="truncate text-[12px] font-medium text-[#111111]">{r.studio}</p>
+              <p className="text-[10px] text-[#6B7280]">{r.type}</p>
+            </div>
+            <div className="flex shrink-0 items-center gap-2">
+              <span className="font-semibold text-[11px] text-[#111111]">{r.fee}</span>
+              <span className={`rounded-full px-1.5 py-0.5 text-[9px] font-semibold ${statusClass(r.status)}`}>{r.status}</span>
+            </div>
           </div>
+        ))}
+        <div className="flex items-center justify-around bg-[#FAFAFA] px-4 py-3">
+          {[['12', 'Active projects'], ['3', 'Pending review'], ['$8k', 'Q1 royalties']].map(([val, lbl]) => (
+            <div key={lbl} className="flex-1 text-center">
+              <p className="text-[11px] font-semibold text-[#111111]">{val}</p>
+              <p className="text-[9px] text-[#6B7280]">{lbl}</p>
+            </div>
+          ))}
         </div>
       </div>
-      <div className="bg-[#F9F9FA] px-4 py-4">
-        <MockPreviewImage
-          src={step.imageSrc}
-          alt={step.imageAlt}
-          className="h-[140px] w-full rounded-md object-cover border border-[#ECECEC]"
-        />
+    );
+  }
+
+  if (step.id === 'how-actors-chats') {
+    const threads = [
+      { initials: 'DP', name: 'Dharma Productions', last: 'Can we extend territory to UAE?', time: '2m ago', unread: true },
+      { initials: 'TS', name: 'T-Series Films', last: 'Revised fee proposal sent.', time: '14m ago', unread: false },
+      { initials: 'YR', name: 'YRF Studios', last: 'Contract sent for review.', time: '1h ago', unread: false },
+    ];
+    return (
+      <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] divide-y divide-[#ECECEC]">
+        <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
+          <p className="text-[12px] font-semibold text-[#111111]">Studio Conversations</p>
+          <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${accentSoft}`}>3 active</span>
+        </div>
+        {threads.map((t) => (
+          <div key={t.initials} className="flex items-start gap-3 bg-white px-4 py-3">
+            <span className={`inline-flex size-7 shrink-0 items-center justify-center rounded-full text-[11px] font-bold ${accentSoft}`}>{t.initials}</span>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center justify-between">
+                <p className="text-[12px] font-semibold text-[#111111]">{t.name}</p>
+                <span className="text-[9px] text-[#9CA3AF] shrink-0">{t.time}</span>
+              </div>
+              <p className="truncate text-[10px] text-[#6B7280]">{t.last}</p>
+            </div>
+            {t.unread && <span className={`mt-1 size-2 shrink-0 rounded-full ${accentBg}`} />}
+          </div>
+        ))}
+        <div className="flex items-center gap-2 bg-[#FAFAFA] px-4 py-2.5">
+          <span className="size-1.5 rounded-full bg-[#10B981]" />
+          <p className="text-[10px] text-[#6B7280]">Agent attached · all threads visible to your representative</p>
+        </div>
       </div>
-      <div className="flex items-center justify-around bg-white px-4 py-3">
-        {step.visualRows.map((r) => (
-          <div key={r.label} className="flex-1 text-center">
-            <p className="text-[9px] text-[var(--color-text-muted)]">{r.label}</p>
-            <span className={`mt-0.5 inline-block rounded-full border px-1.5 py-0.5 text-[9px] font-semibold ${whatCardToneClass(r.tone)}`}>{r.value}</span>
+    );
+  }
+
+  if (step.id === 'how-actors-contracts') {
+    const clauses = [
+      { label: 'Usage scope', value: 'Dialogue replacement · Brahmastra 2', warn: false },
+      { label: 'Territory', value: 'India + APAC', warn: false },
+      { label: 'AI training clause', value: 'Excluded', warn: true },
+      { label: 'Duration', value: '24 months', warn: false },
+      { label: 'Renewal', value: 'Manual re-approval', warn: false },
+    ];
+    return (
+      <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] divide-y divide-[#ECECEC]">
+        <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
+          <p className="text-[12px] font-semibold text-[#111111]">License Agreement · LIC-AS-2026-031</p>
+          <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${accentSoft}`}>Pending approval</span>
+        </div>
+        <div className="bg-white px-4 py-3 space-y-1.5">
+          {clauses.map((c) => (
+            <div key={c.label} className="flex items-center justify-between text-[11px]">
+              <span className="text-[#6B7280]">{c.label}</span>
+              <span className={`font-medium ${c.warn ? 'text-[#D61D1F]' : 'text-[#111111]'}`}>{c.value}</span>
+            </div>
+          ))}
+        </div>
+        <div className="flex items-center gap-2 bg-[#FAFAFA] px-4 py-3">
+          <button type="button" className="flex-1 rounded-[8px] border border-[#ECECEC] bg-white py-1.5 text-[11px] font-semibold text-[#6B7280]">Deny</button>
+          <button type="button" className={`flex-1 rounded-[8px] py-1.5 text-[11px] font-semibold text-white ${accentBg}`}>Approve</button>
+        </div>
+      </div>
+    );
+  }
+
+  // how-actors-ledger (default actor step)
+  if (step.id === 'how-actors-ledger') {
+    const usageEvents = [
+      { id: 'USE-881', desc: 'Dialogue replace · Brahmastra 2 Ep.1', payout: '+$1,400', date: 'Mar 2', tone: 'granted' as WhatCardTone },
+      { id: 'USE-884', desc: 'Ad campaign · TVC · T-Series', payout: '+$2,200', date: 'Mar 5', tone: 'granted' as WhatCardTone },
+      { id: 'USE-887', desc: 'Regional dub · South India', payout: 'Pending', date: 'Mar 8', tone: 'neutral' as WhatCardTone },
+    ];
+    return (
+      <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] divide-y divide-[#ECECEC]">
+        <div className="flex items-center justify-between gap-3 bg-[#FFF9F9] px-4 py-4">
+          <div>
+            <p className="text-[10px] text-[#6B7280]">Q1 2026 royalty earnings</p>
+            <p className="text-[22px] font-bold text-[#111111] leading-tight">$3,600</p>
+            <p className="text-[10px] text-[#6B7280]">across 2 settled licenses</p>
+          </div>
+          <div className="text-right">
+            <p className="text-[10px] text-[#6B7280]">Next payout</p>
+            <p className="text-[11px] font-semibold" style={{ color: accentColor }}>Mar 15, 2026</p>
+          </div>
+        </div>
+        {usageEvents.map((entry, index) => (
+          <div key={entry.id} className="relative flex items-center justify-between gap-3 bg-white pl-9 pr-4 py-3">
+            {index !== usageEvents.length - 1 && (
+              <span aria-hidden="true" className={`absolute left-[19px] top-[34px] h-[calc(100%-10px)] w-px ${accentLine}`} />
+            )}
+            <span aria-hidden="true" className={`absolute left-4 top-[18px] size-2 rounded-full ${accentBg}`} />
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-[11px] font-medium text-[#111111]">{entry.desc}</p>
+              <p className="text-[9px] text-[#6B7280]">{entry.id} · {entry.date}</p>
+            </div>
+            <span className={`shrink-0 rounded-full border px-1.5 py-0.5 text-[9px] font-semibold ${whatCardToneClass(entry.tone)}`}>{entry.payout}</span>
+          </div>
+        ))}
+        <div className="flex items-center justify-around bg-[#FAFAFA] px-4 py-3">
+          {[['Live', 'Usage log'], ['1 pending', 'Payout'], ['Exportable', 'Audit trail']].map(([val, lbl]) => (
+            <div key={lbl} className="flex-1 text-center">
+              <p className="text-[11px] font-semibold text-[#111111]">{val}</p>
+              <p className="text-[9px] text-[#6B7280]">{lbl}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // ── STUDIOS ───────────────────────────────────────────────────
+
+  if (step.id === 'how-studios-requests') {
+    const actors = [
+      { initials: 'AS', name: 'Arjun Sharma', type: 'Voice · Mumbai', id: 'CAST-AS-2026-8821', ready: true },
+      { initials: 'PN', name: 'Priya Nair', type: 'Voice+Screen · Chennai', id: 'CAST-PN-2026-4412', ready: true },
+      { initials: 'RM', name: 'Rahul Mehta', type: 'Screen · Delhi', id: 'CAST-RM-2026-7705', ready: false },
+    ];
+    return (
+      <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] divide-y divide-[#ECECEC]">
+        <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
+          <p className="text-[12px] font-semibold text-[#111111]">License Request · REQ-2026-0901</p>
+          <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${accentSoft}`}>Submitted</span>
+        </div>
+        <div className="bg-white px-4 py-3 space-y-1.5">
+          <p className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wide mb-2">Request scope</p>
+          {[
+            { label: 'Project', value: 'Brahmastra 2 · Ep. 1–3' },
+            { label: 'Use type', value: 'Dialogue replacement' },
+            { label: 'Territory', value: 'India + APAC' },
+            { label: 'Duration', value: '24 months' },
+            { label: 'Training rights', value: 'Not requested', warn: true },
+          ].map((r) => (
+            <div key={r.label} className="flex items-center justify-between text-[11px]">
+              <span className="text-[#6B7280]">{r.label}</span>
+              <span className={`font-medium ${r.warn ? 'text-[#F59E0B]' : 'text-[#111111]'}`}>{r.value}</span>
+            </div>
+          ))}
+        </div>
+        <div className="bg-white px-4 py-3">
+          <p className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wide mb-2">Matched performers</p>
+          {actors.map((a) => (
+            <div key={a.id} className="flex items-center justify-between gap-3 py-1.5">
+              <div className="flex items-center gap-2 min-w-0">
+                <span className={`inline-flex size-6 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${accentSoft}`}>{a.initials}</span>
+                <p className="truncate text-[11px] font-medium text-[#111111]">{a.name}</p>
+              </div>
+              <span className={`shrink-0 rounded-full border px-1.5 py-0.5 text-[9px] font-semibold ${whatCardToneClass(a.ready ? 'granted' : 'neutral')}`}>
+                {a.ready ? 'Consent ready' : 'Pending'}
+              </span>
+            </div>
+          ))}
+        </div>
+        <div className="flex items-center justify-around bg-[#FAFAFA] px-4 py-3">
+          {[['8', 'Active requests'], ['32', 'Licenses drafted'], ['98%', 'Compliance index']].map(([val, lbl]) => (
+            <div key={lbl} className="flex-1 text-center">
+              <p className="text-[11px] font-semibold text-[#111111]">{val}</p>
+              <p className="text-[9px] text-[#6B7280]">{lbl}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (step.id === 'how-studios-agreements') {
+    return (
+      <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] divide-y divide-[#ECECEC]">
+        <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
+          <div>
+            <p className="text-[12px] font-semibold text-[#111111]">License Draft v2 · Brahmastra 2</p>
+            <p className="text-[10px] text-[#6B7280]">Arjun Sharma · Voice · CAST-AS-2026-8821</p>
+          </div>
+          <span className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-semibold ${accentSoft}`}>Draft saved</span>
+        </div>
+        <div className="bg-white px-4 py-3">
+          <p className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wide mb-2">Territory scope</p>
+          <div className="flex flex-wrap gap-1.5">
+            {['India', 'APAC', 'UAE'].map((t) => (
+              <span key={t} className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${accentSoft}`}>{t}</span>
+            ))}
+            <span className="rounded-full border border-dashed border-[#D1D5DB] px-2.5 py-0.5 text-[10px] text-[#9CA3AF]">+ Add region</span>
+          </div>
+        </div>
+        <div className="bg-white px-4 py-3 space-y-1.5">
+          <p className="text-[10px] font-semibold text-[#6B7280] uppercase tracking-wide mb-2">Terms</p>
+          {[
+            { label: 'Base license fee', value: '$6,500', highlight: false },
+            { label: 'AI training rights', value: 'Excluded', highlight: true },
+            { label: 'Duration', value: '24 months', highlight: false },
+            { label: 'Renewal model', value: 'Manual · 12 mo', highlight: false },
+          ].map((r) => (
+            <div key={r.label} className="flex items-center justify-between">
+              <p className="text-[11px] text-[#6B7280]">{r.label}</p>
+              <p className={`text-[11px] font-semibold ${r.highlight ? 'text-[#D61D1F]' : 'text-[#111111]'}`}>{r.value}</p>
+            </div>
+          ))}
+        </div>
+        <div className="flex items-center gap-2 bg-[#FAFAFA] px-4 py-2.5">
+          <span className="size-1.5 rounded-full bg-[#10B981]" />
+          <p className="text-[10px] text-[#6B7280]">5 approvals pending · legal team cleared · agent feedback received</p>
+        </div>
+      </div>
+    );
+  }
+
+  // how-studios-tracking (default studio step)
+  const usageLog = [
+    { event: 'License activated · Brahmastra 2 Ep.1', ref: 'LIC-AS-20260312', time: '2m ago', ok: true },
+    { event: 'Territory check passed · India + APAC', ref: 'TER-APAC-0041', time: '3m ago', ok: true },
+    { event: 'Settlement queued · Arjun Sharma', ref: 'INV-B2-2026-021 · $6,500', time: '5m ago', ok: true },
+    { event: 'Renewal alert triggered · 14 days', ref: 'LIC-PN-20260101', time: '1h ago', ok: false },
+  ];
+  return (
+    <div className="mt-4 overflow-hidden rounded-[14px] border border-[#ECECEC] divide-y divide-[#ECECEC]">
+      <div className="flex items-center justify-between gap-3 bg-white px-4 py-3">
+        <p className="text-[12px] font-semibold text-[#111111]">Usage & Payment Log</p>
+        <span className="inline-flex items-center gap-1 rounded-full bg-[#EEF8FF] border border-[#BFDBFE] px-2 py-0.5 text-[10px] font-semibold text-[#159FFA]">Auditable</span>
+      </div>
+      {usageLog.map((e) => (
+        <div key={e.ref} className="flex items-start gap-2.5 bg-white px-4 py-2.5">
+          <span className={`mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full ${e.ok ? 'bg-[#F0FDF4]' : 'bg-[#FFF7ED]'}`}>
+            {e.ok ? (
+              <svg viewBox="0 0 8 8" fill="currentColor" className="size-2 text-[#10B981]"><path fillRule="evenodd" d="M6.84 1.84a.5.5 0 010 .71l-3.5 3.5a.5.5 0 01-.71 0l-1.5-1.5a.5.5 0 01.71-.71L3 5.03l3.15-3.15a.5.5 0 01.71-.01z" clipRule="evenodd" /></svg>
+            ) : (
+              <svg viewBox="0 0 8 8" fill="currentColor" className="size-2 text-[#F59E0B]"><path d="M4 5a.5.5 0 110-1 .5.5 0 010 1zm0-3a.375.375 0 01.375.375v1.5a.375.375 0 01-.75 0v-1.5A.375.375 0 014 2z" /></svg>
+            )}
+          </span>
+          <div className="flex-1 min-w-0">
+            <p className="text-[11px] font-medium text-[#111111] truncate">{e.event}</p>
+            <p className="text-[10px] text-[#9CA3AF] font-mono">{e.ref}</p>
+          </div>
+          <span className="text-[10px] text-[#9CA3AF] shrink-0">{e.time}</span>
+        </div>
+      ))}
+      <div className="flex items-center justify-around bg-[#FAFAFA] px-4 py-3">
+        {[['100%', 'Template match'], ['Global', 'Region bounds'], ['Complete', 'Signatures']].map(([val, lbl]) => (
+          <div key={lbl} className="flex-1 text-center">
+            <p className="text-[11px] font-semibold text-[#111111]">{val}</p>
+            <p className="text-[9px] text-[#6B7280]">{lbl}</p>
           </div>
         ))}
       </div>
@@ -308,16 +558,7 @@ function whatCardToneClass(tone: WhatCardTone): string {
   return 'border-[#ECECEC] bg-white text-[var(--color-text-muted)]';
 }
 
-function handleMockImageError(event: SyntheticEvent<HTMLImageElement>) {
-  const image = event.currentTarget;
-  if (image.dataset.fallbackApplied === 'true') return;
-  image.dataset.fallbackApplied = 'true';
-  image.src = '/1.png';
-}
 
-function MockPreviewImage({ src, alt, className }: { src: string; alt: string; className: string }) {
-  return <img src={src} alt={alt} className={className} loading="lazy" onError={handleMockImageError} />;
-}
 
 function WhatCardDemo({ cardId, tab }: { cardId: string; tab: WhatTabKey }) {
   const isStudio = tab === 'studios';
@@ -334,16 +575,16 @@ function WhatCardDemo({ cardId, tab }: { cardId: string; tab: WhatTabKey }) {
           <span className="inline-flex items-center gap-1 rounded-full bg-[#FFF7ED] border border-[#FED7AA] px-2 py-0.5 text-[10px] font-semibold text-[#C2410C]">Pending</span>
         </div>
         <div className="flex items-center gap-2.5 rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] p-2.5">
-          <div className={`flex size-8 shrink-0 items-center justify-center rounded-lg text-white text-[10px] font-bold ${accentBg}`}>AP</div>
+          <div className={`flex size-8 shrink-0 items-center justify-center rounded-lg text-white text-[10px] font-bold ${accentBg}`}>DP</div>
           <div>
-            <p className="text-[13px] font-semibold text-[#111111]">Apex Pictures</p>
-            <p className="text-[11px] text-[#6B7280]">Verified Studio · Project Nebula</p>
+            <p className="text-[13px] font-semibold text-[#111111]">Dharma Productions</p>
+            <p className="text-[11px] text-[#6B7280]">Verified Studio · Brahmastra 2</p>
           </div>
         </div>
         <div className="rounded-[10px] bg-[#F9F9FA] border border-[#F1F1F1] p-3 space-y-1.5">
           {[
             { label: 'Use type', value: 'Dialogue replacement' },
-            { label: 'Territory', value: 'US + Canada' },
+            { label: 'Territory', value: 'India + APAC' },
             { label: 'Duration', value: '6 months' },
             { label: 'Fee', value: '$4,500', bold: true },
           ].map(r => (
@@ -363,9 +604,9 @@ function WhatCardDemo({ cardId, tab }: { cardId: string; tab: WhatTabKey }) {
 
   if (cardId === 'actors-transparent-monetization') {
     const streams = [
-      { label: 'Feature voice · Nebula S1', value: '$3,200', pct: 82 },
-      { label: 'Ad campaign · Nova Brands', value: '$1,100', pct: 43 },
-      { label: 'Regional dub · LATAM', value: '$820', pct: 30 },
+      { label: 'Feature voice · Brahmastra 2', value: '$3,200', pct: 82 },
+      { label: 'Ad campaign · T-Series Films', value: '$1,100', pct: 43 },
+      { label: 'Regional dub · South India', value: '$820', pct: 30 },
     ];
     return (
       <div className="w-full flex flex-col gap-3">
@@ -400,7 +641,7 @@ function WhatCardDemo({ cardId, tab }: { cardId: string; tab: WhatTabKey }) {
   if (cardId === 'actors-automated-payments') {
     const steps = [
       { label: 'License signed', detail: 'Trigger created instantly', done: true },
-      { label: 'Invoice generated', detail: 'Auto-issued · INV-EC-2026-003', done: true },
+      { label: 'Invoice generated', detail: 'Auto-issued · INV-AS-2026-003', done: true },
       { label: 'Payout window opens', detail: 'Net-14 · $4,050 queued', done: false },
     ];
     return (
@@ -443,9 +684,9 @@ function WhatCardDemo({ cardId, tab }: { cardId: string; tab: WhatTabKey }) {
         </div>
         <div className="space-y-2">
           {[
-            { id: 'INV-EC-2026-003', project: 'Atlas Game Studio', amount: '$4,500', status: 'paid' as const },
-            { id: 'INV-EC-2026-002', project: 'Nova Brands', amount: '$2,800', status: 'in review' as const },
-            { id: 'INV-EC-2026-001', project: 'Orbit Media', amount: '$1,200', status: 'requested' as const },
+            { id: 'INV-AS-2026-003', project: 'Dharma Productions', amount: '$4,500', status: 'paid' as const },
+            { id: 'INV-AS-2026-002', project: 'T-Series Films', amount: '$2,800', status: 'in review' as const },
+            { id: 'INV-AS-2026-001', project: 'YRF Studios', amount: '$1,200', status: 'requested' as const },
           ].map(inv => (
             <div key={inv.id} className="flex items-center gap-2.5 rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] p-2.5">
               <div className="flex-1 min-w-0">
@@ -475,18 +716,18 @@ function WhatCardDemo({ cardId, tab }: { cardId: string; tab: WhatTabKey }) {
           <span className="inline-flex items-center gap-1 rounded-full border border-[#BFDBFE] bg-[#EFF6FF] px-2 py-0.5 text-[10px] font-semibold text-[#1D4ED8]">In Review</span>
         </div>
         <div className="flex items-center gap-2.5 rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] p-2.5">
-          <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-full text-[11px] font-bold bg-[#EEF8FF] text-[#159FFA]">EC</span>
+          <span className="inline-flex size-7 shrink-0 items-center justify-center rounded-full text-[11px] font-bold bg-[#EEF8FF] text-[#159FFA]">AS</span>
           <div className="flex-1 min-w-0">
-            <p className="text-[11px] font-semibold text-[#111111]">Emma Chen</p>
-            <p className="text-[10px] text-[#6B7280]">CastID verified · CAST-EC-2026-8821</p>
+            <p className="text-[11px] font-semibold text-[#111111]">Arjun Sharma</p>
+            <p className="text-[10px] text-[#6B7280]">CastID verified · CAST-AS-2026-8821</p>
           </div>
           <span className="shrink-0 text-[9px] font-semibold px-1.5 py-0.5 rounded-full border border-[#BBF7D0] bg-[#F0FDF4] text-[#166534]">Consent ready</span>
         </div>
         <div className="rounded-[10px] bg-[#F9F9FA] border border-[#F1F1F1] p-3 space-y-1.5">
           {[
             { label: 'Asset type', value: 'Voice + Likeness' },
-            { label: 'Project', value: 'Nebula S1 · Dialogue' },
-            { label: 'Territory', value: 'US + Canada' },
+            { label: 'Project', value: 'Brahmastra 2 · Dialogue' },
+            { label: 'Territory', value: 'India + APAC' },
             { label: 'Training rights', value: 'Not included', warn: true },
           ].map(r => (
             <div key={r.label} className="flex items-center justify-between text-[11px]">
@@ -502,7 +743,7 @@ function WhatCardDemo({ cardId, tab }: { cardId: string; tab: WhatTabKey }) {
 
   if (cardId === 'studios-standardized-agreements') {
     const clauses = [
-      { label: 'Usage territory', value: 'US + Canada', warn: false },
+      { label: 'Usage territory', value: 'India + APAC', warn: false },
       { label: 'License duration', value: '24 months', warn: false },
       { label: 'Training clause', value: 'Excluded', warn: true },
       { label: 'Renewal rule', value: 'Manual re-approval', warn: false },
@@ -537,9 +778,9 @@ function WhatCardDemo({ cardId, tab }: { cardId: string; tab: WhatTabKey }) {
 
   if (cardId === 'studios-automated-payments') {
     const queue = [
-      { id: 'INV-481', studio: 'Emma Chen · Voice', amount: '$2,400', pct: 88 },
-      { id: 'INV-477', studio: 'Marcus Reid · Screen', amount: '$1,120', pct: 64 },
-      { id: 'INV-472', studio: 'Yuki Tanaka · Voice', amount: '$870', pct: 41 },
+      { id: 'INV-481', studio: 'Arjun Sharma · Voice', amount: '$2,400', pct: 88 },
+      { id: 'INV-477', studio: 'Priya Nair · Screen', amount: '$1,120', pct: 64 },
+      { id: 'INV-472', studio: 'Rahul Mehta · Voice', amount: '$870', pct: 41 },
     ];
     return (
       <div className="w-full flex flex-col gap-3">
@@ -582,10 +823,10 @@ function WhatCardDemo({ cardId, tab }: { cardId: string; tab: WhatTabKey }) {
       </div>
       <div className="space-y-2">
         {[
-          { event: 'License activated · Nebula S1', ref: 'LIC-EC-20260312', time: '2m ago', ok: true },
-          { event: 'Territory check passed · NA', ref: 'TER-NA-0041', time: '3m ago', ok: true },
+          { event: 'License activated · Brahmastra 2', ref: 'LIC-AS-20260312', time: '2m ago', ok: true },
+          { event: 'Territory check passed · India', ref: 'TER-IN-0041', time: '3m ago', ok: true },
           { event: 'Settlement record stored', ref: 'INV-481 · $2,400', time: '5m ago', ok: true },
-          { event: 'Renewal alert triggered', ref: 'LIC-RO-20260101 · 14d', time: '1h ago', ok: false },
+          { event: 'Renewal alert triggered', ref: 'LIC-PN-20260101 · 14d', time: '1h ago', ok: false },
         ].map(e => (
           <div key={e.ref} className="flex items-start gap-2.5 rounded-[8px] bg-[#F9F9FA] border border-[#F1F1F1] p-2.5">
             <span className={`mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full ${e.ok ? 'bg-[#F0FDF4]' : 'bg-[#FFF7ED]'}`}>
@@ -660,15 +901,7 @@ export default function LicensingPage() {
   const whatContent = whatSectionData[activeWhatTab];
   const howContent = howJourneyData[activeHowTab];
   const activeHowStep = howContent.steps[activeHowStepIndex] ?? howContent.steps[0];
-  const computeCarouselPl = () => {
-    if (typeof window === 'undefined') return 24;
-    const vw = window.innerWidth;
-    if (vw >= 1300) return vw * 0.5 - 610;
-    if (vw >= 768) return 40;
-    return 24;
-  };
-  const [carouselPl, setCarouselPl] = useState(computeCarouselPl);
-  const carouselLeadIn = Math.max(carouselPl - 24, 0);
+
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -700,11 +933,7 @@ export default function LicensingPage() {
     return () => clearInterval(timer);
   }, [activeHowTab, activeHowStepIndex, howContent.steps.length]);
 
-  useEffect(() => {
-    const update = () => setCarouselPl(computeCarouselPl());
-    window.addEventListener('resize', update);
-    return () => window.removeEventListener('resize', update);
-  }, []);
+
 
   useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
@@ -719,48 +948,40 @@ export default function LicensingPage() {
       <section
         ref={heroRef}
         data-bg-animated={isHeroInView ? 'true' : 'false'}
-        className="relative w-full min-h-dvh overflow-hidden bg-white pt-32 md:pt-36"
+        className="relative flex h-dvh w-full flex-col overflow-hidden bg-white pt-32 md:pt-36"
       >
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
           <HomepageV2HeroAmbient animate={isHeroInView} />
           <div className="absolute inset-x-0 bottom-0 h-44 bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,rgba(255,255,255,0.7)_64%,#ffffff_100%)] md:h-64" />
         </div>
-        <div className="relative z-10 mx-auto w-full max-w-[1300px] px-6 md:px-10">
-          <div className="flex h-[calc(100dvh-11rem)] items-end pb-20 md:h-[calc(100dvh-13rem)] md:pb-20">
-            <div className="grid h-full w-full gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-              <div>
-                <h1 id="hero-headline" className="max-w-[760px] text-balance text-[40px] leading-[1.06] font-medium text-[#111111] md:text-[60px]">
-                  Turn Assets Into Authorized Use
-                </h1>
-                <p className="mt-6 max-w-[760px] text-pretty text-[17px] leading-7 text-[#4B5563]">
-                  Digital assets alone don't grant the right to use a performance.
-                  <br />
-                  Licensing creates the agreement that allows studios to use a performer's voice, likeness, or motion assets within a defined project.
-                </p>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <button
-                    type="button"
-                    onClick={openDemoBookingModal}
-                    className="rounded-full bg-[#159FFA] px-8 py-3.5 text-[15px] font-medium text-white transition-colors duration-200 hover:bg-[#1188D4]"
-                  >
-                    Get a demo
-                  </button>
-                </div>
+        <div className="relative z-10 mx-auto flex w-full max-w-[1300px] flex-1 flex-col justify-center px-6 pb-10 md:px-10 md:pb-12">
+          <div className="flex h-full w-full flex-col gap-10 lg:flex-row lg:items-center lg:gap-14">
+            {/* Left: text */}
+            <div className="flex flex-1 flex-col justify-center">
+              <h1 id="hero-headline" className="text-balance text-[40px] leading-[1.06] font-medium text-[#111111] md:text-[56px]">
+                Turn Assets Into Authorized Use
+              </h1>
+              <p className="mt-6 text-pretty text-[17px] leading-7 text-[#4B5563]">
+                Digital assets alone don't grant the right to use a performance.
+                Licensing creates the agreement that allows studios to use a performer's voice, likeness, or motion assets within a defined project.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={openDemoBookingModal}
+                  className="rounded-full bg-[#159FFA] px-8 py-3.5 text-[15px] font-medium text-white transition-colors duration-200 hover:bg-[#1188D4]"
+                >
+                  Get a demo
+                </button>
               </div>
-
-              <div className="h-[62dvh] w-auto justify-self-end overflow-hidden rounded-[24px] border border-[#ECECEC] bg-[#111111] shadow-lg aspect-[5/8] md:h-[68dvh] lg:h-[72dvh] lg:self-center">
-                <video
-                  src="/licensing_page_demo.mp4"
-                  className="size-full object-cover"
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  controls
-                  preload="auto"
-                  aria-label="tai your performance visual"
-                />
-              </div>
+            </div>
+            {/* Right: image */}
+            <div className="max-h-[45dvh] w-full overflow-hidden rounded-[24px] border border-[#ECECEC] shadow-lg lg:max-h-[56dvh] lg:w-[40%] lg:flex-shrink-0">
+              <img
+                src="/licensing_heroimage.avif"
+                alt="AI performance licensing"
+                className="h-full w-full rounded-[24px] object-cover object-top"
+              />
             </div>
           </div>
         </div>
@@ -877,15 +1098,6 @@ export default function LicensingPage() {
                   })}
                 </div>
 
-                <p className="mt-5 text-[12px] font-semibold uppercase text-[var(--color-text-muted)]">
-                  {howContent.eyebrow}
-                </p>
-                <h3 className="mt-2 max-w-[620px] text-balance text-[28px] leading-[1.1] font-medium text-[#111111] md:text-[34px]">
-                  {howContent.headline}
-                </h3>
-                <p className="mt-3 max-w-[640px] text-pretty text-[15px] leading-7 text-[var(--color-text-body)] md:text-[16px]">
-                  {howContent.description}
-                </p>
 
                 <ol className="mt-6 space-y-2">
                   {howContent.steps.map((step, index) => {
@@ -941,11 +1153,7 @@ export default function LicensingPage() {
                   {activeHowStep.detail}
                 </p>
 
-                <HowStepPreview step={activeHowStep} tab={activeHowTab} />
-
-                <p className="mt-4 text-pretty text-[12px] leading-6 text-[var(--color-text-muted)]">
-                  {activeHowStep.visualNote}
-                </p>
+                <HowStepDemo step={activeHowStep} tab={activeHowTab} />
               </div>
             </div>
           </div>

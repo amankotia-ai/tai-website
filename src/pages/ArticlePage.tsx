@@ -13,7 +13,7 @@ function renderContentBlock(block: ResearchArticleBlock, index: number) {
     return (
       <h2
         key={`${block.type}-${index}`}
-        className="pt-4 text-balance text-[31px] leading-[1.14] font-medium text-[#111111] md:text-[36px]"
+        className="pt-6 text-balance text-[26px] leading-[1.2] font-semibold text-[#111111] md:text-[30px]"
       >
         {block.text}
       </h2>
@@ -22,15 +22,23 @@ function renderContentBlock(block: ResearchArticleBlock, index: number) {
 
   if (block.type === 'quote') {
     return (
-      <blockquote key={`${block.type}-${index}`} className="rounded-[24px] border border-[#E5E7EB] bg-[#FCFCFD] p-7">
-        <p className="text-pretty text-[22px] leading-8 text-[#374151]">"{block.text}"</p>
-        <p className="mt-4 text-[14px] font-semibold text-[#111111]">{block.attribution}</p>
+      <blockquote
+        key={`${block.type}-${index}`}
+        className="border-l-[3px] border-[#D61D1F] pl-6"
+      >
+        <p className="text-pretty text-[20px] leading-9 italic text-[#374151]">"{block.text}"</p>
+        <p className="mt-3 text-[13px] font-semibold uppercase tracking-wide text-[#6B7280]">
+          — {block.attribution}
+        </p>
       </blockquote>
     );
   }
 
   return (
-    <p key={`${block.type}-${index}`} className="text-pretty text-[17px] leading-8 text-[var(--color-text-body)]">
+    <p
+      key={`${block.type}-${index}`}
+      className="text-pretty text-[17px] leading-[1.9] text-[#4B5563]"
+    >
       {block.text}
     </p>
   );
@@ -65,8 +73,8 @@ export default function ArticlePage() {
 
   if (!article) {
     return (
-      <main className="min-h-dvh bg-white pt-32">
-        <section className="mx-auto w-full max-w-[860px] px-6 pb-28 md:px-10">
+      <main className="min-h-dvh bg-white [&_h1]:font-['Inter'] [&_h1]:tracking-[-0.02em]">
+        <section className="mx-auto w-full max-w-[760px] px-6 pt-36 pb-28 md:px-10">
           <Link
             to="/research"
             className="inline-flex items-center gap-2 text-[14px] font-medium text-[#6B7280] transition-colors duration-200 hover:text-[#D61D1F]"
@@ -76,10 +84,10 @@ export default function ArticlePage() {
             </svg>
             Back to blog
           </Link>
-          <h1 className="mt-8 text-balance text-[40px] leading-[1.1] font-medium text-[#111111] md:text-[54px]">
+          <h1 className="mt-8 text-[40px] leading-[1.06] font-medium text-[#111111] md:text-[54px]">
             Article not found
           </h1>
-          <p className="mt-4 text-pretty text-[17px] leading-7 text-[var(--color-text-body)]">
+          <p className="mt-4 text-[17px] leading-7 text-[#4B5563]">
             This story may have moved or the URL is invalid.
           </p>
         </section>
@@ -90,113 +98,128 @@ export default function ArticlePage() {
   const relatedArticles = getRelatedResearchArticles(article.id);
 
   return (
-    <main className="min-h-dvh bg-white [&_h1]:font-['Inter'] [&_h2]:font-['Inter'] [&_h3]:font-['Inter']">
+    <main className="min-h-dvh bg-white [&_h1]:font-['Inter'] [&_h1]:tracking-[-0.02em] [&_h2]:font-['Inter'] [&_h2]:tracking-[-0.02em] [&_h3]:font-['Inter'] [&_h3]:tracking-[-0.02em]">
+
+      {/* ── Article Header ───────────────────────────────────────────────────── */}
       <section
         ref={heroRef}
         data-bg-animated={isHeroInView ? 'true' : 'false'}
-        className="relative w-full min-h-[94dvh] overflow-hidden bg-white pb-20 pt-32 md:pb-24 md:pt-36"
+        className="relative w-full overflow-hidden bg-white pt-32 pb-14 md:pt-40 md:pb-16"
       >
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
           <HomepageV2HeroAmbient animate={isHeroInView} />
-          <div className="absolute inset-x-0 bottom-0 h-44 bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,rgba(255,255,255,0.7)_64%,#ffffff_100%)] md:h-64" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(to_bottom,rgba(255,255,255,0)_0%,rgba(255,255,255,0.8)_60%,#ffffff_100%)]" />
         </div>
 
-        <div className="relative z-10 mx-auto w-full max-w-[1300px] px-6 md:px-10">
-          <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+        <div className="relative z-10 mx-auto w-full max-w-[760px] px-6 md:px-10">
+          <Link
+            to="/research"
+            className="inline-flex items-center gap-2 text-[14px] font-medium text-[#6B7280] transition-colors duration-200 hover:text-[#D61D1F]"
+          >
+            <svg aria-hidden="true" className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to blog
+          </Link>
+
+          <div className="mt-7 flex flex-wrap items-center gap-3 text-[13px] text-[#6B7280]">
+            <span className="rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 font-medium text-[#159FFA]">
+              {article.category}
+            </span>
+            <span>{article.date}</span>
+            <span>·</span>
+            <span>{article.readTime}</span>
+          </div>
+
+          <h1 className="mt-5 text-balance text-[38px] leading-[1.06] font-medium text-[#111111] md:text-[52px]">
+            {article.title}
+          </h1>
+
+          <p className="mt-5 text-pretty text-[18px] leading-8 text-[#4B5563]">
+            {article.subtitle}
+          </p>
+
+          <div className="mt-8 flex items-center gap-3 border-t border-[#E5E7EB] pt-6 text-[14px]">
+            <div className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#F3F4F6] text-[13px] font-semibold text-[#374151]">
+              {article.author.charAt(0)}
+            </div>
             <div>
-              <Link
-                to="/research"
-                className="inline-flex items-center gap-2 text-[14px] font-medium text-[#6B7280] transition-colors duration-200 hover:text-[#D61D1F]"
-              >
-                <svg aria-hidden="true" className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                Back to blog
-              </Link>
-
-              <div className="mt-7 flex flex-wrap items-center gap-3 text-[13px] text-[#6B7280]">
-                <span className="rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 font-medium text-[#159FFA]">
-                  {article.category}
-                </span>
-                <span>{article.date}</span>
-                <span>{article.readTime}</span>
-              </div>
-
-              <h1 className="mt-5 max-w-[800px] text-balance text-[40px] leading-[1.06] font-medium text-[#111111] md:text-[56px]">
-                {article.title}
-              </h1>
-              <p className="mt-5 max-w-[760px] text-pretty text-[18px] leading-8 text-[var(--color-text-body)]">
-                {article.subtitle}
-              </p>
-
-              <div className="mt-8 rounded-[18px] border border-[#E5E7EB] bg-white/95 p-5 backdrop-blur-sm">
-                <p className="text-[12px] uppercase text-[#6B7280]">Written by</p>
-                <p className="mt-1 text-[18px] font-semibold text-[#111111]">{article.author}</p>
-                <p className="text-[14px] text-[#6B7280]">{article.role}</p>
-              </div>
-            </div>
-
-            <div className="h-[64dvh] overflow-hidden rounded-[24px] border border-[#ECECEC] bg-[#111111] shadow-lg md:h-[70dvh]">
-              <img src={article.coverImage} alt={article.coverImageAlt} className="size-full object-cover" />
+              <span className="font-semibold text-[#111111]">{article.author}</span>
+              <span className="mx-1.5 text-[#D1D5DB]">·</span>
+              <span className="text-[#6B7280]">{article.role}</span>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="w-full py-16 md:py-20">
-        <article className="mx-auto w-full max-w-[980px] px-6 md:px-10">
-          <div className="rounded-[24px] border border-[#E5E7EB] bg-[#FCFCFD] p-7">
-            <p className="text-[12px] font-semibold uppercase text-[#6B7280]">At a glance</p>
-            <p className="mt-3 text-pretty text-[17px] leading-7 text-[var(--color-text-body)]">
-              This article focuses on practical implementation patterns, clear governance boundaries, and
-              repeatable production workflows for AI-enabled creative teams.
-            </p>
-          </div>
+      {/* ── Cover Image ──────────────────────────────────────────────────────── */}
+      <div className="mx-auto w-full max-w-[1300px] px-6 md:px-10">
+        <div className="h-[340px] overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#111111] md:h-[500px]">
+          <img
+            src={article.coverImage}
+            alt={article.coverImageAlt}
+            className="size-full object-cover"
+          />
+        </div>
+      </div>
 
-          <div className="mt-10 space-y-8">{article.content.map((block, index) => renderContentBlock(block, index))}</div>
-        </article>
-      </section>
+      {/* ── Article Body ─────────────────────────────────────────────────────── */}
+      <article className="mx-auto w-full max-w-[760px] px-6 py-16 md:px-10 md:py-20">
+        <div className="space-y-7">
+          {article.content.map((block, index) => renderContentBlock(block, index))}
+        </div>
+      </article>
 
-      <section className="w-full pb-24">
-        <div className="mx-auto w-full max-w-[1300px] border-t border-[#E5E7EB] px-6 pt-12 md:px-10">
-          <h2 className="text-balance text-[34px] leading-[1.08] font-medium text-[#111111] md:text-[46px]">
-            Read next
-          </h2>
+      {/* ── Read Next ────────────────────────────────────────────────────────── */}
+      {relatedArticles.length > 0 && (
+        <section className="w-full pb-24">
+          <div className="mx-auto w-full max-w-[1300px] border-t border-[#E5E7EB] px-6 pt-12 md:px-10">
+            <div className="mb-8 flex items-center gap-4">
+              <span className="inline-flex shrink-0 rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-sm font-medium text-[#159FFA]">
+                Read next
+              </span>
+              <div className="h-px w-full bg-[#E5E7EB]" />
+            </div>
 
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            {relatedArticles.map((relatedArticle) => (
-              <Link
-                key={relatedArticle.id}
-                to={`/research/${relatedArticle.id}`}
-                className="group overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#FCFCFD]"
-              >
-                <div className="h-[220px] overflow-hidden bg-[#111111]">
-                  <img
-                    src={relatedArticle.coverImage}
-                    alt={relatedArticle.coverImageAlt}
-                    className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.05]"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-[12px] text-[#6B7280]">
-                    <span className="rounded-md bg-[#F3F4F6] px-2.5 py-1 font-medium text-[#374151]">
-                      {relatedArticle.category}
-                    </span>
-                    <span>{relatedArticle.date}</span>
+            <div className="grid gap-6 md:grid-cols-2">
+              {relatedArticles.map((rel) => (
+                <Link
+                  key={rel.id}
+                  to={`/research/${rel.id}`}
+                  className="group flex flex-col overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#FCFCFD] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.06)]"
+                >
+                  <div className="h-[200px] shrink-0 overflow-hidden bg-[#111111]">
+                    <img
+                      src={rel.coverImage}
+                      alt={rel.coverImageAlt}
+                      className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                      loading="lazy"
+                    />
                   </div>
-                  <h3 className="mt-4 text-balance text-[30px] leading-[1.12] font-medium text-[#111111] transition-colors duration-200 group-hover:text-[#D61D1F]">
-                    {relatedArticle.title}
-                  </h3>
-                  <p className="mt-3 text-pretty text-[15px] leading-6 text-[var(--color-text-body)]">
-                    {relatedArticle.description}
-                  </p>
-                </div>
-              </Link>
-            ))}
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="flex items-center gap-2">
+                      <span className="rounded-full bg-[rgba(21,159,250,0.08)] px-2.5 py-1 text-[11px] font-medium text-[#159FFA]">
+                        {rel.category}
+                      </span>
+                      <span className="text-[12px] text-[#6B7280]">{rel.date}</span>
+                    </div>
+                    <h3 className="mt-4 flex-1 text-balance text-[22px] leading-[1.25] font-medium text-[#111111] transition-colors duration-200 group-hover:text-[#D61D1F]">
+                      {rel.title}
+                    </h3>
+                    <p className="mt-3 text-[15px] leading-6 text-[#4B5563]">
+                      {rel.description}
+                    </p>
+                    <div className="mt-6 flex items-center justify-between border-t border-[#E5E7EB] pt-4 text-[13px]">
+                      <span className="font-medium text-[#111111]">{rel.author}</span>
+                      <span className="text-[#6B7280]">{rel.readTime}</span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <PreFooterCta />
     </main>
