@@ -11,7 +11,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID;
 
   if (!NOTION_TOKEN || !NOTION_DATABASE_ID) {
-    return res.status(500).json({ error: 'Server configuration error' });
+    return res.status(500).json({ error: 'Server configuration error: missing env vars' });
   }
 
   try {
@@ -40,7 +40,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           Role: {
             select: { name: role },
           },
-          'Primary Goal': {
+          'Primary goal': {
             select: { name: primaryGoal },
           },
           ...(date && {
@@ -56,7 +56,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (!response.ok) {
       const error = await response.json();
       console.error('Notion API error:', error);
-      return res.status(500).json({ error: 'Failed to save booking' });
+      return res.status(500).json({ error: 'Failed to save booking', details: error });
     }
 
     return res.status(200).json({ success: true });
