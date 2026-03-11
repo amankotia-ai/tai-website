@@ -225,7 +225,7 @@ export default function AboutUsPage() {
 
         <div className="relative z-10 mx-auto w-full max-w-[800px] px-6 text-center md:px-10 flex flex-col items-center">
           <h1 id="hero-headline" className="mt-6 text-balance text-[36px] leading-[1.06] font-medium text-[#111111] md:text-[56px]">
-            Face Behind Theatre.ai
+            Face Behind TheatreAI
           </h1>
 
           <figure className="mt-12 overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-white shadow-sm w-full max-w-[480px]">
@@ -264,13 +264,13 @@ export default function AboutUsPage() {
               So I started researching how generative AI was reshaping the creative industries and how performances were being replicated without clear consent or ownership. After months of studying and iterating, one idea kept standing out.
             </p>
             <p className="mt-6 text-pretty text-[16px] leading-8 text-[#4B5563]">
-              That idea became <strong className="font-semibold text-[#111111]">Theatre.ai</strong>.
+              That idea became <strong className="font-semibold text-[#111111]">TheatreAI</strong>.
             </p>
             <p className="mt-6 text-pretty text-[16px] leading-8 text-[#4B5563]">
               A platform designed to keep performers in control of their digital identity while giving studios a trusted way to work with AI performances.
             </p>
             <p className="mt-6 text-pretty text-[16px] leading-8 text-[#4B5563]">
-              In a world where AI can recreate anyone, <a href="http://theatre.ai/" target="_blank" rel="noopener noreferrer" className="text-[#159FFA] hover:underline hover:text-[#0B85DC] font-medium">Theatre.ai</a> makes sure the performer and the performance are never separated.
+              In a world where AI can recreate anyone, <a href="http://theatre.ai/" target="_blank" rel="noopener noreferrer" className="text-[#159FFA] hover:underline hover:text-[#0B85DC] font-medium">TheatreAI</a> makes sure the performer and the performance are never separated.
             </p>
           </div>
         </div>

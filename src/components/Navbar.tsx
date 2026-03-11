@@ -64,7 +64,7 @@ export default function Navbar() {
                             alt="Theatre.ai logo"
                             className="h-[20px] w-auto"
                         />
-                        <span className="font-semibold tracking-tight">Theatre.ai</span>
+                        <span className="font-semibold tracking-tight">TheatreAI</span>
                     </Link>
 
                     {/* Nav Links */}
