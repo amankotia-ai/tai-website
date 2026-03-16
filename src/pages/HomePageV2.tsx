@@ -2182,7 +2182,7 @@ export default function HomePageV2() {
         ref={ambientShowcaseRef}
         data-homepage-v2-ambient-showcase="true"
         data-bg-animated={isAmbientShowcaseInView ? 'true' : 'false'}
-        className="relative h-dvh w-full overflow-hidden bg-white"
+        className="relative min-h-dvh w-full overflow-hidden bg-white md:h-dvh"
       >
         <div
           aria-hidden="true"
@@ -2199,8 +2199,8 @@ export default function HomePageV2() {
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
           <HomepageV2HeroAmbient animate={isAmbientShowcaseInView} />
         </div>
-        <div className="relative z-20 mx-auto flex h-full w-full max-w-[1300px] items-center px-6 md:px-10">
-          <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_1fr] lg:items-center lg:translate-y-10">
+        <div className="relative z-20 mx-auto flex h-full w-full max-w-[1300px] items-center px-6 py-24 md:px-10 md:py-0">
+          <div className="grid w-full items-center gap-10 lg:grid-cols-[1fr_1fr] lg:items-center lg:translate-y-10">
             <div className="max-w-[525px]">
               <span className="section-pill !mb-3 inline-flex items-center gap-2 self-start">
                 <svg
@@ -2221,7 +2221,7 @@ export default function HomePageV2() {
                 Your digital self, always connected and always secure. Trusted by the people who create and the people who cast.
               </p>
             </div>
-            <div className="relative flex h-[260px] w-full max-w-[620px] items-center justify-end md:h-[520px]">
+            <div className="relative flex w-full max-w-[620px] items-center justify-end md:h-[520px]">
               <div className="w-full overflow-hidden rounded-[24px]">
                 <MorphingCanvas
                   width={720}

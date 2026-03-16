@@ -338,17 +338,6 @@ export default function AboutUsPage() {
         </div>
       </section>
 
-      {/* ── Our Mission ───────────────────────────────────────────────────────── */}
-      <section className="w-full py-20 md:py-28">
-        <div className="mx-auto w-full max-w-[860px] px-6 md:px-10 text-center">
-          <span className="inline-flex rounded-md bg-[rgba(21,159,250,0.1)] px-3 py-1 text-sm font-medium text-[#159FFA]">
-            Our Mission
-          </span>
-          <h2 className="mt-6 text-balance text-[34px] leading-[1.1] font-medium text-[#111111] md:text-[52px]">
-            To ensure that AI-generated performances remain human at their core.
-          </h2>
-        </div>
-      </section>
 
       {/* ── Our Vision ────────────────────────────────────────────────────────── */}
       <section className="w-full py-20 md:py-28 bg-[#F4F8FF]">

@@ -5,7 +5,7 @@ import HomepageV2HeroAmbient from '../components/HomepageV2HeroAmbient';
 import PreFooterCta from '../components/PreFooterCta';
 import { researchArticles } from '../data/researchArticles';
 
-const FEATURED_ARTICLE_ID = 2;
+const FEATURED_ARTICLE_ID = 5;
 
 export default function ResearchPage() {
   const heroRef = useRef<HTMLElement | null>(null);
@@ -79,12 +79,14 @@ export default function ResearchPage() {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link
-              to={`/research/${featuredArticle.id}`}
+            <a
+              href={featuredArticle.externalUrl ?? `/research/${featuredArticle.id}`}
+              target={featuredArticle.externalUrl ? '_blank' : undefined}
+              rel={featuredArticle.externalUrl ? 'noopener noreferrer' : undefined}
               className="rounded-full bg-[#D61D1F] px-7 py-3 text-[14px] font-medium text-white transition-colors duration-200 hover:bg-[#C9191B]"
             >
               Read featured story
-            </Link>
+            </a>
             <a
               href="#latest-posts"
               className="rounded-full bg-[#F3F4F6] px-7 py-3 text-[14px] font-medium text-[#111111] transition-colors duration-200 hover:bg-[#E5E7EB]"
@@ -118,8 +120,10 @@ export default function ResearchPage() {
             <div className="h-px w-full bg-[#E5E7EB]" />
           </div>
 
-          <Link
-            to={`/research/${featuredArticle.id}`}
+          <a
+            href={featuredArticle.externalUrl ?? `/research/${featuredArticle.id}`}
+            target={featuredArticle.externalUrl ? '_blank' : undefined}
+            rel={featuredArticle.externalUrl ? 'noopener noreferrer' : undefined}
             className="group grid overflow-hidden rounded-[26px] border border-[#E5E7EB] bg-[#FCFCFD] transition-shadow duration-300 hover:shadow-[0_8px_40px_rgba(0,0,0,0.07)] md:grid-cols-2"
           >
             {/* Image */}
@@ -167,7 +171,7 @@ export default function ResearchPage() {
                 </svg>
               </div>
             </div>
-          </Link>
+          </a>
         </div>
       </section>
 
@@ -183,46 +187,75 @@ export default function ResearchPage() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {latestArticles.map((article) => (
-              <Link
-                key={article.id}
-                to={`/research/${article.id}`}
-                className="group flex flex-col overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#FCFCFD] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.06)]"
-              >
-                {/* Cover image */}
-                <div className="h-[220px] shrink-0 overflow-hidden bg-[#111111]">
-                  <img
-                    src={article.coverImage}
-                    alt={article.coverImageAlt}
-                    loading="lazy"
-                    className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
-                  />
-                </div>
+            {latestArticles.map((article) => {
+              const cardClass =
+                'group flex flex-col overflow-hidden rounded-[24px] border border-[#E5E7EB] bg-[#FCFCFD] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.06)]';
 
-                {/* Card body */}
-                <div className="flex flex-1 flex-col p-6">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="rounded-full bg-[rgba(21,159,250,0.08)] px-2.5 py-1 text-[11px] font-medium text-[#159FFA]">
-                      {article.category}
-                    </span>
-                    <span className="text-[12px] text-[#6B7280]">{article.date}</span>
+              const cardContent = (
+                <>
+                  {/* Cover image */}
+                  <div className="h-[220px] shrink-0 overflow-hidden bg-[#111111]">
+                    <img
+                      src={article.coverImage}
+                      alt={article.coverImageAlt}
+                      loading="lazy"
+                      className="size-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                    />
                   </div>
 
-                  <h3 className="mt-4 flex-1 text-balance text-[22px] leading-[1.25] font-medium text-[#111111] transition-colors duration-200 group-hover:text-[#D61D1F]">
-                    {article.title}
-                  </h3>
+                  {/* Card body */}
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="rounded-full bg-[rgba(21,159,250,0.08)] px-2.5 py-1 text-[11px] font-medium text-[#159FFA]">
+                        {article.category}
+                      </span>
+                      <span className="text-[12px] text-[#6B7280]">{article.date}</span>
+                      {article.externalUrl && (
+                        <span className="ml-auto flex items-center gap-1 text-[11px] text-[#9CA3AF]">
+                          <svg aria-hidden="true" viewBox="0 0 16 16" fill="currentColor" className="size-3">
+                            <path d="M8.914 1.048a.75.75 0 0 1 .038 1.06l-4.146 4.392 4.146 4.392a.75.75 0 1 1-1.092 1.03l-4.6-4.874a.75.75 0 0 1 0-1.06l4.6-4.874a.75.75 0 0 1 1.054-.066ZM13.5 1a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-1.5 0V1.75A.75.75 0 0 1 13.5 1Z" />
+                          </svg>
+                          External
+                        </span>
+                      )}
+                    </div>
 
-                  <p className="mt-3 text-pretty text-[15px] leading-6 text-[#4B5563]">
-                    {article.description}
-                  </p>
+                    <h3 className="mt-4 flex-1 text-balance text-[22px] leading-[1.25] font-medium text-[#111111] transition-colors duration-200 group-hover:text-[#D61D1F]">
+                      {article.title}
+                    </h3>
 
-                  <div className="mt-6 flex items-center justify-between border-t border-[#E5E7EB] pt-4 text-[13px]">
-                    <span className="font-medium text-[#111111]">{article.author}</span>
-                    <span className="text-[#6B7280]">{article.readTime}</span>
+                    <p className="mt-3 text-pretty text-[15px] leading-6 text-[#4B5563]">
+                      {article.description}
+                    </p>
+
+                    <div className="mt-6 flex items-center justify-between border-t border-[#E5E7EB] pt-4 text-[13px]">
+                      <span className="font-medium text-[#111111]">{article.author}</span>
+                      <span className="text-[#6B7280]">{article.readTime}</span>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </>
+              );
+
+              return article.externalUrl ? (
+                <a
+                  key={article.id}
+                  href={article.externalUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cardClass}
+                >
+                  {cardContent}
+                </a>
+              ) : (
+                <Link
+                  key={article.id}
+                  to={`/research/${article.id}`}
+                  className={cardClass}
+                >
+                  {cardContent}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

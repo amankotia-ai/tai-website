@@ -1449,7 +1449,7 @@ export default function CastIdPage() {
       </section>
 
       <section className="w-full py-16 px-6 md:px-10">
-        <div className="mx-auto grid grid-cols-1 gap-4 max-w-[1300px] sm:grid-cols-2 md:grid-cols-4">
+        <div className="mx-auto grid grid-cols-2 gap-4 max-w-[1300px] md:grid-cols-4">
           {[0, 1, 2, 3].map((i) => (
             <video
               key={i}

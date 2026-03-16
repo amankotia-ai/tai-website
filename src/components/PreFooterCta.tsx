@@ -10,7 +10,7 @@ const PreFooterCta = () => {
           <h2 className="text-balance text-[34px] leading-[1.08] font-medium text-[#0F172A] md:text-[52px]">
             Perform freely. Get paid fairly.
           </h2>
-          <p className="mx-auto mt-5 whitespace-nowrap text-[17px] leading-7 text-[#4B5563]">
+          <p className="mx-auto mt-5 md:whitespace-nowrap text-[17px] leading-7 text-[#4B5563]">
             The future of AI performance starts with permission.
           </p>
           <div className="mt-8 flex items-center justify-center">
